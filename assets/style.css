@@ -1,0 +1,364 @@
+/* ---------- The Policy Brief — shared site styles ---------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink: #1a2233;
+  --paper: #faf8f2;
+  --paper-2: #f2efe6;
+  --rule: #d9d2c2;
+  --accent: #8c1c1c;
+  --accent-2: #1f5138;
+  --muted: #5b5f6b;
+  --card-bg: #ffffff;
+  --max-w: 880px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  line-height: 1.6;
+}
+
+body { -webkit-font-smoothing: antialiased; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Masthead ---------- */
+
+.masthead {
+  border-bottom: 4px double var(--ink);
+  background: var(--paper);
+  padding: 28px 0 14px;
+}
+
+.masthead .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.kicker {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.masthead h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 800;
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.masthead .tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+  letter-spacing: 0.3px;
+}
+
+.masthead h1 a { color: inherit; text-decoration: none; }
+.masthead h1 a:hover { text-decoration: none; }
+
+/* ---------- Sidebar layout ---------- */
+
+.layout {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+  display: flex;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.sidebar {
+  width: 210px;
+  flex-shrink: 0;
+}
+
+.sidebar nav {
+  position: sticky;
+  top: 28px;
+}
+
+.sidebar nav a {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.sidebar nav a:hover { color: var(--accent); text-decoration: none; }
+
+.sidebar nav a.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  max-width: var(--max-w);
+}
+
+@media (max-width: 760px) {
+  .layout { flex-direction: column; gap: 8px; padding-top: 24px; }
+  .sidebar { width: 100%; }
+  .sidebar nav { position: static; display: flex; flex-wrap: wrap; gap: 0 18px; }
+  .sidebar nav a { border-bottom: none; padding: 8px 0; }
+}
+
+/* ---------- Content ---------- */
+
+main { padding: 0; }
+
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.7rem;
+  margin: 0 0 6px;
+}
+
+h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  margin: 28px 0 8px;
+}
+
+p { margin: 0 0 16px; }
+
+.lede {
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.dateline {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.byline {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  font-style: normal;
+}
+
+hr.rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 32px 0;
+}
+
+/* ---------- Cards / grid ---------- */
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 22px 24px;
+  margin-bottom: 20px;
+}
+
+.card h3 { margin-top: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.stat {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 18px;
+  text-align: center;
+}
+
+.stat .num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+}
+
+.stat .label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+}
+
+.tag {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+  background: var(--paper-2);
+  color: var(--muted);
+  border: 1px solid var(--rule);
+}
+
+.tag.good { color: var(--accent-2); border-color: var(--accent-2); }
+.tag.watch { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- Newsletter index list ---------- */
+
+.issue-item {
+  display: block;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.issue-item .issue-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+}
+
+.issue-item h3 { margin: 4px 0 4px; }
+
+.issue-item p { color: var(--muted); margin: 0; }
+
+/* ---------- Atlas ---------- */
+
+.region-toggle {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0 8px;
+  font-family: 'Inter', sans-serif;
+}
+
+.region-toggle button {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--rule);
+  background: var(--card-bg);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.region-toggle button.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.country-card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+}
+
+.country-card h3 {
+  margin: 0 0 4px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 1.15rem;
+}
+
+.country-card .region-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.country-card dl {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  margin: 12px 0 0;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  row-gap: 8px;
+  column-gap: 12px;
+}
+
+.country-card dt {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.country-card dd { margin: 0; }
+
+.country-card .sources {
+  margin-top: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  border-top: 4px double var(--ink);
+  padding: 24px 0 50px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  color: var(--muted);
+  text-align: center;
+}
+
+footer a { color: var(--muted); text-decoration: underline; }
+
+.note {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  color: var(--muted);
+  background: var(--paper-2);
+  border-left: 3px solid var(--rule);
+  padding: 10px 14px;
+  margin: 20px 0;
+}
+
+@media (max-width: 600px) {
+  nav.sitenav { gap: 16px; flex-wrap: wrap; }
+  .country-card dl { grid-template-columns: 1fr; row-gap: 4px; }
+  .country-card dt { margin-top: 6px; }
+}

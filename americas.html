@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Rights of America — The Policy Brief</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="kicker">Tech &amp; Digital Policy — Rowa Taha</div>
+    <h1><a href="index.html">The Policy Brief</a></h1>
+    <div class="tagline">Weekly news on tech policy, litigation, and legislation — plus a running atlas of digital rights across Africa and the Americas.</div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav>
+      <a href="africa.html">Digital Rights of Africa</a>
+      <a href="americas.html" class="active">Digital Rights of America</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="jobs.html">Job Board</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h2>Digital Rights of America</h2>
+    <p id="asof" style="color:var(--muted)"></p>
+    <p>A country-by-country reference on data protection law, AI regulation, and enforcement across the United States and the Americas.</p>
+
+    <div id="countries"></div>
+
+    <p class="note">Compiled from public reporting and legal-tracker sources; treat as a starting reference, not legal advice, and verify against primary sources before citing.</p>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    © 2026 Rowa Taha. All rights reserved.<br>
+    Also posted on <a href="#">Substack</a> and <a href="#">LinkedIn</a>
+  </div>
+</footer>
+
+<script src="data/atlas-data.js"></script>
+<script>
+  document.getElementById('asof').textContent = 'Last updated ' + atlasData.asOf;
+  const el = document.getElementById('countries');
+  atlasData.countries
+    .filter(c => c.region === 'Americas')
+    .sort((a, b) => a.country.localeCompare(b.country))
+    .forEach(c => {
+      const div = document.createElement('div');
+      div.className = 'country-card';
+      const sources = (c.sources || []).map(s => `<a href="${s.url}" target="_blank" rel="noopener">${s.title}</a>`).join(' · ');
+      div.innerHTML = `
+        <h3>${c.country}</h3>
+        <p style="margin:6px 0 0; color:var(--muted);">${c.summary}</p>
+        <dl>
+          <dt>Privacy Law</dt><dd>${c.privacy_law}</dd>
+          <dt>AI Regulation</dt><dd>${c.ai_regulation}</dd>
+          <dt>Regulator</dt><dd>${c.regulator}</dd>
+          <dt>Recent Development</dt><dd>${c.notable_development}</dd>
+        </dl>
+        ${sources ? `<div class="sources">Sources: ${sources}</div>` : ''}
+      `;
+      el.appendChild(div);
+    });
+</script>
+
+</body>
+</html>
