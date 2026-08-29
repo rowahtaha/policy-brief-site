@@ -80,6 +80,14 @@ a:hover { text-decoration: underline; }
 .masthead h1 a { color: inherit; text-decoration: none; }
 .masthead h1 a:hover { text-decoration: none; }
 
+.masthead-logo {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 14px;
+}
+
 /* ---------- Sidebar layout ---------- */
 
 .layout {
