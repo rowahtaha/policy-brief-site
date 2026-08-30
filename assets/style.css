@@ -422,6 +422,30 @@ hr.rule {
   color: var(--muted);
 }
 
+/* ---------- Job network chips ---------- */
+
+.chip-group h3 { margin-bottom: 10px; }
+
+.chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.chip {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  padding: 5px 12px;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+}
+
+.chip a { color: inherit; text-decoration: none; }
+.chip a:hover { text-decoration: underline; }
+
 /* ---------- Footer ---------- */
 
 footer {

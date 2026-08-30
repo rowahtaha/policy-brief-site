@@ -13,7 +13,7 @@
     <a href="index.html"><img src="assets/logo.png" alt="The Policy Brief logo" class="masthead-logo"></a>
     <div class="kicker">Tech &amp; Digital Policy — Rowa Taha</div>
     <h1><a href="index.html">The Policy Brief</a></h1>
-    <div class="tagline">Weekly news on tech policy, litigation, and legislation — plus a running atlas of digital law across Africa and the Americas.</div>
+    <div class="tagline">Weekly news on tech policy, litigation, and legislation — plus a running atlas of digital rights across Africa and the Americas.</div>
   </div>
 </header>
 
@@ -33,7 +33,14 @@
 
     <div id="roles"></div>
 
-    <p class="note">Know of an opening that should be listed here? Get in touch.</p>
+    <hr class="rule">
+
+    <h2>Companies in My Network</h2>
+    <p style="color:var(--muted)">Companies and contacts from conferences and events — Privacy + Security Forum, ABA National Security Law, AIPLA 2026, Data Center World 2026. Not every one has a confirmed opening; this is the fuller network behind the roles above.</p>
+
+    <div id="network"></div>
+
+    <p class="note">Know of an opening that should be listed here, or a company I should add to the network? Get in touch.</p>
   </main>
 </div>
 
@@ -45,11 +52,12 @@
 </footer>
 
 <script src="data/job-board-data.js"></script>
+<script src="data/job-network-data.js"></script>
 <script>
   document.getElementById('asof').textContent = 'Updated ' + jobBoardData.asOf;
   document.getElementById('intro').textContent = jobBoardData.intro;
 
-  const el = document.getElementById('roles');
+  const rolesEl = document.getElementById('roles');
   jobBoardData.roles.forEach(r => {
     const div = document.createElement('div');
     div.className = 'card';
@@ -57,8 +65,54 @@
       <p style="margin:0 0 8px; font-family:'Inter',sans-serif; font-size:13px; color:var(--muted);">${r.company} — ${r.location}</p>
       <p style="margin:0 0 10px; color:var(--muted);">${r.note}</p>
       <p style="margin:0;"><a href="${r.link}" target="_blank" rel="noopener">View posting →</a></p>`;
-    el.appendChild(div);
+    rolesEl.appendChild(div);
   });
+
+  const networkEl = document.getElementById('network');
+
+  function fitTag(fit) {
+    if (fit === 'strong') return ' — strong match';
+    if (fit === 'look') return ' — worth a look';
+    if (fit === 'contact') return ' — contact directly';
+    return '';
+  }
+
+  function renderGroup(title, items, chipHtmlFn) {
+    const wrap = document.createElement('div');
+    wrap.className = 'chip-group';
+    const h = document.createElement('h3');
+    h.textContent = title;
+    wrap.appendChild(h);
+    const chips = document.createElement('div');
+    chips.className = 'chip-wrap';
+    items.forEach(item => {
+      const chip = document.createElement('span');
+      chip.className = 'chip';
+      chip.innerHTML = chipHtmlFn(item);
+      chips.appendChild(chip);
+    });
+    wrap.appendChild(chips);
+    networkEl.appendChild(wrap);
+  }
+
+  const otherResearched = jobNetworkData.researched.filter(r => !r.role);
+  renderGroup('Contacted / No Confirmed Opening', otherResearched, item =>
+    `${item.website ? `<a href="${item.website}" target="_blank" rel="noopener">${item.name}</a>` : item.name}${fitTag(item.fit)} <span style="color:var(--muted)">· ${item.tag}</span>`
+  );
+
+  renderGroup('Pinned Targets', jobNetworkData.pinned, item =>
+    `<a href="${item.website}" target="_blank" rel="noopener">${item.name}</a> — ${item.role}`
+  );
+
+  renderGroup('Privacy + Security Forum & ABA National Security Law', jobNetworkData.backlog, item =>
+    `${item.name} <span style="color:var(--muted)">· ${item.tag}</span>`
+  );
+
+  renderGroup('AIPLA 2026 Sponsors, Exhibitors & Contacts', jobNetworkData.flyerRelevant, item =>
+    `${item.website ? `<a href="${item.website}" target="_blank" rel="noopener">${item.name}</a>` : item.name}${item.contact ? ` — ${item.contact}` : ''} <span style="color:var(--muted)">· ${item.tag}</span>`
+  );
+
+  renderGroup('Data Center World 2026 Vendors', jobNetworkData.flyerOther, item => item.name);
 </script>
 
 </body>
