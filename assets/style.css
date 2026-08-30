@@ -246,6 +246,86 @@ hr.rule {
 .tag.good { color: var(--accent-2); border-color: var(--accent-2); }
 .tag.watch { color: var(--accent); border-color: var(--accent); }
 
+/* ---------- Newsletter: top-10 news grid ---------- */
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin: 28px 0 40px;
+}
+
+.news-card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card-banner {
+  height: 108px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.news-card-banner .icon { font-size: 2.1rem; line-height: 1; }
+.news-card-banner .cat-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.92;
+}
+
+.cat-lawsuit { background: linear-gradient(135deg, #8c1c1c, #6e1515); }
+.cat-legislation { background: linear-gradient(135deg, #2c3e6b, #1a2744); }
+.cat-ai-governance { background: linear-gradient(135deg, #5b3a7a, #402a58); }
+.cat-data-rights { background: linear-gradient(135deg, #1f5138, #15382a); }
+.cat-accountability { background: linear-gradient(135deg, #b5651d, #8f4f15); }
+.cat-data-centers { background: linear-gradient(135deg, #4a5a6a, #333f4a); }
+.cat-trade { background: linear-gradient(135deg, #2f5f8a, #1f4363); }
+
+.news-card-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.news-card-body .num {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+.news-card-body h3 {
+  margin: 4px 0 8px;
+  font-size: 1.08rem;
+  line-height: 1.3;
+}
+
+.news-card-body p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 12px;
+  flex: 1;
+}
+
+.news-card-body a.src-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
 /* ---------- Newsletter index list ---------- */
 
 .issue-item {
