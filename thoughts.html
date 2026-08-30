@@ -39,7 +39,7 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   const REPO = "rowahtaha/policy-brief-site";
@@ -58,13 +58,17 @@
 
   function fmtDate(d) {
     if (!d) return "";
-    const dt = new Date(d + "T00:00:00");
-    if (isNaN(dt)) return d;
-    return dt.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    // js-yaml parses YAML date scalars (e.g. 2026-08-30) into Date objects already; plain
+    // strings are also accepted as a fallback. Format in UTC either way to avoid an
+    // off-by-one day shift from the viewer's local timezone.
+    const dt = d instanceof Date ? d : new Date(d + "T00:00:00Z");
+    if (isNaN(dt)) return String(d);
+    return dt.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
   }
 
   function renderList(posts) {
-    posts.sort((a, b) => (b.meta.date || "").localeCompare(a.meta.date || ""));
+    const toTime = (d) => d ? (d instanceof Date ? d : new Date(d)).getTime() : 0;
+    posts.sort((a, b) => toTime(b.meta.date) - toTime(a.meta.date));
     let html = `<h2>Rowa's Thoughts</h2>
       <p style="color:var(--muted)">Longer, more personal takes on tech policy, privacy, and digital rights.</p>
       <hr class="rule">`;
