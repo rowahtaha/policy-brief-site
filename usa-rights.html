@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Rights of USA — The Policy Brief</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/logo.png" alt="The Policy Brief logo" class="masthead-logo"></a>
+    <div class="kicker">Tech &amp; Digital Policy — Rowa Taha</div>
+    <h1><a href="index.html">The Policy Brief</a></h1>
+    <div class="tagline">Weekly news on tech policy, litigation, and legislation — plus a running atlas of digital law across Africa and the Americas.</div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav>
+      <a href="digital-rights.html" class="active">Digital Rights Projects</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="jobs.html">Job Board</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <p><a href="digital-rights.html">← Digital Rights Projects</a></p>
+    <h2>Digital Rights of USA</h2>
+    <p>Unlike most countries, the United States has no single federal privacy law — each state sets its own rules. This section will apply the same 20-question framework used for Africa to each state individually, since the answers genuinely differ state to state.</p>
+    <p class="note">State-by-state research is in progress. Click any state below to check its status.</p>
+
+    <div class="region-cards" id="state-grid" style="grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));"></div>
+
+    <div id="state-detail"></div>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    © 2026 Rowa Taha. All rights reserved.<br>
+    Also posted on <a href="#">Substack</a> and <a href="#">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  const STATES = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
+    "Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine",
+    "Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada",
+    "New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma",
+    "Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont",
+    "Virginia","Washington","West Virginia","Wisconsin","Wyoming","District of Columbia"];
+
+  // States with a comprehensive consumer privacy law in effect or enacted as of mid-2026.
+  // This is a starting flag only -- full 20-question profiles have not been researched yet.
+  const HAS_PRIVACY_LAW = new Set(["California","Colorado","Connecticut","Virginia","Utah","Iowa","Indiana",
+    "Tennessee","Montana","Oregon","Texas","Delaware","Florida","New Jersey","New Hampshire","Nebraska",
+    "New York","Kentucky","Maryland","Minnesota","Rhode Island","Vermont","Illinois","Missouri","Indiana","Kansas","Rhode Island"]);
+
+  const grid = document.getElementById("state-grid");
+  STATES.forEach(state => {
+    const btn = document.createElement("button");
+    btn.className = "region-card";
+    btn.style.padding = "10px 12px";
+    const status = HAS_PRIVACY_LAW.has(state) ? "Has a privacy law" : "Status not yet researched";
+    btn.innerHTML = `<div class="region-title" style="font-size:0.9rem;">${state}</div><div class="region-status">${status}</div>`;
+    btn.addEventListener("click", () => {
+      document.getElementById("state-detail").innerHTML = `<div class="country-detail">
+        <span class="cd-close" onclick="document.getElementById('state-detail').innerHTML=''">Close ✕</span>
+        <h3>${state}</h3>
+        <p style="color:var(--muted)">The full 20-question profile for ${state} hasn't been researched yet. ${HAS_PRIVACY_LAW.has(state) ? "It does have a comprehensive consumer privacy law on the books, but the detailed question-by-question breakdown is still pending." : ""}</p>
+      </div>`;
+      document.getElementById("state-detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+    grid.appendChild(btn);
+  });
+</script>
+
+</body>
+</html>

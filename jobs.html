@@ -13,15 +13,14 @@
     <a href="index.html"><img src="assets/logo.png" alt="The Policy Brief logo" class="masthead-logo"></a>
     <div class="kicker">Tech &amp; Digital Policy — Rowa Taha</div>
     <h1><a href="index.html">The Policy Brief</a></h1>
-    <div class="tagline">Weekly news on tech policy, litigation, and legislation — plus a running atlas of digital rights across Africa and the Americas.</div>
+    <div class="tagline">Weekly news on tech policy, litigation, and legislation — plus a running atlas of digital law across Africa and the Americas.</div>
   </div>
 </header>
 
 <div class="layout">
   <aside class="sidebar">
     <nav>
-      <a href="africa.html">Digital Rights of Africa</a>
-      <a href="americas.html">Digital Rights of America</a>
+      <a href="digital-rights.html">Digital Rights Projects</a>
       <a href="newsletter.html">Newsletter</a>
       <a href="jobs.html" class="active">Job Board</a>
     </nav>
@@ -30,24 +29,11 @@
   <main class="content">
     <h2>Job Board</h2>
     <p style="color:var(--muted)" id="asof"></p>
+    <p id="intro"></p>
 
-    <p>A running, public look at my search for a role in DC tech policy, privacy, and IP law — companies researched, roles identified, and the network I'm building along the way.</p>
+    <div id="roles"></div>
 
-    <div class="grid" id="stats"></div>
-
-    <h3>Roles Worth Watching</h3>
-    <div id="highlights"></div>
-
-    <h3>On the Calendar</h3>
-    <div class="card">
-      <table style="width:100%; border-collapse:collapse; font-family:'Inter',sans-serif; font-size:13.5px;" id="events-table">
-      </table>
-    </div>
-
-    <h3>This Week's Focus</h3>
-    <p id="focus"></p>
-
-    <p class="note">Snapshot pulled from my personal job-search trackers, updated weekly.</p>
+    <p class="note">Know of an opening that should be listed here? Get in touch.</p>
   </main>
 </div>
 
@@ -58,36 +44,20 @@
   </div>
 </footer>
 
-<script src="data/job-search-data.js"></script>
+<script src="data/job-board-data.js"></script>
 <script>
-  document.getElementById('asof').textContent = 'Snapshot as of ' + jobSearchData.asOf;
-  document.getElementById('focus').textContent = jobSearchData.focus;
+  document.getElementById('asof').textContent = 'Updated ' + jobBoardData.asOf;
+  document.getElementById('intro').textContent = jobBoardData.intro;
 
-  const statsEl = document.getElementById('stats');
-  jobSearchData.stats.forEach(s => {
-    const div = document.createElement('div');
-    div.className = 'stat';
-    div.innerHTML = `<span class="num">${s.num}</span><span class="label">${s.label}</span>`;
-    statsEl.appendChild(div);
-  });
-
-  const hEl = document.getElementById('highlights');
-  jobSearchData.highlights.forEach(h => {
+  const el = document.getElementById('roles');
+  jobBoardData.roles.forEach(r => {
     const div = document.createElement('div');
     div.className = 'card';
-    div.innerHTML = `<h3>${h.company} <span class="tag ${h.status}">${h.status === 'good' ? 'Strong Fit' : 'Watching'}</span></h3>
-      <p style="margin-bottom:4px;"><em>${h.role}</em></p>
-      <p style="color:var(--muted); margin:0;">${h.note}</p>`;
-    hEl.appendChild(div);
-  });
-
-  const evTable = document.getElementById('events-table');
-  jobSearchData.events.forEach(e => {
-    const row = document.createElement('tr');
-    row.innerHTML = `<td style="padding:8px 6px; border-bottom:1px solid var(--rule); white-space:nowrap; color:var(--muted);">${e.date}</td>
-      <td style="padding:8px 6px; border-bottom:1px solid var(--rule);"><strong>${e.name}</strong></td>
-      <td style="padding:8px 6px; border-bottom:1px solid var(--rule); color:var(--muted);">${e.host}</td>`;
-    evTable.appendChild(row);
+    div.innerHTML = `<h3 style="margin-bottom:2px;">${r.role}</h3>
+      <p style="margin:0 0 8px; font-family:'Inter',sans-serif; font-size:13px; color:var(--muted);">${r.company} — ${r.location}</p>
+      <p style="margin:0 0 10px; color:var(--muted);">${r.note}</p>
+      <p style="margin:0;"><a href="${r.link}" target="_blank" rel="noopener">View posting →</a></p>`;
+    el.appendChild(div);
   });
 </script>
 
