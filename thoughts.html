@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rowa's Thoughts — The Policy Brief</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/logo.png" alt="The Policy Brief logo" class="masthead-logo"></a>
+    <div class="kicker">Tech &amp; Digital Policy — Rowa Taha</div>
+    <h1><a href="index.html">The Policy Brief</a></h1>
+    <div class="tagline">Weekly news on tech policy, litigation, and legislation — plus a running atlas of digital rights across Africa and the Americas.</div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav>
+      <a href="digital-rights.html">Digital Rights Projects</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="thoughts.html" class="active">Rowa's Thoughts</a>
+      <a href="jobs.html">Job Board</a>
+    </nav>
+  </aside>
+
+  <main class="content" id="main-content">
+    <p style="text-align:center; color:var(--muted); font-family:'Inter',sans-serif;">Loading…</p>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    © 2026 Rowa Taha. All rights reserved.<br>
+    Also posted on <a href="#">Substack</a> and <a href="#">LinkedIn</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  const REPO = "rowahtaha/policy-brief-site";
+  const BRANCH = "main";
+  const FOLDER = "thoughts";
+  const raw = (path) => `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${path}`;
+  const main = document.getElementById("main-content");
+
+  function parsePost(text) {
+    const m = text.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+    if (!m) return { meta: {}, body: text };
+    let meta = {};
+    try { meta = jsyaml.load(m[1]) || {}; } catch (e) { meta = {}; }
+    return { meta, body: m[2] };
+  }
+
+  function fmtDate(d) {
+    if (!d) return "";
+    const dt = new Date(d + "T00:00:00");
+    if (isNaN(dt)) return d;
+    return dt.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  }
+
+  function renderList(posts) {
+    posts.sort((a, b) => (b.meta.date || "").localeCompare(a.meta.date || ""));
+    let html = `<h2>Rowa's Thoughts</h2>
+      <p style="color:var(--muted)">Longer, more personal takes on tech policy, privacy, and digital rights.</p>
+      <hr class="rule">`;
+    if (posts.length === 0) {
+      html += `<p style="color:var(--muted)">No posts yet — check back soon.</p>`;
+    }
+    posts.forEach(p => {
+      const excerpt = p.meta.excerpt || p.body.replace(/[#*_>\[\]!`]/g, "").slice(0, 180) + "…";
+      html += `<a class="thought-card" href="thoughts.html?post=${encodeURIComponent(p.slug)}">
+        ${p.meta.cover ? `<img class="cover" src="${p.meta.cover}" alt="">` : ""}
+        <div class="thought-body">
+          <div class="thought-date">${fmtDate(p.meta.date)}</div>
+          <h3>${p.meta.title || p.slug}</h3>
+          <p>${excerpt}</p>
+        </div>
+      </a>`;
+    });
+    main.innerHTML = html;
+  }
+
+  function renderPost(meta, bodyHtml) {
+    const citations = (meta.citations || []).filter(c => c && c.text);
+    main.innerHTML = `
+      <p><a href="thoughts.html">← Rowa's Thoughts</a></p>
+      <article class="thought-article">
+        <div class="dateline">${fmtDate(meta.date)}</div>
+        <h2>${meta.title || ""}</h2>
+        ${meta.cover ? `<img class="cover-full" src="${meta.cover}" alt="">` : ""}
+        <div class="post-body">${bodyHtml}</div>
+        ${citations.length ? `<hr class="rule"><h3 style="font-size:1rem;">Sources</h3>
+          <ul class="sources-list">${citations.map(c => `<li>${c.url ? `<a href="${c.url}" target="_blank" rel="noopener">${c.text}</a>` : c.text}</li>`).join("")}</ul>` : ""}
+      </article>`;
+  }
+
+  async function loadList() {
+    try {
+      const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FOLDER}?ref=${BRANCH}`);
+      if (!res.ok) throw new Error("list fetch failed");
+      const files = (await res.json()).filter(f => f.name.endsWith(".md"));
+      const posts = await Promise.all(files.map(async f => {
+        const text = await (await fetch(raw(`${FOLDER}/${f.name}`))).text();
+        const { meta, body } = parsePost(text);
+        return { slug: f.name.replace(/\.md$/, ""), meta, body };
+      }));
+      renderList(posts);
+    } catch (e) {
+      main.innerHTML = `<h2>Rowa's Thoughts</h2><p style="color:var(--muted)">Couldn't load posts right now — try refreshing.</p>`;
+    }
+  }
+
+  async function loadPost(slug) {
+    try {
+      const text = await (await fetch(raw(`${FOLDER}/${slug}.md`))).text();
+      const { meta, body } = parsePost(text);
+      renderPost(meta, marked.parse(body));
+    } catch (e) {
+      main.innerHTML = `<p><a href="thoughts.html">← Rowa's Thoughts</a></p><p style="color:var(--muted)">Post not found.</p>`;
+    }
+  }
+
+  const params = new URLSearchParams(location.search);
+  const postSlug = params.get("post");
+  if (postSlug) { loadPost(postSlug); } else { loadList(); }
+</script>
+
+</body>
+</html>

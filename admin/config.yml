@@ -1,0 +1,33 @@
+backend:
+  name: github
+  repo: rowahtaha/policy-brief-site
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: "assets/thoughts-images"
+public_folder: "/assets/thoughts-images"
+
+collections:
+  - name: "thoughts"
+    label: "Rowa's Thoughts"
+    label_singular: "Post"
+    folder: "thoughts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "Cover Image", name: "cover", widget: "image", required: false, hint: "Optional image shown at the top of the post and on the blog index"}
+      - {label: "Excerpt", name: "excerpt", widget: "text", required: false, hint: "1-2 sentence summary shown on the blog index. If left blank, the start of the post is used."}
+      - label: "Citations / Sources"
+        name: "citations"
+        widget: "list"
+        required: false
+        summary: "{{fields.text}}"
+        fields:
+          - {label: "Text", name: "text", widget: "string"}
+          - {label: "URL", name: "url", widget: "string", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
