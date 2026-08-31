@@ -67,6 +67,18 @@
     return dt.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
   }
 
+  function readTime(text) {
+    const words = text.trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(words / 200));
+  }
+
+  function bylineHtml(meta, extra) {
+    return `<div class="thought-byline">
+      <img class="avatar" src="assets/logo.png" alt="Rowa Taha">
+      <div class="byline-text"><strong>Rowa Taha</strong> · ${fmtDate(meta.date)}${extra ? ` · ${extra}` : ""}</div>
+    </div>`;
+  }
+
   function renderList(posts) {
     const toTime = (d) => d ? (d instanceof Date ? d : new Date(d)).getTime() : 0;
     posts.sort((a, b) => toTime(b.meta.date) - toTime(a.meta.date));
@@ -76,31 +88,40 @@
     if (posts.length === 0) {
       html += `<p style="color:var(--muted)">No posts yet — check back soon.</p>`;
     }
-    posts.forEach(p => {
+    html += `<div class="thought-list">`;
+    posts.forEach((p, i) => {
       const excerpt = p.meta.excerpt || p.body.replace(/[#*_>\[\]!`]/g, "").slice(0, 180) + "…";
-      html += `<a class="thought-card" href="thoughts.html?post=${encodeURIComponent(p.slug)}">
+      const mins = readTime(p.body);
+      html += `<a class="thought-card${i === 0 ? " featured" : ""}" href="thoughts.html?post=${encodeURIComponent(p.slug)}">
         ${p.meta.cover ? `<img class="cover" src="${p.meta.cover}" alt="">` : ""}
         <div class="thought-body">
-          <div class="thought-date">${fmtDate(p.meta.date)}</div>
+          <div class="thought-eyebrow">Rowa's Thoughts</div>
           <h3>${p.meta.title || p.slug}</h3>
-          <p>${excerpt}</p>
+          <p class="excerpt">${excerpt}</p>
+          <div class="thought-meta">${fmtDate(p.meta.date)} · ${mins} min read</div>
         </div>
       </a>`;
     });
+    html += `</div>`;
     main.innerHTML = html;
   }
 
-  function renderPost(meta, bodyHtml) {
+  function renderPost(meta, bodyHtml, rawBody) {
     const citations = (meta.citations || []).filter(c => c && c.text);
+    const mins = readTime(rawBody);
     main.innerHTML = `
       <p><a href="thoughts.html">← Rowa's Thoughts</a></p>
       <article class="thought-article">
-        <div class="dateline">${fmtDate(meta.date)}</div>
-        <h2>${meta.title || ""}</h2>
+        <div class="thought-article-header">
+          <div class="kicker">Rowa's Thoughts</div>
+          <h2>${meta.title || ""}</h2>
+        </div>
+        ${bylineHtml(meta, `${mins} min read`)}
         ${meta.cover ? `<img class="cover-full" src="${meta.cover}" alt="">` : ""}
         <div class="post-body">${bodyHtml}</div>
         ${citations.length ? `<hr class="rule"><h3 style="font-size:1rem;">Sources</h3>
           <ul class="sources-list">${citations.map(c => `<li>${c.url ? `<a href="${c.url}" target="_blank" rel="noopener">${c.text}</a>` : c.text}</li>`).join("")}</ul>` : ""}
+        <div class="thought-article-footer">Enjoyed this? <a href="subscribe.html">Subscribe to The Rowa Report</a> for the weekly roundup, or <a href="thoughts.html">read more Thoughts →</a></div>
       </article>`;
   }
 
@@ -124,7 +145,7 @@
     try {
       const text = await (await fetch(raw(`${FOLDER}/${slug}.md`))).text();
       const { meta, body } = parsePost(text);
-      renderPost(meta, marked.parse(body));
+      renderPost(meta, marked.parse(body), body);
     } catch (e) {
       main.innerHTML = `<p><a href="thoughts.html">← Rowa's Thoughts</a></p><p style="color:var(--muted)">Post not found.</p>`;
     }
