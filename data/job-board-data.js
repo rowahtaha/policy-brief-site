@@ -4,7 +4,7 @@
 // networked company's careers page for openings — see data/job-network-data.js for the full network.
 const jobBoardData = {
   asOf: "August 13, 2026",
-  intro: "Open roles in tech policy, privacy, and AI governance — surfaced from research into companies Rowa has networked with at DC conferences and events. Refreshed weekly. Always confirm a posting is still open directly on the employer's site before applying.",
+  intro: "Open roles in tech policy, privacy, and AI governance — sourced by tracking companies with a presence at DC conferences and events. Refreshed weekly. Always confirm a posting is still open directly on the employer's site before applying.",
   roles: [
     {
       company: "Ropes & Gray",
