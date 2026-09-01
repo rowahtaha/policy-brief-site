@@ -590,6 +590,47 @@ hr.rule {
   color: var(--muted);
 }
 
+/* ---------- Open roles filters ---------- */
+
+.role-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 16px 0 20px;
+  padding: 14px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--card-bg);
+}
+
+.role-filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.role-filters select {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+  color: var(--ink);
+  padding: 6px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper);
+  min-width: 160px;
+}
+
+.role-filters select:focus { outline: none; border-color: var(--accent); }
+
 /* ---------- Job network chips ---------- */
 
 .category-nav {

@@ -33,6 +33,24 @@
     <p style="color:var(--muted)" id="asof"></p>
     <p id="intro"></p>
 
+    <div id="roleFilters" class="role-filters">
+      <label>Bar admission
+        <select id="filterBar">
+          <option value="all">All</option>
+        </select>
+      </label>
+      <label>Experience
+        <select id="filterExperience">
+          <option value="all">All</option>
+        </select>
+      </label>
+      <label>Work mode
+        <select id="filterWorkMode">
+          <option value="all">All</option>
+        </select>
+      </label>
+    </div>
+
     <div id="roles"></div>
 
     <hr class="rule">
@@ -63,46 +81,78 @@
   document.getElementById('intro').textContent = jobBoardData.intro;
 
   const rolesEl = document.getElementById('roles');
-  jobBoardData.roles.forEach(r => {
-    const div = document.createElement('div');
-    div.className = 'card';
-    div.innerHTML = `<h3 style="margin-bottom:2px;">${r.role}</h3>
-      <p style="margin:0 0 8px; font-family:'Inter',sans-serif; font-size:13px; color:var(--muted);">${r.company} — ${r.location}</p>
-      <p style="margin:0 0 10px; color:var(--muted);">${r.note}</p>
-      <p style="margin:0;"><a href="${r.link}" target="_blank" rel="noopener">View posting →</a></p>`;
-    rolesEl.appendChild(div);
-  });
+  const filterBarEl = document.getElementById('filterBar');
+  const filterExperienceEl = document.getElementById('filterExperience');
+  const filterWorkModeEl = document.getElementById('filterWorkMode');
+
+  const workModeLabel = { remote: 'Remote', hybrid: 'Hybrid', onsite: 'In person' };
+
+  function fillOptions(selectEl, values, labelFn) {
+    [...new Set(values.filter(Boolean))].forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v;
+      opt.textContent = labelFn ? labelFn(v) : v;
+      selectEl.appendChild(opt);
+    });
+  }
+
+  fillOptions(filterBarEl, jobBoardData.roles.map(r => r.barRequired));
+  fillOptions(filterExperienceEl, jobBoardData.roles.map(r => r.experience));
+  fillOptions(filterWorkModeEl, jobBoardData.roles.map(r => r.workMode), v => workModeLabel[v] || v);
+
+  function renderRoles() {
+    const barVal = filterBarEl.value;
+    const expVal = filterExperienceEl.value;
+    const modeVal = filterWorkModeEl.value;
+
+    const filtered = jobBoardData.roles.filter(r =>
+      (barVal === 'all' || r.barRequired === barVal) &&
+      (expVal === 'all' || r.experience === expVal) &&
+      (modeVal === 'all' || r.workMode === modeVal)
+    );
+
+    rolesEl.innerHTML = '';
+    if (!filtered.length) {
+      rolesEl.innerHTML = `<p style="color:var(--muted)">No roles match those filters right now.</p>`;
+      return;
+    }
+    filtered.forEach(r => {
+      const div = document.createElement('div');
+      div.className = 'card';
+      const meta = [
+        r.workMode ? workModeLabel[r.workMode] || r.workMode : null,
+        r.experience,
+        r.barRequired ? `Bar admission: ${r.barRequired}` : null
+      ].filter(Boolean).join(' · ');
+      div.innerHTML = `<h3 style="margin-bottom:2px;">${r.role}</h3>
+        <p style="margin:0 0 8px; font-family:'Inter',sans-serif; font-size:13px; color:var(--muted);">${r.company} — ${r.location}</p>
+        ${meta ? `<p style="margin:0 0 8px; font-family:'Inter',sans-serif; font-size:12.5px; color:var(--accent);">${meta}</p>` : ''}
+        <p style="margin:0 0 10px; color:var(--muted);">${r.note}</p>
+        <p style="margin:0;"><a href="${r.link}" target="_blank" rel="noopener">View posting →</a></p>`;
+      rolesEl.appendChild(div);
+    });
+  }
+
+  [filterBarEl, filterExperienceEl, filterWorkModeEl].forEach(el => el.addEventListener('change', renderRoles));
+  renderRoles();
 
   const networkEl = document.getElementById('network');
   const categoryNavEl = document.getElementById('categoryNav');
 
-  function fitTag(fit) {
-    if (fit === 'strong') return ' — strong match';
-    if (fit === 'look') return ' — worth a look';
-    if (fit === 'contact') return ' — contact directly';
-    return '';
-  }
-
-  // Pool every network list into one array, each entry keeping its category and a
-  // small badge for how it was sourced (fit level, pinned, or a named contact).
+  // Pool every network list into one array — just names, grouped by category, each
+  // linked to its official website where known.
   const allCompanies = [
     ...jobNetworkData.researched,
-    ...jobNetworkData.pinned.map(item => ({ ...item, pinned: true })),
+    ...jobNetworkData.pinned,
     ...jobNetworkData.backlog,
     ...jobNetworkData.flyerRelevant,
     ...jobNetworkData.flyerOther
   ];
 
   function chipHtml(item) {
-    let html = item.website
+    return item.website
       ? `<a href="${item.website}" target="_blank" rel="noopener">${item.name}</a>`
       : item.name;
-    if (item.pinned) html = `★ ${html}`;
-    if (item.fit) html += fitTag(item.fit);
-    if (item.role) html += ` — ${item.role}`;
-    if (item.contact) html += ` — ${item.contact}`;
-    if (item.tag) html += ` <span style="color:var(--muted)">· ${item.tag}</span>`;
-    return html;
   }
 
   const allPill = document.createElement('a');
