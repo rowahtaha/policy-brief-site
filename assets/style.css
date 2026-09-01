@@ -617,6 +617,31 @@ hr.rule {
   text-decoration: none;
 }
 
+.category-nav a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.company-search {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  padding: 9px 16px;
+  margin: 18px 0 14px;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  background: var(--card-bg);
+  color: var(--ink);
+}
+
+.company-search:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
 .chip-group {
   scroll-margin-top: 20px;
 }

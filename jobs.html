@@ -40,6 +40,7 @@
     <h2>Companies in the Space</h2>
     <p style="color:var(--muted)">Companies active in tech policy, privacy, and AI governance — seen at conferences and events like Privacy + Security Forum, ABA National Security Law, AIPLA 2026, and Data Center World 2026 — grouped by what they actually do. Not every one has a confirmed opening; this is the broader landscape behind the roles above.</p>
 
+    <input type="text" id="companySearch" class="company-search" placeholder="Search companies…">
     <div id="categoryNav" class="category-nav"></div>
 
     <div id="network"></div>
@@ -104,18 +105,27 @@
     return html;
   }
 
+  const allPill = document.createElement('a');
+  allPill.href = '#';
+  allPill.dataset.cat = 'all';
+  allPill.className = 'active';
+  allPill.textContent = `All (${allCompanies.length})`;
+  categoryNavEl.appendChild(allPill);
+
   jobNetworkCategories.forEach(cat => {
     const items = allCompanies.filter(c => c.category === cat.id);
     if (!items.length) return;
 
     const navLink = document.createElement('a');
-    navLink.href = `#cat-${cat.id}`;
+    navLink.href = '#';
+    navLink.dataset.cat = cat.id;
     navLink.textContent = `${cat.label} (${items.length})`;
     categoryNavEl.appendChild(navLink);
 
     const wrap = document.createElement('div');
     wrap.className = 'chip-group';
     wrap.id = `cat-${cat.id}`;
+    wrap.dataset.cat = cat.id;
     const h = document.createElement('h3');
     h.textContent = `${cat.label} (${items.length})`;
     wrap.appendChild(h);
@@ -130,6 +140,34 @@
     wrap.appendChild(chips);
     networkEl.appendChild(wrap);
   });
+
+  const searchInput = document.getElementById('companySearch');
+
+  function applyFilters() {
+    const activeCat = categoryNavEl.querySelector('a.active')?.dataset.cat || 'all';
+    const q = searchInput.value.trim().toLowerCase();
+    networkEl.querySelectorAll('.chip-group').forEach(group => {
+      const catMatch = activeCat === 'all' || activeCat === group.dataset.cat;
+      let anyVisible = false;
+      group.querySelectorAll('.chip').forEach(chip => {
+        const visible = catMatch && (!q || chip.textContent.toLowerCase().includes(q));
+        chip.style.display = visible ? '' : 'none';
+        if (visible) anyVisible = true;
+      });
+      group.style.display = anyVisible ? '' : 'none';
+    });
+  }
+
+  categoryNavEl.addEventListener('click', e => {
+    const link = e.target.closest('a');
+    if (!link) return;
+    e.preventDefault();
+    categoryNavEl.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+    link.classList.add('active');
+    applyFilters();
+  });
+
+  searchInput.addEventListener('input', applyFilters);
 </script>
 
 </body>
