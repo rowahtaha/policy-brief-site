@@ -5,68 +5,194 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Digital Divide — Rowa Taha</title>
 <meta name="description" content="Weekly tech policy news, a digital policy atlas for Africa and the Americas, and job-search notes from Rowa Taha.">
-<link rel="stylesheet" href="assets/style.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #f3ede2;
+    --ground: #100d0c;
+    --ground-2: #1a1513;
+    --rain-hot: #e0483a;
+    --rain-warm: #8c1c1c;
+    --rain-dim: #3a2422;
+    --rain-hot-2: #3fae82;
+    --rain-warm-2: #1f5138;
+    --rain-dim-2: #1c2c25;
+    --muted: #a89a8f;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: var(--ground);
+    color: var(--ink);
+    overflow: hidden;
+    font-family: 'IBM Plex Mono', Consolas, monospace;
+  }
+
+  a { color: inherit; }
+
+  #rain {
+    position: fixed; inset: 0; width: 100%; height: 100%; display: block;
+  }
+
+  .veil {
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(16,13,12,0.35) 0%, rgba(16,13,12,0.75) 62%, rgba(16,13,12,0.94) 100%);
+    pointer-events: none;
+  }
+
+  .gate {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; text-decoration: none;
+    padding: 24px;
+  }
+
+  .gate-logo {
+    width: 92px; height: 92px; border-radius: 50%; object-fit: cover;
+    box-shadow: 0 0 0 1px rgba(243,237,226,0.18), 0 20px 60px -20px rgba(224,72,58,0.55);
+    margin-bottom: 22px;
+    animation: rise 1s ease-out both;
+  }
+
+  .gate-kicker {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--rain-hot); font-weight: 600;
+    margin-bottom: 14px;
+    animation: rise 1s ease-out both; animation-delay: .08s;
+  }
+
+  .gate h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 8vw, 4.6rem);
+    letter-spacing: -0.5px;
+    margin: 0 0 16px;
+    color: var(--ink);
+    text-wrap: balance;
+    animation: rise 1s ease-out both; animation-delay: .16s;
+  }
+
+  .gate-tagline {
+    font-size: 13px; color: var(--muted); max-width: 46ch; line-height: 1.6;
+    margin: 0 0 40px;
+    animation: rise 1s ease-out both; animation-delay: .24s;
+  }
+
+  .gate-enter {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12.5px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--ground);
+    background: var(--rain-hot);
+    padding: 14px 28px;
+    border-radius: 2px;
+    animation: rise 1s ease-out both, pulse 2.4s ease-in-out 1.4s infinite;
+  }
+
+  .gate-enter .cursor {
+    display: inline-block; width: 8px; height: 14px; background: var(--ground);
+    animation: blink 1s steps(1) infinite;
+  }
+
+  .gate:hover .gate-enter { background: var(--rain-hot-2); }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(224,72,58,0.45); }
+    50% { box-shadow: 0 0 0 10px rgba(224,72,58,0); }
+  }
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gate-logo, .gate-kicker, .gate h1, .gate-tagline, .gate-enter {
+      animation: none; opacity: 1; transform: none;
+    }
+  }
+</style>
 </head>
 <body>
 
-<header class="masthead">
-  <div class="wrap">
-    <a href="index.html" class="masthead-brand">
-      <img src="assets/logo.png" alt="The Digital Divide logo" class="masthead-logo">
-      <h1>The Digital Divide</h1>
-    </a>
-  </div>
-</header>
+<canvas id="rain" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
 
-<div class="layout">
-  <aside class="sidebar">
-    <nav>
-      <a href="digital-rights.html">Digital Rights Projects</a>
-      <a href="newsletter.html">Newsletter</a>
-      <a href="subscribe.html">Subscribe</a>
-      <a href="thoughts.html">Rowa's Thoughts</a>
-      <a href="jobs.html">Job Board</a>
-    </nav>
-  </aside>
+<a class="gate" href="home.html">
+  <img class="gate-logo" src="assets/logo.png" alt="">
+  <div class="gate-kicker">Tech &amp; Digital Policy — Rowa Taha</div>
+  <h1>The Digital Divide</h1>
+  <p class="gate-tagline">Weekly news on tech policy, litigation, and legislation — plus a running atlas of digital rights across the world.</p>
+  <span class="gate-enter">Enter the site<span class="cursor"></span></span>
+</a>
 
-  <main class="content">
+<script>
+  const canvas = document.getElementById('rain');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    <p class="lede">This site is where I publish a weekly tech policy newsletter, build out an interactive atlas of digital rights around the world, and run a public job board for openings in tech policy, privacy, and AI governance. I'm a recent LL.M. graduate (American University Washington College of Law) focused on tech policy, privacy, and IP law.</p>
+  let cols, drops, fontSize;
 
-    <hr class="rule">
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    fontSize = Math.max(14, Math.min(20, window.innerWidth / 60));
+    cols = Math.floor(canvas.width / fontSize);
+    drops = new Array(cols).fill(0).map(() => Math.floor(Math.random() * -40));
+  }
+  resize();
+  window.addEventListener('resize', resize);
 
-    <div class="grid">
-      <div class="card">
-        <h3>📰 The Rowa Report</h3>
-        <p>The weekly newsletter: the top 10 tech policy stories from around the world, plus a 500-word analysis of what they mean.</p>
-        <p><a href="newsletter.html">Read the latest issue →</a></p>
-      </div>
-      <div class="card">
-        <h3>🌍 Digital Rights Projects</h3>
-        <p>A 20-question, fully cited breakdown of digital rights and privacy law — Africa, USA, BRICS+, Asia, North &amp; Central America, South America, Europe, and Oceania.</p>
-        <p><a href="digital-rights.html">Explore the projects →</a></p>
-      </div>
-      <div class="card">
-        <h3>✍️ Rowa's Thoughts</h3>
-        <p>Longer, more personal essays on tech policy, privacy, and digital rights.</p>
-        <p><a href="thoughts.html">Read the latest →</a></p>
-      </div>
-      <div class="card">
-        <h3>📋 Job Board</h3>
-        <p>A public, curated list of open roles in tech policy, privacy, and AI governance — for anyone to apply to.</p>
-        <p><a href="jobs.html">See open roles →</a></p>
-      </div>
-    </div>
+  const glyphs = '01';
+  const hotColor = '224,72,58';
+  const hotColor2 = '63,174,130';
 
-  </main>
-</div>
+  function drawFrame() {
+    ctx.fillStyle = 'rgba(16,13,12,0.16)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = fontSize + 'px "IBM Plex Mono", monospace';
 
-<footer>
-  <div class="wrap">
-    © 2026 Rowa Taha. All rights reserved.<br>
-    Also posted on <a href="https://substack.com/@rowataha" target="_blank" rel="noopener">Substack</a> and <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">LinkedIn</a>
-  </div>
-</footer>
+    for (let i = 0; i < cols; i++) {
+      const useGreen = i % 7 === 0;
+      const glyph = glyphs[Math.random() > 0.5 ? 1 : 0];
+      const y = drops[i] * fontSize;
+      const base = useGreen ? hotColor2 : hotColor;
+
+      ctx.fillStyle = `rgba(${base},0.85)`;
+      ctx.fillText(glyph, i * fontSize, y);
+
+      if (y > fontSize * 1.2) {
+        ctx.fillStyle = `rgba(${base},0.18)`;
+        ctx.fillText(glyphs[Math.random() > 0.5 ? 1 : 0], i * fontSize, y - fontSize);
+      }
+
+      if (y > canvas.height && Math.random() > 0.975) {
+        drops[i] = Math.floor(Math.random() * -20);
+      }
+      drops[i]++;
+    }
+  }
+
+  if (reduceMotion) {
+    ctx.fillStyle = 'rgba(16,13,12,1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = fontSize + 'px "IBM Plex Mono", monospace';
+    for (let i = 0; i < cols; i++) {
+      const useGreen = i % 7 === 0;
+      ctx.fillStyle = useGreen ? 'rgba(63,174,130,0.5)' : 'rgba(224,72,58,0.5)';
+      for (let j = 0; j < 30; j++) {
+        ctx.fillText(glyphs[Math.random() > 0.5 ? 1 : 0], i * fontSize, j * fontSize * 1.4);
+      }
+    }
+  } else {
+    setInterval(drawFrame, 55);
+  }
+</script>
 
 </body>
 </html>
