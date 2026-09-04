@@ -9,11 +9,9 @@
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
   :root {
-    --ink: #d6ffe4;
-    --ground: #000000;
-    --matrix: #00ff41;
-    --matrix-dim: #0a3d1a;
-    --muted: #6fae82;
+    --ink: #f2e3dd;
+    --ground: #170a0d;
+    --matrix: #c2404f;
   }
 
   * { box-sizing: border-box; }
@@ -34,7 +32,7 @@
 
   .veil {
     position: fixed; inset: 0;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.7) 62%, rgba(0,0,0,0.92) 100%);
+    background: radial-gradient(ellipse at center, rgba(23,10,13,0.25) 0%, rgba(23,10,13,0.7) 62%, rgba(23,10,13,0.92) 100%);
     pointer-events: none;
   }
 
@@ -47,17 +45,9 @@
 
   .gate-logo {
     width: 108px; height: 108px; border-radius: 50%; object-fit: cover;
-    box-shadow: 0 0 0 2px rgba(214,255,228,0.25), 0 0 70px -10px rgba(0,255,65,0.65);
+    box-shadow: 0 0 0 2px rgba(242,227,221,0.25), 0 0 70px -10px rgba(194,64,79,0.75);
     margin-bottom: 26px;
     animation: rise 1s ease-out both;
-  }
-
-  .gate-kicker {
-    font-size: 14px; letter-spacing: 5px; text-transform: uppercase;
-    color: var(--matrix); font-weight: 600;
-    margin-bottom: 18px;
-    text-shadow: 0 0 12px rgba(0,255,65,0.6);
-    animation: rise 1s ease-out both; animation-delay: .08s;
   }
 
   .gate h1 {
@@ -65,52 +55,20 @@
     font-weight: 700;
     font-size: clamp(3.4rem, 11vw, 7.2rem);
     letter-spacing: -1px;
-    margin: 0 0 22px;
+    margin: 0;
     color: var(--matrix);
-    text-shadow: 0 0 18px rgba(0,255,65,0.55), 0 0 46px rgba(0,255,65,0.28);
+    text-shadow: 0 0 18px rgba(194,64,79,0.6), 0 0 46px rgba(194,64,79,0.32);
     text-wrap: balance;
     animation: rise 1s ease-out both; animation-delay: .16s;
   }
-
-  .gate-tagline {
-    font-size: 18px; color: var(--ink); max-width: 50ch; line-height: 1.65;
-    margin: 0 0 48px;
-    animation: rise 1s ease-out both; animation-delay: .24s;
-  }
-
-  .gate-enter {
-    display: inline-flex; align-items: center; gap: 12px;
-    font-size: 16px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--ground);
-    background: var(--matrix);
-    padding: 18px 38px;
-    border-radius: 2px;
-    box-shadow: 0 0 30px -4px rgba(0,255,65,0.6);
-    animation: rise 1s ease-out both, pulse 2.4s ease-in-out 1.4s infinite;
-  }
-
-  .gate-enter .cursor {
-    display: inline-block; width: 9px; height: 17px; background: var(--ground);
-    animation: blink 1s steps(1) infinite;
-  }
-
-  .gate:hover .gate-enter { background: var(--ink); }
 
   @keyframes rise {
     from { opacity: 0; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 30px -4px rgba(0,255,65,0.6); }
-    50% { box-shadow: 0 0 46px 6px rgba(0,255,65,0.35); }
-  }
-  @keyframes blink {
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0; }
-  }
 
   @media (prefers-reduced-motion: reduce) {
-    .gate-logo, .gate-kicker, .gate h1, .gate-tagline, .gate-enter {
+    .gate-logo, .gate h1 {
       animation: none; opacity: 1; transform: none;
     }
   }
@@ -121,12 +79,9 @@
 <canvas id="rain" aria-hidden="true"></canvas>
 <div class="veil" aria-hidden="true"></div>
 
-<a class="gate" href="home.html">
+<a class="gate" href="home.html" aria-label="Enter The Digital Divide">
   <img class="gate-logo" src="assets/logo.png" alt="">
-  <div class="gate-kicker">Tech &amp; Digital Policy — Rowa Taha</div>
   <h1>The Digital Divide</h1>
-  <p class="gate-tagline">Weekly news on tech policy, litigation, and legislation — plus a running atlas of digital rights across the world.</p>
-  <span class="gate-enter">Enter the site<span class="cursor"></span></span>
 </a>
 
 <script>
@@ -149,7 +104,7 @@
   const glyphs = '01';
 
   function drawFrame() {
-    ctx.fillStyle = 'rgba(0,0,0,0.15)';
+    ctx.fillStyle = 'rgba(23,10,13,0.15)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.font = fontSize + 'px "IBM Plex Mono", monospace';
 
@@ -157,15 +112,15 @@
       const glyph = glyphs[Math.random() > 0.5 ? 1 : 0];
       const y = drops[i] * fontSize;
 
-      ctx.fillStyle = 'rgba(190,255,205,0.95)';
+      ctx.fillStyle = 'rgba(238,179,170,0.95)';
       ctx.fillText(glyph, i * fontSize, y);
 
       if (y > fontSize * 1.2) {
-        ctx.fillStyle = 'rgba(0,255,65,0.55)';
+        ctx.fillStyle = 'rgba(194,64,79,0.6)';
         ctx.fillText(glyphs[Math.random() > 0.5 ? 1 : 0], i * fontSize, y - fontSize);
       }
       if (y > fontSize * 2.4) {
-        ctx.fillStyle = 'rgba(0,255,65,0.22)';
+        ctx.fillStyle = 'rgba(110,28,40,0.35)';
         ctx.fillText(glyphs[Math.random() > 0.5 ? 1 : 0], i * fontSize, y - fontSize * 2);
       }
 
@@ -177,11 +132,11 @@
   }
 
   if (reduceMotion) {
-    ctx.fillStyle = 'rgba(0,0,0,1)';
+    ctx.fillStyle = 'rgba(23,10,13,1)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.font = fontSize + 'px "IBM Plex Mono", monospace';
     for (let i = 0; i < cols; i++) {
-      ctx.fillStyle = 'rgba(0,255,65,0.45)';
+      ctx.fillStyle = 'rgba(194,64,79,0.5)';
       for (let j = 0; j < 30; j++) {
         ctx.fillText(glyphs[Math.random() > 0.5 ? 1 : 0], i * fontSize, j * fontSize * 1.4);
       }
