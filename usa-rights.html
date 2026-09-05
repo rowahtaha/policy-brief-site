@@ -2715,9 +2715,51 @@ function buildCountry(code) {
   sourcesLabel.textContent = `Sources cited for ${country.name}`;
   sources.appendChild(sourcesLabel);
   const sourcesList = document.createElement("ol");
+  const SOURCE_ORG_LINKS = [
+    [/freedom house/i, "https://freedomhouse.org"],
+    [/human rights watch/i, "https://www.hrw.org"],
+    [/committee to protect journalists/i, "https://cpj.org"],
+    [/amnesty international/i, "https://www.amnesty.org"],
+    [/reporters without borders/i, "https://rsf.org"],
+    [/access now/i, "https://www.accessnow.org"],
+    [/privacy international/i, "https://privacyinternational.org"],
+    [/article\s?19/i, "https://www.article19.org"],
+    [/dla piper/i, "https://www.dlapiperdataprotection.com/"],
+    [/us state department|u\.s\. state department|state department country reports/i, "https://www.state.gov/human-rights-reports/"],
+    [/open observatory of network interference|\booni\b/i, "https://ooni.org"],
+    [/collaboration on international ict policy|\bcipesa\b/i, "https://cipesa.org"],
+    [/media foundation for west africa/i, "https://mfwa.org"],
+    [/electronic frontier foundation/i, "https://www.eff.org"],
+    [/european commission/i, "https://ec.europa.eu"],
+    [/international telecommunication union/i, "https://www.itu.int"],
+    [/united nations|ohchr/i, "https://www.ohchr.org"],
+    [/international association of privacy professionals|\biapp\b/i, "https://iapp.org"],
+    [/organisation for economic|organization for economic|\boecd\b/i, "https://www.oecd.org"],
+    [/federal trade commission|\bftc\b/i, "https://www.ftc.gov"],
+    [/national institute of standards|\bnist\b/i, "https://www.nist.gov"],
+    [/electronic privacy information center|\bepic\b/i, "https://epic.org"],
+    [/council of europe/i, "https://www.coe.int"],
+    [/european data protection board|\bedpb\b/i, "https://edpb.europa.eu"],
+    [/african union/i, "https://au.int"]
+  ];
+  function sourceLinkFor(text) {
+    const match = SOURCE_ORG_LINKS.find(([re]) => re.test(text));
+    return match ? match[1] : null;
+  }
+
   country.sources.forEach(s => {
     const li = document.createElement("li");
-    li.textContent = s;
+    const url = sourceLinkFor(s);
+    if (url) {
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = s;
+      li.appendChild(a);
+    } else {
+      li.textContent = s;
+    }
     sourcesList.appendChild(li);
   });
   sources.appendChild(sourcesList);
