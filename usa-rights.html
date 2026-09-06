@@ -2561,6 +2561,7 @@ function drawFlyer(canvas, country, part, total, startIndex, qaChunk, totalQuest
 
   y += 32;
   ctx.strokeStyle = "rgba(27,29,34,.2)";
+  ctx.lineWidth = 3;
   ctx.beginPath(); ctx.moveTo(cx, y); ctx.lineTo(cx + cw, y); ctx.stroke();
   y += 34;
 
@@ -2574,9 +2575,9 @@ function drawFlyer(canvas, country, part, total, startIndex, qaChunk, totalQuest
     const qW = cw - 40;
 
     ctx.font = "700 40px " + SANS;
-    const qLines = wrapLines(ctx, item.q, qW, 2);
+    const qLines = wrapLines(ctx, item.q, qW);
     ctx.font = "700 29px " + SANS;
-    const noteLines = wrapLines(ctx, item.note, qW, 2);
+    const noteLines = wrapLines(ctx, item.note, qW);
 
     const contentH = qLines.length * QLH + GAP_A + GAP_B + noteLines.length * NLH;
     const usableH = entryH - 24;
@@ -2605,6 +2606,7 @@ function drawFlyer(canvas, country, part, total, startIndex, qaChunk, totalQuest
 
     if (i < qaChunk.length - 1) {
       ctx.strokeStyle = "rgba(27,29,34,.12)";
+      ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.moveTo(cx, top + entryH - 14);
       ctx.lineTo(cx + cw, top + entryH - 14);
@@ -2627,7 +2629,7 @@ function chunk(arr, size) {
   return out;
 }
 
-function wrapLines(ctx, text, maxWidth, maxLines) {
+function wrapLines(ctx, text, maxWidth) {
   const words = text.split(" ");
   const lines = [];
   let cur = "";
@@ -2636,28 +2638,57 @@ function wrapLines(ctx, text, maxWidth, maxLines) {
     if (ctx.measureText(test).width > maxWidth && cur) {
       lines.push(cur);
       cur = word;
-      if (lines.length === maxLines - 1) {
-        let rest = cur;
-        const remainingWords = words.slice(words.indexOf(word) + 1);
-        for (const w of remainingWords) {
-          const t2 = rest + " " + w;
-          if (ctx.measureText(t2 + "...").width > maxWidth) break;
-          rest = t2;
-        }
-        lines.push(rest + (remainingWords.length && rest !== cur + " " + remainingWords.join(" ") ? "..." : ""));
-        return lines;
-      }
     } else {
       cur = test;
     }
   }
   if (cur) lines.push(cur);
-  return lines.slice(0, maxLines);
+  return lines;
+}
+
+// Measures the content height one Q&A entry needs (mirrors QLH/NLH/GAP_A/GAP_B
+// in drawFlyer) so cards can be packed by actual content instead of a fixed count.
+function measureItemHeight(ctx, item, qW) {
+  const SANS = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif';
+  const QLH = 48, NLH = 38, GAP_A = 18, GAP_B = 38;
+  ctx.font = "700 40px " + SANS;
+  const qLines = wrapLines(ctx, item.q, qW);
+  ctx.font = "700 29px " + SANS;
+  const noteLines = wrapLines(ctx, item.note, qW);
+  return qLines.length * QLH + GAP_A + GAP_B + noteLines.length * NLH;
+}
+
+// Greedily packs questions into cards: each card divides its space evenly among
+// its entries (see entryH below), so a card only takes as many questions as can
+// fit without truncation, adding more cards instead of cutting text off.
+function packQA(qa, cw) {
+  const measureCanvas = document.createElement("canvas");
+  const measureCtx = measureCanvas.getContext("2d");
+  const qW = cw - 40;
+  const TOTAL_H = 1138;
+  const chunks = [];
+  let current = [];
+  let maxContentH = 0;
+  qa.forEach(item => {
+    const h = measureItemHeight(measureCtx, item, qW);
+    const newMax = Math.max(maxContentH, h);
+    const newCount = current.length + 1;
+    const fits = newCount <= QPF && newMax <= (TOTAL_H / newCount - 24);
+    if (current.length > 0 && !fits) {
+      chunks.push(current);
+      current = [];
+      maxContentH = 0;
+    }
+    current.push(item);
+    maxContentH = Math.max(maxContentH, h);
+  });
+  if (current.length) chunks.push(current);
+  return chunks;
 }
 
 function buildCountry(code) {
   const country = STATES[code];
-  const chunks = chunk(country.qa, QPF);
+  const chunks = packQA(country.qa, W - MARGIN * 2);
   const total = chunks.length;
 
   const block = document.createElement("div");
@@ -2681,7 +2712,7 @@ function buildCountry(code) {
 
   chunks.forEach((qaChunk, idx) => {
     const part = idx + 1;
-    const startIndex = idx * QPF + 1;
+    const startIndex = chunks.slice(0, idx).reduce((sum, c) => sum + c.length, 0) + 1;
 
     const card = document.createElement("div");
     card.className = "card";
