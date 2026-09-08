@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Rights of Africa</title>
+<meta name="description" content="A 20-question, fully cited breakdown of digital rights and privacy law across all 54 African countries — built from real statutes, regulator guidance, and reporting from groups such as Freedom House and ARTICLE19.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Digital Rights of Africa">
+<meta property="og:description" content="A 20-question, fully cited breakdown of digital rights and privacy law across all 54 African countries — built from real statutes, regulator guidance, and reporting from groups such as Freedom House and ARTICLE19.">
+<meta property="og:url" content="https://rowataha.com/africa-rights.html">
+<meta property="og:image" content="https://rowataha.com/assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Digital Rights of Africa">
+<meta name="twitter:description" content="A 20-question, fully cited breakdown of digital rights and privacy law across all 54 African countries — built from real statutes, regulator guidance, and reporting from groups such as Freedom House and ARTICLE19.">
+<meta name="twitter:image" content="https://rowataha.com/assets/logo.png">
 <style>
   :root {
     --page-bg: #F6F4EC;
@@ -99,6 +109,10 @@
   }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
   .legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .verified-note {
+    text-align: center; margin-top: 14px; font-size: 12px; color: var(--ink-soft);
+    font-family: "IBM Plex Mono", Consolas, monospace;
+  }
 
   .jumpnav {
     margin-bottom: 48px; padding: 24px 26px; scroll-margin-top: 24px;
@@ -329,6 +343,7 @@
         <span><i style="background:#8A6A1F"></i> Partial or conditional</span>
         <span><i style="background:#8C2F26"></i> Not protected, not required</span>
       </div>
+      <p class="verified-note">Content last verified: August 30, 2026. Laws and enforcement patterns shift — always confirm current status before relying on this for a legal decision.</p>
       <p style="margin-top:16px;"><a href="africa-law-library.html" style="color:var(--accent); font-family:inherit;">📚 Browse the Law Library — every cited law, linked to its real source →</a></p>
     </header>
     <a href="#mainContent" class="hero-cta">Explore the atlas &#8595;</a>
@@ -439,7 +454,11 @@
 const W = 1080, H = 1600;
 const BAND_H = 260;
 const MARGIN = 64;
-const QPF = 5;
+const QPF = 4;
+
+// Preloaded once so drawFlyer can stamp the site logo onto each flyer's banner.
+const SITE_LOGO = new Image();
+SITE_LOGO.src = "assets/logo.png";
 
 const COUNTRY_ORDER = ["MAR", "TUN", "NGA", "SEN", "DZA", "AGO", "BEN", "BWA", "BFA", "BDI", "CPV", "CMR", "CAF", "TCD", "COM", "COD", "COG", "CIV", "DJI", "EGY", "GNQ", "ERI", "SWZ", "ETH", "GAB", "GMB", "GHA", "GIN", "MLI", "MRT", "MUS", "MOZ", "NAM", "NER", "RWA", "GNB", "KEN", "LSO", "LBR", "LBY", "MDG", "MWI", "STP", "SYC", "SLE", "SOM", "ZAF", "SSD", "SDN", "TZA", "TGO", "UGA", "ZMB", "ZWE"];
 const FLAG_SWATCH = { MAR: "#C1272D", TUN: "#E70013", NGA: "#008751", SEN: "#00853F", DZA: "#006233", AGO: "#CE1126", BEN: "#008751", BWA: "#75AADB", BFA: "#EF2B2D", BDI: "#DF2029", CPV: "#003893", CMR: "#007A5E", CAF: "#003082", TCD: "#002664", COM: "#339E35", COD: "#007FFF", COG: "#009543", CIV: "#FF8200", DJI: "#12AD2B", EGY: "#CE1126", GNQ: "#3E9A00", ERI: "#EA0437", SWZ: "#B10C0C", ETH: "#078930", GAB: "#009E60", GMB: "#CE1126", GHA: "#CE1126", GIN: "#CE1126", MLI: "#14B53A", MRT: "#00A95C", MUS: "#EA2839", MOZ: "#009739", NAM: "#003580", NER: "#0DB02B", RWA: "#20603D", GNB: "#CE1126", KEN: "#BB0000", LSO: "#00209F", LBR: "#BF0A30", LBY: "#E70013", MDG: "#FC3D32", MWI: "#000000", STP: "#12AD2B", SYC: "#007A3D", SLE: "#1EB53A", SOM: "#4189DD", ZAF: "#007A4D", SSD: "#078930", SDN: "#D21034", TZA: "#1EB53A", TGO: "#006A4E", UGA: "#000000", ZMB: "#198A00", ZWE: "#006400" };
@@ -2470,6 +2489,17 @@ function verdictLabel(a) {
   return a === "yes" ? "PROTECTED" : a === "no" ? "NOT PROTECTED" : "PARTIAL";
 }
 
+function measureTracked(ctx, text, tracking) {
+  let w = 0;
+  for (const ch of text) w += ctx.measureText(ch).width + tracking;
+  return w - tracking;
+}
+
+function drawTrackedCentered(ctx, text, centerX, y, tracking) {
+  const w = measureTracked(ctx, text, tracking);
+  drawTracked(ctx, text, centerX - w / 2, y, tracking);
+}
+
 function drawTracked(ctx, text, x, y, tracking, rtl) {
   if (!rtl) {
     let cur = x;
@@ -2936,24 +2966,44 @@ function drawFlyer(canvas, country, part, total, startIndex, qaChunk, totalQuest
   const SERIF = 'Georgia, "Iowan Old Style", Palatino, "Times New Roman", serif';
   const MONO = '"IBM Plex Mono", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace';
 
-  FLAGS[country.flag](ctx, 0, 0, W, BAND_H);
-  const bandGrad = ctx.createLinearGradient(0, 0, 0, BAND_H);
-  bandGrad.addColorStop(0, "rgba(0,0,0,0)");
-  bandGrad.addColorStop(1, "rgba(0,0,0,.28)");
+  const bandGrad = ctx.createLinearGradient(0, 0, W, BAND_H);
+  bandGrad.addColorStop(0, "#7A1414");
+  bandGrad.addColorStop(1, "#1A0808");
   ctx.fillStyle = bandGrad;
   ctx.fillRect(0, 0, W, BAND_H);
 
   ctx.textBaseline = "alphabetic";
   ctx.textAlign = "left";
-  ctx.fillStyle = "rgba(255,255,255,.85)";
-  ctx.font = "700 16px " + MONO;
-  drawTracked(ctx, "DIGITAL RIGHTS OF AFRICA", MARGIN, 50, 1.5);
 
-  ctx.fillStyle = "rgba(0,0,0,.35)";
-  ctx.font = "600 72px " + SERIF;
-  ctx.fillText(country.name.toUpperCase(), MARGIN + 2, BAND_H - 36);
+  const logoSize = 44, logoX = MARGIN, logoY = 40;
+  if (SITE_LOGO.complete && SITE_LOGO.naturalWidth > 0) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(logoX + logoSize / 2, logoY + logoSize / 2, logoSize / 2, 0, Math.PI * 2);
+    ctx.clip();
+    ctx.drawImage(SITE_LOGO, logoX, logoY, logoSize, logoSize);
+    ctx.restore();
+  }
+  ctx.fillStyle = "rgba(255,255,255,.92)";
+  ctx.font = "700 16px " + MONO;
+  drawTracked(ctx, "DIGITAL RIGHTS OF AFRICA", logoX + logoSize + 16, logoY + logoSize / 2 + 6, 1.5);
+
+  const flagW = 88, flagH = 58, flagX = MARGIN, flagY = BAND_H - flagH - 34;
+  FLAGS[country.flag](ctx, flagX, flagY, flagW, flagH);
+  ctx.strokeStyle = "rgba(255,255,255,.4)";
+  ctx.lineWidth = 1.5;
+  ctx.strokeRect(flagX + 0.75, flagY + 0.75, flagW - 1.5, flagH - 1.5);
+
+  const nameX = flagX + flagW + 24;
+  const nameMaxW = W - MARGIN - nameX;
+  let nameSize = 60;
+  ctx.font = "600 " + nameSize + "px " + SERIF;
+  while (ctx.measureText(country.name.toUpperCase()).width > nameMaxW && nameSize > 30) {
+    nameSize -= 2;
+    ctx.font = "600 " + nameSize + "px " + SERIF;
+  }
   ctx.fillStyle = "#FFFFFF";
-  ctx.fillText(country.name.toUpperCase(), MARGIN, BAND_H - 38);
+  ctx.fillText(country.name.toUpperCase(), nameX, flagY + flagH / 2 + nameSize * 0.35);
 
   const panelY = BAND_H;
   ctx.fillStyle = "#FBFAF6";
@@ -2962,14 +3012,9 @@ function drawFlyer(canvas, country, part, total, startIndex, qaChunk, totalQuest
   const cx = MARGIN, cw = W - MARGIN * 2;
   let y = panelY + 46;
 
-  ctx.font = "600 15px " + MONO;
-  ctx.fillStyle = "#3E4C7A";
-  ctx.textAlign = "left";
-  drawTracked(ctx, `FILE ${country.code} - PART ${part} OF ${total}`, cx, y, 1.2);
-  ctx.textAlign = "right";
-  ctx.fillStyle = "rgba(27,29,34,.55)";
-  drawTracked(ctx, `QUESTIONS ${startIndex} TO ${startIndex + qaChunk.length - 1} OF ${totalQuestions}`, cx + cw, y, 1.1, true);
-  ctx.textAlign = "left";
+  ctx.font = "700 15px " + MONO;
+  ctx.fillStyle = "rgba(27,29,34,.5)";
+  drawTrackedCentered(ctx, `PAGE ${part} OF ${total}`, cx + cw / 2, y, 1.5);
 
   y += 40;
   ctx.font = "700 37px " + SANS;
@@ -3025,13 +3070,10 @@ function drawFlyer(canvas, country, part, total, startIndex, qaChunk, totalQuest
     cursorY = bottom + 14;
   });
 
-  const fy = H - 26;
   ctx.font = "700 14px " + MONO;
   ctx.fillStyle = "rgba(27,29,34,.65)";
-  drawTracked(ctx, `${country.sources.length} PRIMARY SOURCES CITED`, cx, fy, 1.1);
-  ctx.textAlign = "right";
-  drawTracked(ctx, "DIGITAL RIGHTS OF AFRICA - COPYRIGHT ROWA TAHA", cx + cw, fy, 1.1, true);
-  ctx.textAlign = "left";
+  drawTrackedCentered(ctx, `${country.sources.length} PRIMARY SOURCES CITED`, cx + cw / 2, H - 46, 1.1);
+  drawTrackedCentered(ctx, "DIGITAL RIGHTS OF AFRICA - COPYRIGHT ROWA TAHA", cx + cw / 2, H - 24, 1.1);
 }
 
 function chunk(arr, size) {
