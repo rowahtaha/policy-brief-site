@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Rights of the Globe</title>
+<meta name="description" content="An interactive 3D globe covering all 195 countries and territories, each answering the same 20 questions on data privacy, AI, surveillance, and free expression online — built from real statutes and regulator guidance.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Digital Rights of the Globe">
+<meta property="og:description" content="An interactive 3D globe covering all 195 countries and territories, each answering the same 20 questions on data privacy, AI, surveillance, and free expression online — built from real statutes and regulator guidance.">
+<meta property="og:url" content="https://rowataha.com/globe-rights.html">
+<meta property="og:image" content="https://rowataha.com/assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Digital Rights of the Globe">
+<meta name="twitter:description" content="An interactive 3D globe covering all 195 countries and territories, each answering the same 20 questions on data privacy, AI, surveillance, and free expression online — built from real statutes and regulator guidance.">
+<meta name="twitter:image" content="https://rowataha.com/assets/logo.png">
 <style>
   :root {
     --page-bg: #F2F5F3;
@@ -12,8 +22,8 @@
     --ink: #16211D;
     --ink-soft: #55645D;
     --line: #CFDBD5;
-    --accent: #1F6F5C;
-    --accent-soft: #DCEEE8;
+    --accent: #8C1C1C;
+    --accent-soft: #F2E1E1;
     --shadow: 0 1px 2px rgba(10,20,16,.06), 0 10px 30px -12px rgba(10,20,16,.16);
   }
   @media (prefers-color-scheme: dark) {
@@ -24,8 +34,8 @@
       --ink: #E7F0EC;
       --ink-soft: #9FB3AB;
       --line: #2C3B35;
-      --accent: #4FBFA0;
-      --accent-soft: #1B3A32;
+      --accent: #D97A7A;
+      --accent-soft: #3A2427;
       --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -12px rgba(0,0,0,.6);
     }
   }
@@ -36,8 +46,8 @@
     --ink: #E7F0EC;
     --ink-soft: #9FB3AB;
     --line: #2C3B35;
-    --accent: #4FBFA0;
-    --accent-soft: #1B3A32;
+    --accent: #D97A7A;
+    --accent-soft: #3A2427;
     --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -12px rgba(0,0,0,.6);
   }
 
@@ -88,6 +98,10 @@
   }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
   .legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .verified-note {
+    text-align: center; margin-top: 14px; font-size: 12px; color: var(--ink-soft);
+    font-family: "IBM Plex Mono", Consolas, monospace;
+  }
 
   .jumpnav {
     margin-bottom: 48px; padding: 24px 26px; scroll-margin-top: 24px;
@@ -315,6 +329,7 @@
         <span><i style="background:#8A6A1F"></i> Partial or conditional</span>
         <span><i style="background:#8C2F26"></i> Not protected, not required</span>
       </div>
+      <p class="verified-note">Content last verified: September 5, 2026. Laws and enforcement patterns shift — always confirm current status before relying on this for a legal decision.</p>
     </header>
     <a href="#mainContent" class="hero-cta">Explore the atlas &#8595;</a>
     <div class="hero-scroll-hint">195 countries, 20 questions each</div>
@@ -9848,11 +9863,30 @@ function idToRgb(index1based) {
   const v = index1based * ID_STEP;
   return [(v >> 16) & 0xFF, (v >> 8) & 0xFF, v & 0xFF];
 }
+// Canvas path fills are always anti-aliased at their edges (there is no way to turn
+// this off for 2D context fills), so every coastline produces blended pixels that
+// don't exactly match any registered ID color. Decoding those algebraically (as a
+// straight bit-packed round trip) lets a blended pixel land on a totally unrelated
+// country's ID by coincidence, which is what made hovering near open water report
+// random countries. Nearest-neighbor matching against the real, finite ID palette
+// is robust to that blending: a coastline pixel is a darkened version of its own
+// country's color, so it stays closest to that same country's ID, not a random one.
+let ID_COLOR_TABLE = null;
+function buildIdColorTable() {
+  ID_COLOR_TABLE = COUNTRY_ORDER.map((code, i) => idToRgb(i + 1));
+}
 function colorToIndex(r, g, b) {
-  const v = (r << 16) | (g << 8) | b;
-  const idx = Math.round(v / ID_STEP);
-  if (idx < 1 || idx > COUNTRY_ORDER.length) return -1;
-  return idx - 1;
+  if (!ID_COLOR_TABLE) return -1;
+  let best = -1, bestDist = Infinity;
+  for (let i = 0; i < ID_COLOR_TABLE.length; i++) {
+    const [ir, ig, ib] = ID_COLOR_TABLE[i];
+    const dr = r - ir, dg = g - ig, db = b - ib;
+    const dist = dr * dr + dg * dg + db * db;
+    if (dist < bestDist) { bestDist = dist; best = i; }
+  }
+  const bgDist = r * r + g * g + b * b; // distance to black/ocean background
+  if (bgDist <= bestDist) return -1;
+  return best;
 }
 
 function parsePathList(html) {
@@ -9973,6 +10007,7 @@ function buildTextures() {
   contextEls.forEach(el => { dctx.fill(new Path2D(el.getAttribute("d"))); });
 
   COUNTRY_ORDER.forEach((code, i) => { codeToIndex[code] = i; });
+  buildIdColorTable();
 
   const shapeByCode = {};
   interactiveEls.forEach(el => {

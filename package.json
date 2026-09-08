@@ -1,0 +1,12 @@
+{
+  "name": "policy-brief-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:thoughts": "node scripts/build-thoughts.mjs"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "marked": "^12.0.2"
+  }
+}

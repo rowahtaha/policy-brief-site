@@ -14,7 +14,8 @@ const jobBoardData = {
       note: "Non-attorney compliance/governance analyst role — no bar admission required.",
       barRequired: "not required",
       experience: "3-5 years",
-      workMode: "hybrid"
+      workMode: "hybrid",
+      firstSeen: "2026-09-01"
     },
     {
       company: "Google",
@@ -24,7 +25,8 @@ const jobBoardData = {
       note: "2 years of experience preferred, not required. No JD/bar admission required.",
       barRequired: "not required",
       experience: "2 years (preferred)",
-      workMode: null
+      workMode: null,
+      firstSeen: "2026-09-01"
     },
     {
       company: "Credo AI",
@@ -34,7 +36,8 @@ const jobBoardData = {
       note: "AI-governance SaaS company; role focuses on delivering AI-governance training and industry engagement.",
       barRequired: "not required",
       experience: null,
-      workMode: "remote"
+      workMode: "remote",
+      firstSeen: "2026-09-01"
     }
   ]
 };
