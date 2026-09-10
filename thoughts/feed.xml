@@ -1,58 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>No ChatGPT Till 9th Grade (But That&#39;s Not the Whole Story) — Rowa&#39;s Thoughts — The Digital Divide</title>
-<meta name="description" content="NYC&#39;s new AI ban for students is a bigger deal than it looks — but there&#39;s a teacher-facing &quot;stoplight&quot; policy nobody&#39;s talking about. In English and Arabic.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="No ChatGPT Till 9th Grade (But That&#39;s Not the Whole Story) — Rowa&#39;s Thoughts — The Digital Divide">
-<meta property="og:description" content="NYC&#39;s new AI ban for students is a bigger deal than it looks — but there&#39;s a teacher-facing &quot;stoplight&quot; policy nobody&#39;s talking about. In English and Arabic.">
-<meta property="og:url" content="https://rowataha.com/thoughts/2026-09-10-nyc-ai-ban-backstory.html">
-<meta property="og:image" content="https://rowataha.com/assets/logo.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="No ChatGPT Till 9th Grade (But That&#39;s Not the Whole Story) — Rowa&#39;s Thoughts — The Digital Divide">
-<meta name="twitter:description" content="NYC&#39;s new AI ban for students is a bigger deal than it looks — but there&#39;s a teacher-facing &quot;stoplight&quot; policy nobody&#39;s talking about. In English and Arabic.">
-<meta name="twitter:image" content="https://rowataha.com/assets/logo.png">
-<link rel="stylesheet" href="../assets/style.css">
-<link rel="alternate" type="application/atom+xml" title="Rowa's Thoughts" href="../thoughts/feed.xml">
-</head>
-<body>
-
-<header class="masthead">
-  <div class="wrap">
-    <a href="../home.html" class="masthead-brand">
-      <img src="../assets/logo.png" alt="The Digital Divide logo" class="masthead-logo">
-      <h1>The Digital Divide</h1>
-    </a>
-  </div>
-</header>
-
-
-<div class="layout">
-  <aside class="sidebar">
-    <nav>
-      <a href="../globe-rights.html">Digital Rights Projects</a>
-      <a href="../newsletter.html">Newsletter</a>
-      <a href="../subscribe.html">Subscribe</a>
-      <a href="../thoughts.html" class="active">Rowa's Thoughts</a>
-      <a href="../jobs.html">Job Board</a>
-      <a href="../about.html">About</a>
-    </nav>
-  </aside>
-  <main class="content" id="main-content">
-    <p><a href="../thoughts.html">← Rowa's Thoughts</a></p>
-    <article class="thought-article">
-      <div class="thought-article-header">
-        <div class="kicker">Rowa's Thoughts</div>
-        <h2>No ChatGPT Till 9th Grade (But That&#39;s Not the Whole Story)</h2>
-      </div>
-      <div class="thought-byline">
-        <img class="avatar" src="../assets/logo.png" alt="Rowa Taha">
-        <div class="byline-text"><strong>Rowa Taha</strong> · September 10, 2026 · 6 min read</div>
-      </div>
-      
-      <div class="post-body"><p>Okay so NYC just told public schools &quot;no ChatGPT till 9th grade&quot; and I have thoughts, but also a plot twist I didn&#39;t know about until I went digging.</p>
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Rowa's Thoughts</title>
+  <subtitle>Longer, more personal takes on tech policy, privacy, and digital rights, by Rowa Taha.</subtitle>
+  <link href="https://rowataha.com/thoughts.html" rel="alternate"/>
+  <link href="https://rowataha.com/thoughts/feed.xml" rel="self"/>
+  <id>https://rowataha.com/thoughts.html</id>
+  <updated>2026-09-10T00:00:00.000Z</updated>
+  <entry>
+    <title>No ChatGPT Till 9th Grade (But That&apos;s Not the Whole Story)</title>
+    <link href="https://rowataha.com/thoughts/2026-09-10-nyc-ai-ban-backstory.html" rel="alternate"/>
+    <id>https://rowataha.com/thoughts/2026-09-10-nyc-ai-ban-backstory.html</id>
+    <updated>2026-09-10T00:00:00.000Z</updated>
+    <summary>NYC&apos;s new AI ban for students is a bigger deal than it looks — but there&apos;s a teacher-facing &quot;stoplight&quot; policy nobody&apos;s talking about. In English and Arabic.</summary>
+    <content type="html"><![CDATA[<p>Okay so NYC just told public schools &quot;no ChatGPT till 9th grade&quot; and I have thoughts, but also a plot twist I didn&#39;t know about until I went digging.</p>
 <p>The headline part first, because it&#39;s a big deal. Mamdani and the new chancellor rolled out what they&#39;re calling the country&#39;s biggest generative AI moratorium in schools[1], and it&#39;s not a soft suggestion, it&#39;s a real rule. Kids from pre-K through 8th grade can&#39;t use generative AI in class at all, and companion chatbots, the &quot;AI friend&quot; kind, are banned for literally every grade, even high school. There&#39;s screen time caps too now, 30 minutes a day max for grades 3-5, 45 minutes for 6-8[2]. High schoolers get a little breathing room, some small supervised pilot programs, like 10-20 minutes a week, plus twice-a-year lessons on how AI actually works and where it messes up. And it&#39;s only for one year, they want to study what happens before deciding what&#39;s next. The reasoning was simple, almost stubbornly simple, kids need teachers and human connection, and more tech isn&#39;t the same thing as more learning[1].</p>
 <p>But here&#39;s the part that surprised me. That ban is only about students. Turns out back in March, months before any of this, the city already put out a completely separate rulebook for teachers, and it&#39;s basically a stoplight. Like an actual red light green light system[3]. Green means go, no questions asked, stuff like using AI to brainstorm a lesson plan or draft some boring email. Yellow means okay but a human has to check it first, so translating stuff for families who don&#39;t speak English, or tweaking material for a kid with a disability, AI can help but a real person has to look it over before a student ever sees it. And red is just never, full stop. Grading papers, deciding discipline, anything to do with an IEP, counseling a kid in crisis. Too important to hand off, no matter how good the tool gets[3].</p>
 <p>And okay, I have to add this because it&#39;s not like everyone just clapped and moved on, both of these got dragged a little. The stoplight thing actually got delayed because of backlash, like real backlash, parents packed public meetings, over half the City Council signed a letter asking them to just pause AI in schools over learning and mental health worries, and almost 6,500 people left comments on the draft[4]. Turns out the original version barely even addressed student use, which is wild given that&#39;s the whole point, and the chancellor himself admitted the draft &quot;missed the mark&quot; and called AI &quot;the most invasive technology that we&#39;ve seen&quot;[4]. And then the ban itself, the one that came out of all that, is getting hit from the other direction now, tech investors calling it flat out bad policy. One VC guy said restricting AI in public schools mostly just hurts kids who can&#39;t afford it at home anyway, so you&#39;re not stopping rich kids from using AI, just poor ones[5]. Another tech founder called it &quot;wildly misguided&quot; and said no tool since the printing press has done more to open up elite-level education to regular people[5]. And even people who get why they&#39;re being cautious pointed out you can&#39;t really enforce a ban like this, kids are resourceful, they&#39;re not blind to the internet[5].</p>
@@ -67,19 +27,19 @@
 <p>يجب أن أضيف هذا لأن الأمر لم يمر دون اعتراض من أحد، كلا القرارين تعرّض لانتقادات. نظام الإشارة الضوئية تأخر إصداره فعليًا بسبب ردود فعل حقيقية، أولياء أمور حضروا اجتماعات عامة مكتظة، وأكثر من نصف أعضاء مجلس المدينة وقّعوا رسالة تطالب بتعليق استخدام الذكاء الاصطناعي في المدارس بسبب مخاوف تتعلق بالتعلّم والصحة النفسية، وقرابة ستة آلاف وخمسمئة تعليق وردت على المسودة[4]. وتبيّن أن النسخة الأولى بالكاد تطرقت لاستخدام الطلاب أنفسهم، وهو أمر غريب لأن هذا بالضبط هو صلب الموضوع، بل إن المدير التنفيذي نفسه اعترف بأن المسودة &quot;لم تصب الهدف&quot; ووصف الذكاء الاصطناعي بأنه &quot;أكثر التقنيات تطفلًا رأيناها على الإطلاق&quot;[4]. أما الحظر نفسه، الذي جاء نتيجة كل ذلك، فيتعرض الآن لانتقادات من الجهة المعاكسة، مستثمرون في قطاع التكنولوجيا يصفونه بأنه سياسة سيئة بكل بساطة. أحد المستثمرين قال إن تقييد الذكاء الاصطناعي في المدارس الحكومية يضر غالبًا فقط بالأطفال الذين لا يملكون إمكانية الوصول إليه في المنزل، أي أن القرار لا يمنع أطفال الأسر الميسورة من استخدامه، بل يمنع الأطفال الأقل حظًا فقط[5]. ومؤسس تقني آخر وصف القرار بأنه &quot;مضلل بشدة&quot; وقال إنه لم توجد أداة منذ اختراع الطباعة أتاحت الوصول إلى تعليم من مستوى النخبة لعامة الناس مثل الذكاء الاصطناعي[5]. وحتى من يتفهمون سبب هذا الحذر أشاروا إلى أنه لا يمكن فعليًا فرض حظر كهذا، فالأطفال بارعون في إيجاد الحلول، وليسوا معزولين عن عالم الإنترنت[5].</p>
 <p>فباختصار، لا أحد راضٍ تمامًا، من كانوا يريدون مزيدًا من الحذر قالوا إن المسودة الأولى لم تكن حذرة بما يكفي، ومن كانوا يريدون مزيدًا من الانفتاح يقولون إن النسخة النهائية بالغت في التشدد.</p>
 <p>يجعلني أتساءل إن كان الحظر نفسه سيتطور يومًا إلى إشارة ضوئية خاصة به. ربما في العام المقبل لن يكون القرار &quot;ممنوع الذكاء الاصطناعي حتى الصف التاسع&quot;، بل أخضر لهذا، وأصفر لذاك، وأحمر لما تبقى. أو ربما يبقونه بسيطًا عن قصد، لأن الأطفال ليسوا من يُفترض أن يمنحوا هذه الثقة بعد، بل الكبار هم من يمنحونها نيابة عنهم.</p>
-</div>
-      <hr class="rule"><h3 style="font-size:1rem;">Sources</h3>
-        <ol class="sources-list"><li><a href="https://www.nyc.gov/mayors-office/news/2026/09/mayor-mamdani-and-chancellor-samuels-put-students-first-with-nat" target="_blank" rel="noopener">Mayor Mamdani and Chancellor Samuels Put Students First with Nation&#39;s Broadest Generative AI Moratorium in Schools — NYC Mayor&#39;s Office</a></li><li><a href="https://www.chalkbeat.org/newyork/2026/09/02/what-to-know-about-nyc-public-schools-generative-ai-ban-screen-time-limits/" target="_blank" rel="noopener">What to know about NYC&#39;s new AI ban and screen time limits — Chalkbeat</a></li><li><a href="https://gothamist.com/news/nyc-schools-get-ai-guidance-using-red-light-green-light-model" target="_blank" rel="noopener">NYC schools get AI guidance using &#39;red light, green light&#39; model — Gothamist</a></li><li><a href="https://www.chalkbeat.org/newyork/2026/03/24/preliminary-ai-policy-nyc-schools/" target="_blank" rel="noopener">What NYC&#39;s new AI school rules say, and what still remains unclear — Chalkbeat</a></li><li><a href="https://www.chalkbeat.org/newyork/2026/06/24/nyc-education-department-delays-ai-guidance-after-backlash/" target="_blank" rel="noopener">NYC delays school AI rules after criticism of draft guidance — Chalkbeat</a></li><li><a href="https://www.thenationalnews.com/future/technology/2026/09/04/ai-school-ban-mamdani-calculator/" target="_blank" rel="noopener">Does Mamdani&#39;s AI moratorium in schools mirror the &#39;calculator panic&#39; of the 1980s? — The National</a></li></ol>
-      <div class="thought-article-footer">Enjoyed this? <a href="../subscribe.html">Subscribe to The Rowa Report</a> for the weekly roundup, or <a href="../thoughts.html">read more Thoughts →</a></div>
-    </article>
-  </main>
-</div>
-<footer>
-  <div class="wrap">
-    © 2026 Rowa Taha. All rights reserved.<br>
-    Also posted on <a href="https://substack.com/@rowataha" target="_blank" rel="noopener">Substack</a> and <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">LinkedIn</a>
-  </div>
-</footer>
-
-</body>
-</html>
+]]></content>
+    <author><name>Rowa Taha</name></author>
+  </entry>
+  <entry>
+    <title>Welcome to Rowa&apos;s Thoughts</title>
+    <link href="https://rowataha.com/thoughts/2026-08-30-welcome.html" rel="alternate"/>
+    <id>https://rowataha.com/thoughts/2026-08-30-welcome.html</id>
+    <updated>2026-08-30T00:00:00.000Z</updated>
+    <summary>Why I&apos;m starting this space, and what you can expect to find here.</summary>
+    <content type="html"><![CDATA[<p>This is where I&#39;ll write longer, more personal takes on tech policy, privacy, and digital rights — pieces that don&#39;t fit the weekly newsletter format, but that I still want on the record.</p>
+<p>Expect commentary on the stories behind the stories: why a particular enforcement action matters more than it looks, what a new law actually changes versus what it just claims to change, and where I think the field of tech policy is getting something wrong.</p>
+<p>If you want the fast-moving weekly roundup, that&#39;s the <a href="../newsletter.html">Newsletter</a>. This is the slower, more opinionated companion to it.</p>
+]]></content>
+    <author><name>Rowa Taha</name></author>
+  </entry>
+</feed>
