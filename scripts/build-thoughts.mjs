@@ -70,7 +70,7 @@ const NAV = (activeHref, prefix = "") => `
       <a href="${prefix}globe-rights.html"${activeHref === "globe-rights.html" ? ' class="active"' : ""}>Digital Rights Projects</a>
       <a href="${prefix}newsletter.html"${activeHref === "newsletter.html" ? ' class="active"' : ""}>Newsletter</a>
       <a href="${prefix}subscribe.html"${activeHref === "subscribe.html" ? ' class="active"' : ""}>Subscribe</a>
-      <a href="${prefix}thoughts.html"${activeHref === "thoughts.html" ? ' class="active"' : ""}>Rowa's Thoughts</a>
+      <a href="${prefix}thoughts.html"${activeHref === "thoughts.html" ? ' class="active"' : ""}>Blog</a>
       <a href="${prefix}jobs.html"${activeHref === "jobs.html" ? ' class="active"' : ""}>Job Board</a>
       <a href="${prefix}about.html"${activeHref === "about.html" ? ' class="active"' : ""}>About</a>
     </nav>

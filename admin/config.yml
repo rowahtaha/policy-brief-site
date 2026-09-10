@@ -11,7 +11,7 @@ public_folder: "/assets/thoughts-images"
 
 collections:
   - name: "thoughts"
-    label: "Rowa's Thoughts"
+    label: "Blog"
     label_singular: "Post"
     folder: "thoughts"
     create: true
