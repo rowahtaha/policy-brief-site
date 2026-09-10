@@ -181,7 +181,7 @@ ${NAV("thoughts.html", "../")}
       ${meta.cover ? `<img class="cover-full" src="../${escapeHtml(meta.cover)}" alt="">` : ""}
       <div class="post-body">${bodyHtml}</div>
       ${citations.length ? `<hr class="rule"><h3 style="font-size:1rem;">Sources</h3>
-        <ul class="sources-list">${citations.map(c => `<li>${c.url ? `<a href="${escapeHtml(c.url)}" target="_blank" rel="noopener">${escapeHtml(c.text)}</a>` : escapeHtml(c.text)}</li>`).join("")}</ul>` : ""}
+        <ol class="sources-list">${citations.map(c => `<li>${c.url ? `<a href="${escapeHtml(c.url)}" target="_blank" rel="noopener">${escapeHtml(c.text)}</a>` : escapeHtml(c.text)}</li>`).join("")}</ol>` : ""}
       <div class="thought-article-footer">Enjoyed this? <a href="../subscribe.html">Subscribe to The Rowa Report</a> for the weekly roundup, or <a href="../thoughts.html">read more Thoughts →</a></div>
     </article>
   </main>
