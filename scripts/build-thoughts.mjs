@@ -42,6 +42,15 @@ function excerptOf(meta, body) {
   return meta.excerpt || body.replace(/[#*_>[\]!`]/g, "").trim().slice(0, 180) + "…";
 }
 
+function isoDate(d) {
+  if (!d) return new Date().toISOString();
+  const dt = d instanceof Date ? d : new Date(d + "T00:00:00Z");
+  return isNaN(dt) ? new Date().toISOString() : dt.toISOString();
+}
+
+const FEED_HEAD = (prefix = "") =>
+  `<link rel="alternate" type="application/atom+xml" title="Rowa's Thoughts" href="${prefix}thoughts/feed.xml">\n`;
+
 function loadPosts() {
   const files = readdirSync(THOUGHTS_DIR).filter(f => f.endsWith(".md"));
   const posts = files.map(f => {
@@ -153,6 +162,7 @@ ${NAV("thoughts.html")}
     description,
     ogUrl: `${SITE_URL}/thoughts.html`,
     ogImage: `${SITE_URL}/assets/logo.png`,
+    head: FEED_HEAD(),
     body,
   });
 }
@@ -194,8 +204,42 @@ ${NAV("thoughts.html", "../")}
     ogImage,
     ogType: "article",
     prefix: "../",
+    head: FEED_HEAD("../"),
     body: pageBody,
   });
+}
+
+function escapeXml(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;" }[c]));
+}
+
+function renderFeed(posts) {
+  const updated = posts.length ? isoDate(posts[0].meta.date) : new Date().toISOString();
+  const entries = posts.map(p => {
+    const url = `${SITE_URL}/thoughts/${p.slug}.html`;
+    const bodyHtml = marked.parse(p.body);
+    return `  <entry>
+    <title>${escapeXml(p.meta.title || p.slug)}</title>
+    <link href="${url}" rel="alternate"/>
+    <id>${url}</id>
+    <updated>${isoDate(p.meta.date)}</updated>
+    <summary>${escapeXml(excerptOf(p.meta, p.body))}</summary>
+    <content type="html"><![CDATA[${bodyHtml}]]></content>
+    <author><name>Rowa Taha</name></author>
+  </entry>`;
+  }).join("\n");
+
+  return `<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Rowa's Thoughts</title>
+  <subtitle>Longer, more personal takes on tech policy, privacy, and digital rights, by Rowa Taha.</subtitle>
+  <link href="${SITE_URL}/thoughts.html" rel="alternate"/>
+  <link href="${SITE_URL}/thoughts/feed.xml" rel="self"/>
+  <id>${SITE_URL}/thoughts.html</id>
+  <updated>${updated}</updated>
+${entries}
+</feed>
+`;
 }
 
 function main() {
@@ -205,7 +249,8 @@ function main() {
   posts.forEach(p => {
     writeFileSync(join(THOUGHTS_DIR, `${p.slug}.html`), renderPost(p));
   });
-  console.log(`Built thoughts.html + ${posts.length} post page(s): ${posts.map(p => p.slug).join(", ")}`);
+  writeFileSync(join(THOUGHTS_DIR, "feed.xml"), renderFeed(posts));
+  console.log(`Built thoughts.html + ${posts.length} post page(s) + feed.xml: ${posts.map(p => p.slug).join(", ")}`);
 }
 
 main();
