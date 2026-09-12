@@ -49,6 +49,24 @@ a:hover { text-decoration: underline; }
   align-items: center;
 }
 
+.nav-toggle {
+  margin-left: auto;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.nav-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
 .masthead-brand {
   display: flex;
   align-items: center;
@@ -107,6 +125,8 @@ a:hover { text-decoration: underline; }
   width: 210px;
   flex-shrink: 0;
 }
+
+.layout.nav-collapsed .sidebar { display: none; }
 
 .sidebar nav {
   position: sticky;

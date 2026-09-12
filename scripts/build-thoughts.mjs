@@ -103,6 +103,7 @@ ${head}</head>
       <img src="${prefix}assets/logo.png" alt="The Digital Divide logo" class="masthead-logo">
       <h1>The Digital Divide</h1>
     </a>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="true">☰</button>
   </div>
 </header>
 ${body}
@@ -113,6 +114,7 @@ ${body}
   </div>
 </footer>
 
+<script src="${prefix}assets/nav.js" defer></script>
 </body>
 </html>
 `;
@@ -192,7 +194,7 @@ ${NAV("thoughts.html", "../")}
       <div class="post-body">${bodyHtml}</div>
       ${citations.length ? `<hr class="rule"><h3 style="font-size:1rem;">Sources</h3>
         <ol class="sources-list">${citations.map(c => `<li>${c.url ? `<a href="${escapeHtml(c.url)}" target="_blank" rel="noopener">${escapeHtml(c.text)}</a>` : escapeHtml(c.text)}</li>`).join("")}</ol>` : ""}
-      <div class="thought-article-footer">Enjoyed this? <a href="../subscribe.html">Subscribe to The Rowa Report</a> for the weekly roundup, or <a href="../thoughts.html">read more Thoughts →</a></div>
+      <div class="thought-article-footer">Enjoyed this? <a href="../subscribe.html">Subscribe to the newsletter</a> for the weekly roundup, or <a href="../thoughts.html">read more Thoughts →</a></div>
     </article>
   </main>
 </div>`;
