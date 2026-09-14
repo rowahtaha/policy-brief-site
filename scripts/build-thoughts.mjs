@@ -100,7 +100,7 @@ ${head}</head>
 <header class="masthead">
   <div class="wrap">
     <a href="${prefix}home.html" class="masthead-brand">
-      <img src="${prefix}assets/logo.png" alt="The Digital Divide logo" class="masthead-logo">
+      <img src="${prefix}assets/logo.png?v=2" alt="The Digital Divide logo" class="masthead-logo">
       <h1>The Digital Divide</h1>
     </a>
     <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="true">☰</button>
@@ -163,7 +163,7 @@ ${NAV("thoughts.html")}
     title: "Rowa's Thoughts — The Digital Divide",
     description,
     ogUrl: `${SITE_URL}/thoughts.html`,
-    ogImage: `${SITE_URL}/assets/logo.png`,
+    ogImage: `${SITE_URL}/assets/logo.png?v=2`,
     head: FEED_HEAD(),
     body,
   });
@@ -175,7 +175,7 @@ function renderPost(post) {
   const citations = (meta.citations || []).filter(c => c && c.text);
   const mins = readTime(body);
   const description = excerptOf(meta, body);
-  const ogImage = meta.cover ? `${SITE_URL}/${meta.cover.replace(/^\//, "")}` : `${SITE_URL}/assets/logo.png`;
+  const ogImage = meta.cover ? `${SITE_URL}/${meta.cover.replace(/^\//, "")}` : `${SITE_URL}/assets/logo.png?v=2`;
 
   const pageBody = `
 ${NAV("thoughts.html", "../")}
@@ -187,7 +187,7 @@ ${NAV("thoughts.html", "../")}
         <h2>${escapeHtml(meta.title || "")}</h2>
       </div>
       <div class="thought-byline">
-        <img class="avatar" src="../assets/logo.png" alt="Rowa Taha">
+        <img class="avatar" src="../assets/logo.png?v=2" alt="Rowa Taha">
         <div class="byline-text"><strong>Rowa Taha</strong> · ${fmtDate(meta.date)} · ${mins} min read</div>
       </div>
       ${meta.cover ? `<img class="cover-full" src="../${escapeHtml(meta.cover)}" alt="">` : ""}
