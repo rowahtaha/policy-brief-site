@@ -108,6 +108,7 @@ a:hover { text-decoration: underline; }
   height: 36px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 22%;
 }
 
 /* ---------- Sidebar layout ---------- */
@@ -480,6 +481,7 @@ hr.rule {
   height: 28px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 22%;
   flex-shrink: 0;
 }
 
@@ -954,6 +956,7 @@ footer a { color: var(--muted); text-decoration: underline; }
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 22%;
   flex-shrink: 0;
 }
 
@@ -1059,6 +1062,7 @@ footer a { color: var(--muted); text-decoration: underline; }
   aspect-ratio: 1;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 30%;
   box-shadow: 0 34px 64px -26px rgba(20, 17, 15, 0.4);
   position: relative;
   z-index: 2;
