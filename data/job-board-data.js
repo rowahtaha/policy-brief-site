@@ -4,10 +4,14 @@
 // networked company's careers page for openings — see data/job-network-data.js for the full network.
 //
 // 2026-09-14: full re-verification after Rowa reported most listings were dead or
-// years-stale. Checked ~75 companies across the network directly against their own
-// live careers pages (not search snippets) — only 6 had a confirmed-open, non-attorney
-// role realistically suited to ~0-2 years of experience. The rest either had nothing
-// open, or only attorney-track / 3+ year roles. That's expected: this tier of role is
+// years-stale. Checked 84 companies across the network directly against their own
+// live careers pages (not search snippets) — the privacy-law, national-security-law,
+// tech-vendor, corporate, and nonprofit/academic categories. (The other 76 companies
+// in job-network-data.js — patent-law firms, patent-litigation-support vendors, and
+// data-center hardware vendors — are outside tech policy/privacy/AI-governance and
+// were not checked.) Only 6 of the 84 had a confirmed-open, non-attorney role
+// realistically suited to ~0-2 years of experience. The rest either had nothing open,
+// or only attorney-track / 3+ year roles. That's expected: this tier of role is
 // genuinely rare, not a sign the search missed something.
 const jobBoardData = {
   asOf: "September 14, 2026",
