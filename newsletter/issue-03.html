@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Rowa Report — Issue No. 3 — The Digital Divide</title>
+<meta name="description" content="Google keeps its ad empire but loses the argument, a university sues Anthropic over decade-old patents, Kenya debates a new AI regulator, and a Gulf AI giant needs American money to keep its 'sovereign AI' bet growing.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Rowa Report — Issue No. 3 — The Digital Divide">
+<meta property="og:description" content="Google keeps its ad empire but loses the argument, a university sues Anthropic over decade-old patents, Kenya debates a new AI regulator, and a Gulf AI giant needs American money to keep its 'sovereign AI' bet growing.">
+<meta property="og:url" content="https://rowataha.com/newsletter/issue-03.html">
+<meta property="og:image" content="https://rowataha.com/assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Rowa Report — Issue No. 3 — The Digital Divide">
+<meta name="twitter:description" content="Google keeps its ad empire but loses the argument, a university sues Anthropic over decade-old patents, Kenya debates a new AI regulator, and a Gulf AI giant needs American money to keep its 'sovereign AI' bet growing.">
+<meta name="twitter:image" content="https://rowataha.com/assets/logo.png">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="../home.html" class="masthead-brand">
+      <img src="../assets/logo.png" alt="The Digital Divide logo" class="masthead-logo">
+      <h1>The Digital Divide</h1>
+    </a>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="true">☰</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav>
+      <a href="../globe-rights.html">Digital Rights Projects</a>
+      <a href="../newsletter.html" class="active">Newsletter</a>
+      <a href="../subscribe.html">Subscribe</a>
+      <a href="../thoughts.html">Blog</a>
+      <a href="../jobs.html">Job Board</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </aside>
+
+  <main class="content" style="max-width:900px;">
+
+    <div class="kicker" style="text-align:left; margin-bottom:4px;">The Rowa Report</div>
+    <div class="dateline">Issue No. 3 · Week of September 8–14, 2026</div>
+    <h2>Ten Stories About Who Actually Gets to Decide</h2>
+    <p class="byline">By Rowa Taha</p>
+
+    <hr class="rule">
+
+    <p class="lede">This week's stories all turn on the same question in different clothes: who has the authority to act, and where does that authority actually come from? Courts applying old law to new companies, a country debating whether it needs a brand-new regulator, and three nations discovering that "sovereign AI" still runs on someone else's chips.</p>
+
+    <div class="news-grid single-col">
+
+      <div class="news-card">
+        <div class="news-card-banner cat-lawsuit"><span class="icon">⚖️</span><span class="cat-label">Big Tech / Antitrust — United States</span></div>
+        <div class="news-card-body">
+          <span class="num">01</span>
+          <h3>Google Keeps Its Ad Empire, But Loses the Argument That It Did Nothing Wrong</h3>
+          <p>Okay so this is the one I've been tracking for months, and the ending is messier than either side wanted. On September 2, Judge Leonie Brinkema rejected all three of the DOJ's structural remedies against Google's ad-tech business, no forced sale of AdX, no open-sourcing DFP's auction logic, no contingent breakup of DFP itself[1]. Google keeps the assets. If you only read the headline, that sounds like Google won.</p>
+          <p>Here's the part that actually matters more: this is the same judge who already ruled back in April that Google illegally monopolized the ad-server and exchange markets. She didn't reverse that. She just decided the fix isn't a breakup, it's behavioral, ending Google's "first look," "last look," and unified-pricing practices, the mechanics that let Google's exchange favor its own ad server in ways competitors couldn't see or match[2]. The actual list of obligations is still sealed pending a jointly filed final judgment due October 2, so we don't even know the full scope of what changes yet[1].</p>
+          <p>What I keep coming back to is that "loses the case, keeps the assets" is going to be the template for a lot of these AI-and-platform antitrust fights, not just Google's. Courts seem more comfortable finding illegal monopolization than ordering a breakup to fix it. Whether behavioral remedies without structural ones actually change the market, or just change the paperwork, is the thing worth watching once that final judgment unseals[3].</p>
+          <div class="src-row">
+            <a class="src-link" href="https://techcrunch.com/2026/09/02/google-spared-from-ad-business-breakup-but-judge-orders-changes-to-how-it-operates/" target="_blank" rel="noopener">TechCrunch →</a>
+            <a class="src-link" href="https://www.adexchanger.com/antitrust/google-wont-have-to-break-up-its-ad-tech-business-judge-brinkema-rules/" target="_blank" rel="noopener">AdExchanger →</a>
+            <a class="src-link" href="https://thehill.com/policy/technology/6066362-judge-rejects-google-adtech-breakup/" target="_blank" rel="noopener">The Hill →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-banner cat-lawsuit"><span class="icon">⚖️</span><span class="cat-label">IP / Litigation — United States</span></div>
+        <div class="news-card-body">
+          <span class="num">02</span>
+          <h3>A University Says Claude Code Runs on Its Patents</h3>
+          <p>This is a genuinely strange one because of who's suing, not just what they're suing over. The University of Tennessee Research Foundation filed a patent infringement suit against Anthropic in Delaware federal court on September 1, and reporting describes it as the first patent suit Anthropic has faced[1]. Not a copyright suit over training data, the usual AI-lawsuit shape. A patent suit, over architecture.</p>
+          <p>The two patents at issue, 10,019,470 and 10,095,718, came out of UT's TENNLab brain-inspired computing group, work from researchers J. Douglas Birdwell, Mark E. Dean, and Catherine Schuman, filed back in 2014, years before anyone was building products like Claude Code[2]. UTRF's complaint specifically targets Claude Code's underlying agentic architecture, alleging it implements patented methods for constructing neuromorphic networks, including a background execution scheduling system and a memory consolidation engine covered by the '470 patent[1]. Anthropic says it will defend the case vigorously[3].</p>
+          <p>What sticks with me is the time gap. A patent filed in 2014 for brain-inspired computing research, sitting mostly unnoticed, suddenly worth suing over in 2026 because the exact architecture it describes turned out to be how modern coding agents actually get built. That's either a university foundation that saw this coming a decade early, or a sign that a lot of foundational AI-adjacent patents from the 2010s are about to get a second look now that there's real money on the other end of them.</p>
+          <div class="src-row">
+            <a class="src-link" href="https://www.investing.com/news/stock-market-news/university-of-tennessee-sues-anthropic-over-neural-network-technology-4803855" target="_blank" rel="noopener">Investing.com (Reuters) →</a>
+            <a class="src-link" href="https://news.bloomberglaw.com/litigation/anthropic-hit-with-patent-suit-over-claude-ai-neural-networks" target="_blank" rel="noopener">Bloomberg Law →</a>
+            <a class="src-link" href="https://www.wbir.com/article/news/local/knoxville/university-of-tennessee-research-foundation-sues-anthropic/51-cf5be97b-f597-4170-b7ed-1d749dc88570" target="_blank" rel="noopener">WBIR Knoxville →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-banner cat-accountability"><span class="icon">📰</span><span class="cat-label">Free Speech / AI Law — United States</span></div>
+        <div class="news-card-body">
+          <span class="num">03</span>
+          <h3>A Judge Just Drew the Line Between a Deepfake and a Joke</h3>
+          <p>Vermont content creator Hank Poitras, who goes by "Planet Hank," posted an AI-generated video of Rep. Becca Balint and her then-primary challenger Mark Coester, one where Coester criticizes Balint's record before literally using an excavator to lift her into a trash bin outside the Vermont Statehouse[1]. Five days later, the Vermont AG's office opened an investigation into whether it violated Act 75, the state's new synthetic-media election law[1].</p>
+          <p>On September 9, Senior Judge William K. Sessions III blocked that investigation with a preliminary injunction, and his reasoning is the part I think matters most: "Vermont's interest in protecting and preserving the integrity of the electoral process and related fraud is lower when the threat faced is an unrealistic, satirical video"[2]. In other words, the law's justification, protecting voters from being deceived, doesn't stretch to cover content that's obviously not trying to deceive anyone. One legal commentator's headline put it almost too well: the video is protected because it's "obviously ridiculous"[3].</p>
+          <p>I think this is a genuinely useful precedent, not because it weakens deepfake election laws, but because it tells legislatures something specific about how to write the next one: intent to deceive and capacity to deceive both have to be part of the test, or the law becomes a tool for investigating satire you don't like rather than fraud you're trying to stop.</p>
+          <div class="src-row">
+            <a class="src-link" href="https://vtdigger.org/2026/09/09/federal-judge-blocks-vermont-ags-probe-of-planet-hank-ai-video/" target="_blank" rel="noopener">VTDigger →</a>
+            <a class="src-link" href="https://www.wcax.com/2026/09/09/judge-sides-with-brattleboro-content-creator-ai-disclosure-law-lawsuit/" target="_blank" rel="noopener">WCAX →</a>
+            <a class="src-link" href="https://reason.com/volokh/2026/09/10/court-blocks-investigation-of-ai-generated-video-about-vermont-political-candidates-because-video-is-obviously-ridiculous/" target="_blank" rel="noopener">Reason (Volokh Conspiracy) →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-banner cat-ai-governance"><span class="icon">🤖</span><span class="cat-label">AI Models — China</span></div>
+        <div class="news-card-body">
+          <span class="num">04</span>
+          <h3>DeepSeek Just Made Frontier AI Even Cheaper</h3>
+          <p>DeepSeek released V4.1-Flash on September 10: MIT-licensed, fully open weights on Hugging Face, a 1-million-token context window, trained from scratch on 45 trillion tokens of mixed text and images[1][2]. The pricing is the part that actually moves markets, $0.15 per million input tokens off-peak, dropping to $0.30 at peak, a fraction of what comparable frontier-class models from US labs charge[1].</p>
+          <p>And it's not just cheap, it's competitive. DeepSeek's own benchmarks put V4.1-Flash at 90.6 on Terminal-Bench 2.1 and 74.2 on DeepSWE v1.1, ahead of Opus 5.0 and GPT-5.6 Sol on those specific tests[1][3]. I'd hold that number a little loosely since it's the company's own benchmark, not independently reproduced, but even a partial version of that claim is enough to matter.</p>
+          <p>This is the fourth or fifth time this year a Chinese open-weight model has undercut Western labs on price while staying close on capability, and I don't think "again" makes it less significant. Every time this happens, it gets a little harder for AI companies charging premium prices to justify the gap purely on quality, and a little easier for anyone anywhere in the world to build on frontier-class AI without paying frontier-class prices.</p>
+          <div class="src-row">
+            <a class="src-link" href="https://datanorth.ai/news/deepseek-releases-deepseek-v4-1-flash" target="_blank" rel="noopener">DataNorth AI →</a>
+            <a class="src-link" href="https://www.datacamp.com/blog/deepseek-v4-1-flash" target="_blank" rel="noopener">DataCamp →</a>
+            <a class="src-link" href="https://llm-stats.com/models/deepseek-v4.1-flash" target="_blank" rel="noopener">llm-stats.com →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-banner cat-data-rights"><span class="icon">🔒</span><span class="cat-label">Data Rights — South Africa</span></div>
+        <div class="news-card-body">
+          <span class="num">05</span>
+          <h3>South Africa's Privacy Regulator Makes an Example Out of a Standards Body</h3>
+          <p>The South African Bureau of Standards got hit by ransomware back in 2024. This month, South Africa's Information Regulator issued a formal enforcement notice against SABS over how it handled that breach, and the findings go well beyond "you got hacked"[1]. The Regulator's own-initiated assessment found SABS violated multiple POPIA conditions at once: collecting excessive or irrelevant personal information, weak consent mechanisms, inadequate security safeguards, and failing to properly inform people whose data it was collecting in the first place[2]. SABS now has 90 days to fix its policies, run personal information impact assessments, and put real protections in place[1].</p>
+          <p>What actually got my attention is the scale context the Regulator gave at a briefing on August 31: over 8,000 security compromise notifications received since POPIA's enforcement provisions took effect, more than 1,220 in this financial year alone, on pace for roughly 3,000 by year end[3]. SABS isn't an outlier. It's this year's example out of a genuinely large and growing pile.</p>
+          <p>I think that's the actual story here, not one breached standards body, but a regulator that finally has enough of a caseload to start being specific and public about what "inadequate security" actually looks like in practice, instead of just repeating the statute back at people.</p>
+          <div class="src-row">
+            <a class="src-link" href="https://www.polity.org.za/article/the-regulator-is-watching-new-enforcement-signals-for-popia-and-paia-compliance-2026-09-01" target="_blank" rel="noopener">Polity.org.za →</a>
+            <a class="src-link" href="https://werksmans.com/the-regulator-is-watching-new-enforcement-signals-for-popia-and-paia-compliance/" target="_blank" rel="noopener">Werksmans Attorneys →</a>
+            <a class="src-link" href="https://www.itweb.co.za/article/inforeg-concerned-by-alarming-rate-of-data-breaches/rxP3jqBE2ZLMA2ye" target="_blank" rel="noopener">ITWeb →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-banner cat-ai-governance"><span class="icon">🤖</span><span class="cat-label">AI Governance — Kenya</span></div>
+        <div class="news-card-body">
+          <span class="num">06</span>
+          <h3>Kenya Wants an AI Commissioner. Its Own Lawyers Aren't Sure That's Smart.</h3>
+          <p>Kenya's draft Artificial Intelligence Bill, 2026 would build a genuinely elaborate structure: an Office of the AI Commissioner as the main enforcement body, registering AI systems, running audits, investigating breaches; an AI Authority for national strategy and standards; and an AI Advisory Council to consult on global trends[1]. That's three new institutions for one technology.</p>
+          <p>Here's the pushback, and it's coming from inside the industry, not from AI skeptics: Kenya already has a Data Protection Commissioner whose mandate covers a lot of the same ground, plus the Communications Authority, the Kenya Bureau of Standards, the Competition Authority, and the Central Bank, all of whose mandates already intersect with AI in different ways[2]. The Bill ties high-risk AI compliance directly to the existing Data Protection Act, including requiring the same data protection impact assessments that already exist, which industry lawyers say risks a duplicative, potentially conflicting compliance regime rather than a clearer one[1][2]. One law firm's framing stuck with me: "Proposed too soon," not because AI doesn't need governance, but because Kenya hasn't yet answered how a brand new AI Commissioner is actually supposed to coexist with the regulators already doing adjacent work[1].</p>
+          <p>This is a fight a lot of countries are going to have eventually: does new technology need a new regulator, or does it need the existing regulators to actually coordinate? Kenya's just having it earlier and more publicly than most.</p>
+          <div class="src-row">
+            <a class="src-link" href="https://bowmanslaw.com/insights/kenya-artificial-intelligence-bill-2026-proposed-too-soon/" target="_blank" rel="noopener">Bowmans →</a>
+            <a class="src-link" href="https://techcabal.com/2026/04/02/kenyas-ai-bill-creates-a-powerful-new-digital-sheriff/" target="_blank" rel="noopener">TechCabal →</a>
+            <a class="src-link" href="https://hapakenya.com/2026/03/16/a-summary-of-the-artificial-intelligence-bill-2026/" target="_blank" rel="noopener">HapaKenya →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-banner cat-lawsuit"><span class="icon">⚖️</span><span class="cat-label">Big Tech / Antitrust — Japan</span></div>
+        <div class="news-card-body">
+          <span class="num">07</span>
+          <h3>Japan Raided Microsoft's Tokyo Offices. The Investigation Is Still Very Much Alive.</h3>
+          <p>Back in February, the Japan Fair Trade Commission executed a dawn raid on Microsoft Japan's Shinagawa offices, seizing documents and internal communications as part of an investigation into whether Microsoft's licensing terms for Windows, Microsoft 365, and other software steer enterprise customers toward Azure and make it harder or costlier to run the same workloads on rival clouds[1][2]. Microsoft Japan said at the time it was "fully cooperating"[1].</p>
+          <p>It hasn't gone away. Regulators are still actively soliciting evidence from third parties, and the JFTC's own official notice confirms the inquiry into suspected Antimonopoly Act violations remains open[3]. What I think is easy to miss if you only follow US antitrust news is that this is part of a genuinely global pattern right now, regulators in multiple jurisdictions have spent the past two years scrutinizing whether cloud incumbents' licensing and technical practices create de facto lock-in, not through outright exclusivity clauses but through pricing structures and compatibility friction that add up to the same effect[2].</p>
+          <p>Cloud licensing is a boring phrase for what's actually a pretty consequential question: whether the company that makes the software you depend on gets to also quietly tax you for running it somewhere else.</p>
+          <div class="src-row">
+            <a class="src-link" href="https://finance.yahoo.com/news/microsoft-japan-raided-over-suspected-082729353.html" target="_blank" rel="noopener">Reuters via Yahoo Finance →</a>
+            <a class="src-link" href="https://asia.nikkei.com/business/technology/japan-antitrust-watchdog-raids-microsoft-over-cloud-services-concerns" target="_blank" rel="noopener">Nikkei Asia →</a>
+            <a class="src-link" href="https://www.jftc.go.jp/en/pressreleases/yearly-2026/March/260304.html" target="_blank" rel="noopener">Japan Fair Trade Commission (official) →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-banner cat-ai-governance"><span class="icon">🤖</span><span class="cat-label">AI Governance — South Korea</span></div>
+        <div class="news-card-body">
+          <span class="num">08</span>
+          <h3>South Korea Is About to Give 52 Million People Free AI</h3>
+          <p>South Korea's Ministry of Science and ICT is preparing a public beta for late September of a free, domestically built general-purpose AI chatbot, part of a broader "AI for All" initiative launched in mid-July aiming to cover the country's roughly 51 to 52 million residents, with full national service planned before year end[1]. The government's own estimate of the problem this is meant to solve is specific: roughly 23 million Koreans currently pay for ChatGPT or Claude subscriptions[2].</p>
+          <p>The sovereignty angle is baked into the requirements, not just the messaging. Winning providers have to build on domestic Korean AI models, which must make up at least 50 percent of the underlying technology[1]. Three consortia were selected, led by SK Telecom, KT, and Kakao, and the state is distributing up to 512 Nvidia B200 chips across them to cover the compute[1]. This rolls out alongside the AI Basic Act's new content-labeling requirements, so the free chatbot and the new disclosure rules are landing at basically the same time[2][3].</p>
+          <p>No other G20 country is attempting free, unlimited AI access for its entire population on this kind of timeline. Whether that's a genuinely replicable model for reducing dependence on foreign AI platforms, or a very expensive one-off that only a country with Korea's specific telecom and chaebol structure could pull off, is the thing I want to see answered once the beta numbers come in.</p>
+          <div class="src-row">
+            <a class="src-link" href="https://www.techtimes.com/articles/321169/20260721/korea-pairs-ai-law-free-chatbot-23-million-quit-paying-chatgpt.htm" target="_blank" rel="noopener">Tech Times →</a>
+            <a class="src-link" href="https://thenextweb.com/news/south-korea-free-ai-chatbot-all-citizens-domestic-models" target="_blank" rel="noopener">TheNextWeb →</a>
+            <a class="src-link" href="https://aiinasia.com/north-asia/south-korea-ai-for-all-free-national-chatbot-msit-north-asia-deep-dive-2026-07-15" target="_blank" rel="noopener">AI in Asia →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-banner cat-data-rights"><span class="icon">🔒</span><span class="cat-label">Data Rights — Australia</span></div>
+        <div class="news-card-body">
+          <span class="num">09</span>
+          <h3>Australia's App Stores Now Have to Check Your ID Before an 18+ Download</h3>
+          <p>From September 9, Australia's App Distribution Services Code is legally enforceable, requiring Apple's App Store and Google Play to run age assurance before letting anyone download an app rated 18+[1]. This isn't a standalone rule, it's one of six codes the eSafety Commissioner registered a year earlier, on September 9, 2025, under the Online Safety Act's Age-Restricted Material framework, with most obligations phasing in through March and this specific deadline landing now[2]. Apple actually switched its checks on back in February; Google's been rolling its own tools out to Australians since mid-August[3].</p>
+          <p>The penalties are real: up to A$49.5 million for non-compliance, with the eSafety Commissioner able to issue a formal direction and courts setting the actual amount based on severity and compliance history[1][3]. Apple has already started blocking unverified accounts from titles like Grand Theft Auto[1]. The official guidance is notably open-ended about method, photo ID, AI age-estimation, credit card checks all qualify as long as they're "accurate, robust, fair and reliable"[3], which leaves a lot of room for app stores to pick whichever method is cheapest to implement rather than most private.</p>
+          <p>I think the AI age-estimation option is the one worth watching. It's the path of least friction for platforms, but it means handing over a photo of your face to prove you're old enough to download a video game, which is its own quiet expansion of what companies are allowed to ask for in the name of protecting minors.</p>
+          <div class="src-row">
+            <a class="src-link" href="https://www.techbusinessnews.com.au/news/app-store-age-checks-become-law-in-australia-from-september-9-with-fines-up-to-49-5-million" target="_blank" rel="noopener">Tech Business News →</a>
+            <a class="src-link" href="https://ia.acs.org.au/article/2026/apple-begins-app-store-age-checks-in-australia.html" target="_blank" rel="noopener">Information Age (ACS) →</a>
+            <a class="src-link" href="https://www.esafety.gov.au/newsroom/media-releases/online-safety-codes-introduce-real-world-protections-for-children-online" target="_blank" rel="noopener">eSafety Commissioner (official) →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-banner cat-trade"><span class="icon">🌍</span><span class="cat-label">AI Infrastructure — Saudi Arabia / UAE</span></div>
+        <div class="news-card-body">
+          <span class="num">10</span>
+          <h3>The Gulf's Biggest AI Bet Might Need American Money to Keep Growing</h3>
+          <p>There's a real tension sitting underneath this story. Abu Dhabi's state-backed G42 is reportedly weighing a stake sale to American investors, even while the UAE keeps talking publicly about AI "sovereignty"[1]. Both G42 and Saudi Arabia's HUMAIN are exploring raising outside capital from investors beyond the Gulf, at the same time HUMAIN is preparing to put its own AI PC into enterprise customers' hands starting September 20, part of roughly $15 billion in AI investment announced at LEAP 2026 in Riyadh[1][2].</p>
+          <p>The chip access angle explains a lot of this. Back in November 2025, the US Commerce Department authorized exports of advanced Nvidia chips to both companies, each cleared for chips with computing power equivalent to 35,000 GB300 processors[3]. Opening up to American ownership, even partial, is reportedly part of how G42 protects that access going forward, not just a straightforward funding play[1]. HUMAIN alone has committed roughly $100 billion to build 11 data centers totaling 2.2 gigawatts of capacity under Saudi's Public Investment Fund[3].</p>
+          <p>So you've got two Gulf states racing to build sovereign AI capacity, funded partly by chips they can only get with US government sign-off, and partly by capital they're now inviting in from the same country whose chips they need. That's not really sovereignty in the way the word usually gets used. It's more like buying your way into a seat at a table you don't fully control yet.</p>
+          <div class="src-row">
+            <a class="src-link" href="https://www.bloomberg.com/news/newsletters/2026-09-07/saudi-ai-firm-that-bet-on-musk-eyes-ipo-abu-dhabi-s-g42-weighs-us-ownership" target="_blank" rel="noopener">Bloomberg →</a>
+            <a class="src-link" href="https://www.agbi.com/ai/2026/09/gulf-ai-giants-humain-and-g42-look-to-raise-outside-capital/" target="_blank" rel="noopener">AGBI →</a>
+            <a class="src-link" href="https://mei.edu/policymemo/us-authorizes-chips-for-the-uae-saudi-arabia-2/" target="_blank" rel="noopener">Middle East Institute →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="rule">
+
+    <h2>What This Means</h2>
+
+    <p>Put these ten stories side by side and the pattern isn't really about AI capability, it's about authority. Who actually gets to decide what happens next, and where that authority comes from.</p>
+
+    <p>In the United States, the authority doing the real work this week is old. A judge applying antitrust law that predates the internet found Google guilty of monopolization and ordered behavioral fixes rather than a breakup. A university foundation is testing whether patents filed in 2014 for brain-inspired computing research cover how a 2026 coding agent actually works. A federal judge blocked a state attorney general from investigating a satirical video by reading the actual text of Vermont's election-integrity law narrowly rather than expansively. None of these required a single new AI-specific statute. They required existing institutions, courts, patent offices, doing what they already do, applied to a new subject.</p>
+
+    <p>Compare that to Kenya, where the proposed fix is the opposite: build an entirely new institution, an AI Commissioner with its own enforcement powers, layered on top of a Data Protection Commissioner and several other regulators whose mandates already reach AI in practice. Kenya's own industry lawyers are the ones flagging that this risks confusion rather than clarity. I don't think that means new AI-specific regulators are always the wrong call. I think it means the harder, less glamorous work, figuring out how a new body coexists with the ones already there, has to happen before the new body gets created, not after.</p>
+
+    <p>And then there's the sovereignty layer, which is really a story about who controls the underlying compute. South Korea is spending real money to build its own AI capacity specifically so 23 million people stop paying foreign companies for chatbot access. DeepSeek keeps undercutting Western labs on price, open weights, no subscription. Meanwhile Saudi Arabia and the UAE, despite investing tens of billions into "sovereign" AI infrastructure, are simultaneously courting American investment and depending on US government approval just to get the chips that infrastructure runs on. Three different countries, three different relationships to the same underlying question: can you actually be sovereign over a technology whose most advanced components still get made, priced, and licensed somewhere else?</p>
+
+    <p><strong>Worth watching next:</strong> whether the sealed Google remedies, once unsealed on October 2, actually constrain the ad-auction practices they're supposed to fix; how UTRF v. Anthropic frames "architecture" versus "training data" in a patent claim, since that distinction could matter far beyond this one case; and whether Kenya's Parliament narrows the AI Bill's institutional overlap before it advances, or just passes it as written and lets the regulators sort out turf later.</p>
+
+    <p><a href="../newsletter.html">← Back to newsletter archive</a></p>
+
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    © 2026 Rowa Taha. All rights reserved.<br>
+    Also posted on <a href="https://substack.com/@rowataha" target="_blank" rel="noopener">Substack</a> and <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
