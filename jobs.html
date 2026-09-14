@@ -127,6 +127,9 @@
   fillOptions(filterBarEl, jobBoardData.roles.map(r => r.barRequired));
   fillOptions(filterExperienceEl, jobBoardData.roles.map(r => r.experience));
   fillOptions(filterWorkModeEl, jobBoardData.roles.map(r => r.workMode), v => workModeLabel[v] || v);
+  if (!jobBoardData.roles.length) {
+    document.getElementById('roleFilters').style.display = 'none';
+  }
 
   function renderRoles() {
     const barVal = filterBarEl.value;
@@ -146,6 +149,10 @@
     });
 
     rolesEl.innerHTML = '';
+    if (!jobBoardData.roles.length) {
+      rolesEl.innerHTML = `<p style="color:var(--muted)">This list is being re-verified against each company's live careers page — check back soon for confirmed-open roles.</p>`;
+      return;
+    }
     if (!matched.length) {
       rolesEl.innerHTML = `<p style="color:var(--muted)">No roles match those filters right now.</p>`;
       return;
