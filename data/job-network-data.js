@@ -14,7 +14,7 @@ const jobNetworkCategories = [
   { id: "corporate",     label: "Corporate, Consulting & In-House Employers" },
   { id: "assoc",         label: "Bar Associations, Nonprofits & Academic Centers" },
   { id: "datacenter",    label: "Data Center & Industrial Hardware Vendors" },
-  { id: "other",         label: "Not Yet Categorized" }
+  { id: "privacy-orgs",  label: "Organizations in the Privacy Space" }
 ];
 
 const flyerOtherWebsites = {
@@ -111,7 +111,22 @@ const jobNetworkData = {
       notes: "No official careers page confirmed. Likely a small firm without public listings — check LinkedIn or ask directly." },
     { name: "ABA Standing Committee on Law and National Security", fit: "contact", tag: "Host/Sponsor · ABA Nat'l Security Law", category: "assoc",
       role: "", roleLink: "", website: "https://www.americanbar.org/groups/law_national_security/resources/national-security-and-cyber-security-law-job-postings/",
-      notes: "STALE — this aggregated job board is dated February 2022 and every listing on it is attorney/JD/5+yr/security-clearance. Not useful as a current resource; kept for reference only." }
+      notes: "STALE — this aggregated job board is dated February 2022 and every listing on it is attorney/JD/5+yr/security-clearance. Not useful as a current resource; kept for reference only." },
+    { name: "Electronic Frontier Foundation (EFF)", fit: "contact", tag: "Digital rights nonprofit", category: "privacy-orgs",
+      role: "", roleLink: "https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey=28620672D234BF368306CEB4A2746667", website: "https://www.eff.org",
+      notes: "Added 2026-09-15 at Rowa's request. Openings run through their Paycom ATS — check the link directly for current listings." },
+    { name: "Center for Democracy & Technology (CDT)", fit: "contact", tag: "Digital rights nonprofit", category: "privacy-orgs",
+      role: "", roleLink: "https://cdt.org/careers/", website: "https://cdt.org",
+      notes: "Added 2026-09-15 at Rowa's request. No specific listings were showing on their careers page as of this check — the page notes openings are posted dynamically, check directly." },
+    { name: "Center for Strategic and International Studies (CSIS)", fit: "contact", tag: "Foreign/tech policy think tank", category: "privacy-orgs",
+      role: "", roleLink: "https://www.csis.org/about/careers-culture", website: "https://www.csis.org",
+      notes: "Added 2026-09-15 at Rowa's request." },
+    { name: "Future of Privacy Forum (FPF)", fit: "contact", tag: "Privacy policy nonprofit", category: "privacy-orgs",
+      role: "", roleLink: "https://fpf.org/about/career-opportunities/", website: "https://fpf.org",
+      notes: "Added 2026-09-15 — best-guess match for 'Privacy forum' from Rowa's request; confirm this is the org she meant. No open positions as of this check, only internships (Asia-Pacific Office, Hannah Schaller Memorial, U.S. Policy)." },
+    { name: "International Association of Privacy Professionals (IAPP)", fit: "contact", tag: "Privacy professional association", category: "privacy-orgs",
+      role: "", roleLink: "https://iapp.org/about/iapp-careers", website: "https://iapp.org",
+      notes: "Added 2026-09-15 at Rowa's request. No specific listings shown directly on the careers page — it links out to an external recruiting platform, check there." }
   ],
   pinned: [
     { name: "Appian", role: "Associate Counsel", website: "https://www.appian.com", category: "corporate" },
@@ -122,12 +137,12 @@ const jobNetworkData = {
     { name: "Willkie", website: "https://www.willkie.com", tag: "Gold Sponsor · Privacy Forum", category: "privacy-law" }, { name: "AlixPartners", website: "https://www.alixpartners.com", tag: "Sponsor · Privacy Forum", category: "corporate" },
     { name: "ArentFox Schiff", website: "https://www.afslaw.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" }, { name: "Arnall Golden Gregory", website: "https://www.agg.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" },
     { name: "Arnold & Porter", website: "https://www.arnoldporter.com", tag: "Sponsor · Privacy Forum + ABA Nat'l Security Law", category: "natsec-law" }, { name: "Alston & Bird", website: "https://www.alston.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" },
-    { name: "BerrySeed", website: "https://www.berryseed.com", tag: "Sponsor · Privacy Forum", category: "other" }, { name: "Baker McKenzie", website: "https://www.bakermckenzie.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" },
+    { name: "BerrySeed", website: "https://www.berryseed.com", tag: "Sponsor · Privacy Forum", category: "tech-vendors" }, { name: "Baker McKenzie", website: "https://www.bakermckenzie.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" },
     { name: "Constangy Brooks Smith & Prophete", website: "https://www.constangy.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" }, { name: "Cooley", website: "https://www.cooley.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" },
     { name: "Boltive", website: "https://www.boltive.com", tag: "Sponsor · Privacy Forum", category: "tech-vendors" }, { name: "Davis Wright Tremaine", website: "https://www.dwt.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" },
     { name: "Frankfurt Kurnit Klein & Selz", website: "https://fkks.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" },
     { name: "Freshfields", website: "https://www.freshfields.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" }, { name: "Gunderson Dettmer", website: "https://www.gunder.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" },
-    { name: "Greenberg Traurig", website: "https://www.gtlaw.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" }, { name: "Haystack", tag: "Sponsor · Privacy Forum", category: "other" },
+    { name: "Greenberg Traurig", website: "https://www.gtlaw.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" }, { name: "Haystack", tag: "Sponsor · Privacy Forum", category: "tech-vendors" },
     { name: "Jenner & Block", website: "https://www.jenner.com", tag: "Sponsor · Privacy Forum + ABA Nat'l Security Law", category: "natsec-law" }, { name: "Kelley Drye", website: "https://www.kelleydrye.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" },
     { name: "Stroz Friedberg (a LevelBlue company)", website: "https://levelblue.com/strozfriedberg", tag: "Sponsor · Privacy Forum", category: "tech-vendors" }, { name: "Lokker", website: "https://lokker.com", tag: "Sponsor · Privacy Forum", category: "tech-vendors" },
     { name: "McCarter & English", website: "https://www.mccarter.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" }, { name: "NowSecure", website: "https://www.nowsecure.com", tag: "Sponsor · Privacy Forum", category: "tech-vendors" },
@@ -136,7 +151,7 @@ const jobNetworkData = {
     { name: "Stinson", website: "https://www.stinson.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" }, { name: "Subpoena Solutions", tag: "Sponsor · Privacy Forum", category: "ip-services" },
     { name: "BigID", website: "https://bigid.com", tag: "Sponsor · Privacy Forum", category: "tech-vendors" }, { name: "Filevine", website: "https://www.filevine.com", tag: "Sponsor · Privacy Forum", category: "ip-services" },
     { name: "Shoosmiths Eight", website: "https://www.shoosmiths.com", tag: "Sponsor · Privacy Forum", category: "privacy-law" }, { name: "ObservePoint", website: "https://www.observepoint.com", tag: "Sponsor · Privacy Forum", category: "tech-vendors" },
-    { name: "BotCity", website: "https://botcity.dev", tag: "Sponsor · Privacy Forum", category: "other" }, { name: "aosphere", website: "https://www.aosphere.com", tag: "Sponsor · Privacy Forum", category: "tech-vendors" },
+    { name: "BotCity", website: "https://botcity.dev", tag: "Sponsor · Privacy Forum", category: "tech-vendors" }, { name: "aosphere", website: "https://www.aosphere.com", tag: "Sponsor · Privacy Forum", category: "tech-vendors" },
     { name: "Ketch", website: "https://www.ketch.com", tag: "Sponsor · Privacy Forum", category: "tech-vendors" }, { name: "Kirkland & Ellis", website: "https://www.kirkland.com", tag: "Charter Firm Sponsor · ABA Nat'l Security Law", category: "natsec-law" },
     { name: "Mayer Brown", website: "https://www.mayerbrown.com", tag: "Charter Firm Sponsor · ABA Nat'l Security Law", category: "natsec-law" },
     { name: "Paul, Weiss", website: "https://www.paulweiss.com", tag: "Charter Firm Sponsor · ABA Nat'l Security Law", category: "natsec-law" }, { name: "Hecker Fink", website: "https://www.heckerfink.com", tag: "Premier Firm Sponsor · ABA Nat'l Security Law", category: "natsec-law" },
@@ -166,7 +181,7 @@ const jobNetworkData = {
     { name: "Baker Botts", website: "https://www.bakerbotts.com", tag: "Bronze Sponsor · AIPLA 2026", category: "ip-law" }, { name: "Morrison Foerster", website: "https://www.mofo.com", tag: "Bronze Sponsor · AIPLA 2026", category: "ip-law" },
     { name: "Shook Hardy & Bacon", website: "https://www.shb.com", tag: "Bronze Sponsor · AIPLA 2026", category: "ip-law" }, { name: "Klarquist", website: "https://www.klarquist.com", tag: "Bronze Sponsor · AIPLA 2026", category: "ip-law" },
     { name: "Barley Snyder", website: "https://www.barley.com", tag: "Bronze Sponsor · AIPLA 2026", category: "ip-law" }, { name: "Gray Ice Higdon", website: "https://www.grayice.com", tag: "Bronze Sponsor · AIPLA 2026", category: "ip-law" },
-    { name: "Krishna & Saurastri Associates", website: "https://www.krishnaandsaurastri.com", tag: "Bronze Sponsor · AIPLA 2026", category: "ip-law" }, { name: "Ankar", website: "https://ankar.ai", tag: "Bronze Sponsor · AIPLA 2026", category: "other" },
+    { name: "Krishna & Saurastri Associates", website: "https://www.krishnaandsaurastri.com", tag: "Bronze Sponsor · AIPLA 2026", category: "ip-law" }, { name: "Ankar", website: "https://ankar.ai", tag: "Bronze Sponsor · AIPLA 2026", category: "tech-vendors" },
     { name: "Forresters", website: "https://www.forresters-ip.com", tag: "Bronze Sponsor · AIPLA 2026", category: "ip-law" }, { name: "McAndrews", website: "https://www.mcandrews-ip.com", tag: "Pearl Sponsor · AIPLA 2026", category: "ip-law" },
     { name: "Mueting Raasch Group", website: "https://www.mrgiplaw.com", tag: "Pearl Sponsor · AIPLA 2026", category: "ip-law" }, { name: "NLPatent", website: "https://www.nlpatent.com", tag: "Pearl Sponsor · AIPLA 2026", category: "ip-services" },
     { name: "AI-PRO", tag: "Exhibitor · AIPLA 2026", category: "tech-vendors" }, { name: "American Arbitration Association", website: "https://www.adr.org", tag: "Exhibitor · AIPLA 2026", category: "assoc" },

@@ -45,6 +45,8 @@
     <p style="color:var(--muted)" id="asof"></p>
     <p id="intro"></p>
 
+    <div id="jbStats" class="jb-stats"></div>
+
     <div id="roleFilters" class="role-filters">
       <label>Bar admission
         <select id="filterBar">
@@ -91,6 +93,25 @@
 <script>
   document.getElementById('asof').textContent = 'Updated ' + jobBoardData.asOf;
   document.getElementById('intro').textContent = jobBoardData.intro;
+
+  // Pool every network list into one array — just names, grouped by category, each
+  // linked to its official website where known.
+  const allCompanies = [
+    ...jobNetworkData.researched,
+    ...jobNetworkData.pinned,
+    ...jobNetworkData.backlog,
+    ...jobNetworkData.flyerRelevant,
+    ...jobNetworkData.flyerOther
+  ];
+  const OUT_OF_SCOPE_CATS = ['ip-law', 'ip-services', 'datacenter'];
+  const inFieldCount = allCompanies.filter(c => !OUT_OF_SCOPE_CATS.includes(c.category)).length;
+
+  const jbStatsEl = document.getElementById('jbStats');
+  jbStatsEl.innerHTML = `
+    <div class="jb-stat"><span class="num">${allCompanies.length}</span><span class="label">Companies in directory</span></div>
+    <div class="jb-stat"><span class="num">${inFieldCount}</span><span class="label">In-field, checked</span></div>
+    <div class="jb-stat"><span class="num">${jobBoardData.roles.length}</span><span class="label">Confirmed live</span></div>
+  `;
 
   const rolesEl = document.getElementById('roles');
   const filterBarEl = document.getElementById('filterBar');
@@ -161,24 +182,26 @@
     function roleCardHtml(r) {
       const age = daysSince(r.firstSeen);
       const meta = [
+        r.location,
         r.workMode ? workModeLabel[r.workMode] || r.workMode : null,
         r.experience,
-        r.barRequired ? `Bar admission: ${r.barRequired}` : null
-      ].filter(Boolean).join(' · ');
+        r.barRequired ? `Bar admission ${r.barRequired}` : null
+      ].filter(Boolean).map(m => `<span>${m}</span>`).join('');
       const stale = age !== null && age > STALE_WARN_DAYS;
       const ageLabel = age === null ? '' : age === 0 ? 'Found today' : age === 1 ? 'Found 1 day ago' : age < 14 ? `Found ${age} days ago` : `Found ${Math.round(age / 7)} weeks ago`;
-      return `<h3 style="margin-bottom:2px;">${r.role}</h3>
-        <p style="margin:0 0 8px; font-family:'Inter',sans-serif; font-size:13px; color:var(--muted);">${r.company} — ${r.location}</p>
-        ${meta ? `<p style="margin:0 0 8px; font-family:'Inter',sans-serif; font-size:12.5px; color:var(--accent);">${meta}</p>` : ''}
-        <p style="margin:0 0 10px; color:var(--muted);">${r.note}</p>
-        ${ageLabel ? `<p style="margin:0 0 ${stale ? '6px' : '10px'}; font-family:'Inter',sans-serif; font-size:12px; color:var(--muted);">${ageLabel}</p>` : ''}
-        ${stale ? `<p style="margin:0 0 10px; font-family:'Inter',sans-serif; font-size:12.5px; color:#9a5b00;">⚠ Not reconfirmed recently — please verify this posting is still open before applying.</p>` : ''}
-        <p style="margin:0;"><a href="${r.link}" target="_blank" rel="noopener">View posting →</a></p>`;
+      return `<div class="jb-role-company">${r.company}</div>
+        <h3>${r.role}</h3>
+        <div class="jb-role-meta">${meta}</div>
+        <p class="jb-role-note">${r.note}</p>
+        ${r.caveat ? `<p class="jb-role-caveat">${r.caveat}</p>` : ''}
+        ${stale ? `<p class="jb-role-caveat">⚠ Not reconfirmed recently — please verify this posting is still open before applying.</p>` : ''}
+        <p style="margin:0 0 4px;"><a class="jb-role-link" href="${r.link}" target="_blank" rel="noopener">View posting →</a></p>
+        ${ageLabel ? `<p style="margin:0; font-family:'Inter',sans-serif; font-size:11.5px; color:var(--muted);">${ageLabel}</p>` : ''}`;
     }
 
     visible.forEach(r => {
       const div = document.createElement('div');
-      div.className = 'card';
+      div.className = 'jb-role';
       div.innerHTML = roleCardHtml(r);
       rolesEl.appendChild(div);
     });
@@ -187,7 +210,7 @@
       if (showHiddenRoles) {
         hidden.forEach(r => {
           const div = document.createElement('div');
-          div.className = 'card';
+          div.className = 'jb-role';
           div.style.opacity = '0.7';
           div.innerHTML = roleCardHtml(r);
           rolesEl.appendChild(div);
@@ -212,16 +235,6 @@
 
   const networkEl = document.getElementById('network');
   const categoryNavEl = document.getElementById('categoryNav');
-
-  // Pool every network list into one array — just names, grouped by category, each
-  // linked to its official website where known.
-  const allCompanies = [
-    ...jobNetworkData.researched,
-    ...jobNetworkData.pinned,
-    ...jobNetworkData.backlog,
-    ...jobNetworkData.flyerRelevant,
-    ...jobNetworkData.flyerOther
-  ];
 
   function chipHtml(item) {
     return item.website
