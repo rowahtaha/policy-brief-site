@@ -9855,7 +9855,13 @@ const TEX_W = 2048, TEX_H = 1024;
 const OCEAN_COLOR = getComputedStyle(document.documentElement).getPropertyValue("--surface-sunken").trim() || "#202F29";
 const CONTEXT_COLOR = "rgba(128,128,128,0.35)";
 const COUNTRY_FILL_FALLBACK = "#7FBFA8";
-const BORDER_COLOR = "rgba(0,0,0,0.25)";
+// Many countries share the same or near-identical flag-swatch fill color
+// (Pan-African, Pan-Arab, and Pan-Slavic palettes repeat heavily among
+// neighbors), so a single thin, low-opacity line disappears exactly where
+// it matters most. A two-tone "casing" stroke — a light halo under a dark
+// line — stays visible against light or dark fills on either side.
+const BORDER_HALO_COLOR = "rgba(255,255,255,0.65)";
+const BORDER_COLOR = "rgba(15,15,15,0.7)";
 const HIGHLIGHT_COLOR = "#FFD166";
 
 const ID_STEP = Math.floor(16777216 / (COUNTRY_ORDER.length + 1));
@@ -9944,8 +9950,13 @@ function drawCountryNormal(code) {
   if (!p) return;
   dctx.fillStyle = FLAG_SWATCH[code] || COUNTRY_FILL_FALLBACK;
   dctx.fill(p);
+  // Casing stroke: light halo first, then a dark line on top, so the
+  // border reads clearly no matter how similar the neighboring fill is.
+  dctx.strokeStyle = BORDER_HALO_COLOR;
+  dctx.lineWidth = 2.75;
+  dctx.stroke(p);
   dctx.strokeStyle = BORDER_COLOR;
-  dctx.lineWidth = 0.75;
+  dctx.lineWidth = 1.15;
   dctx.stroke(p);
   const marker = smallMarkerByCode[code];
   if (marker) {
@@ -10022,8 +10033,13 @@ function buildTextures() {
     const p = interactivePathByCode[code];
     dctx.fillStyle = FLAG_SWATCH[code] || COUNTRY_FILL_FALLBACK;
     dctx.fill(p);
+    // Casing stroke: light halo first, then a dark line on top — keeps
+    // borders visible even between neighbors with matching flag colors.
+    dctx.strokeStyle = BORDER_HALO_COLOR;
+    dctx.lineWidth = 2.75;
+    dctx.stroke(p);
     dctx.strokeStyle = BORDER_COLOR;
-    dctx.lineWidth = 0.75;
+    dctx.lineWidth = 1.15;
     dctx.stroke(p);
     const [r, g, b] = idToRgb(codeToIndex[code] + 1);
     ictx.fillStyle = `rgb(${r},${g},${b})`;
