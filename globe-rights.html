@@ -9365,9 +9365,9 @@ function buildCountry(code) {
   const SOURCE_ORG_LINKS = [
     [/freedom house/i, "https://freedomhouse.org"],
     [/human rights watch/i, "https://www.hrw.org"],
-    [/committee to protect journalists/i, "https://cpj.org"],
+    [/committee to protect journalists|\bcpj\b/i, "https://cpj.org"],
     [/amnesty international/i, "https://www.amnesty.org"],
-    [/reporters without borders/i, "https://rsf.org"],
+    [/reporters without borders|\brsf\b/i, "https://rsf.org"],
     [/access now/i, "https://www.accessnow.org"],
     [/privacy international/i, "https://privacyinternational.org"],
     [/article\s?19/i, "https://www.article19.org"],
@@ -9387,7 +9387,14 @@ function buildCountry(code) {
     [/electronic privacy information center|\bepic\b/i, "https://epic.org"],
     [/council of europe/i, "https://www.coe.int"],
     [/european data protection board|\bedpb\b/i, "https://edpb.europa.eu"],
-    [/african union/i, "https://au.int"]
+    [/african union/i, "https://au.int"],
+    [/\becowas\b/i, "https://ecowas.int"],
+    // Most citations reference a specific country's own constitution, law, or
+    // court case, which doesn't have one stable link we can verify per-country
+    // at this scale. For constitutions specifically, point to Constitute — a
+    // real, searchable database of the world's constitutions — rather than
+    // leaving the citation as unlinked plain text.
+    [/^constitution of/i, "https://www.constituteproject.org"]
   ];
   function sourceLinkFor(text) {
     const match = SOURCE_ORG_LINKS.find(([re]) => re.test(text));
