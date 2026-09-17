@@ -9402,17 +9402,24 @@ function buildCountry(code) {
   }
 
   country.sources.forEach(s => {
+    // A source is normally just a citation string, linked (if at all) by
+    // matching a known organization's name via SOURCE_ORG_LINKS. Where a
+    // specific law's actual text has been found and verified online, that
+    // citation is instead a { text, url } object pointing straight at it —
+    // a real, checked link to the specific document, not a generic org page.
+    const isVerified = s && typeof s === "object";
+    const text = isVerified ? s.text : s;
     const li = document.createElement("li");
-    const url = sourceLinkFor(s);
+    const url = isVerified ? s.url : sourceLinkFor(text);
     if (url) {
       const a = document.createElement("a");
       a.href = url;
       a.target = "_blank";
       a.rel = "noopener";
-      a.textContent = s;
+      a.textContent = text;
       li.appendChild(a);
     } else {
-      li.textContent = s;
+      li.textContent = text;
     }
     sourcesList.appendChild(li);
   });
