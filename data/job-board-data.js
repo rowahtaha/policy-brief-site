@@ -15,10 +15,14 @@
 // Analyst, Privacy Officer, Compliance/Governance titles, any seniority — and to
 // report the real experience level on each rather than filtering roles out, so she
 // can judge fit herself. Added Milbank on that basis even though it's well above her
-// ~2 years. Two of the three re-run research passes hit a session rate limit and are
-// still pending as of this commit — expect more additions once those complete.
+// ~2 years.
+//
+// 2026-09-20: weekly recheck. The 7 roles below were all confirmed within the last
+// week, so left as-is rather than re-verified (see freshness window below). Spot-
+// checked the "no current opening" companies from the 9-14 pass (Covington & Burling,
+// Credo AI) — still nothing open. No new roles found this week.
 const jobBoardData = {
-  asOf: "September 15, 2026",
+  asOf: "September 20, 2026",
   intro: "Open roles in tech policy, privacy, and AI governance — each one confirmed live directly on the employer's own careers page, not just pulled from a search result. Includes roles above entry level so you can see the full picture; check the experience line on each. Always double-check a posting is still open before applying, since roles can close quickly.",
   roles: [
     {
