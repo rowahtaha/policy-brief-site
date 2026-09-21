@@ -60,11 +60,15 @@
     if (widgetRequested) return;
     widgetRequested = true;
     window.googleTranslateElementInit = function () {
+      // Top 20 languages worldwide by total speakers, so the menu is a short
+      // useful list instead of Google's full ~100-language picker.
+      var topLanguages = "en,zh-CN,hi,es,fr,ar,bn,pt,ru,ur,id,de,ja,sw,mr,te,pa,vi,ta,tr";
       new google.translate.TranslateElement(
         {
           pageLanguage: "en",
           autoDisplay: false,
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          includedLanguages: topLanguages
         },
         "google_translate_element"
       );
