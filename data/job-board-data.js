@@ -21,8 +21,16 @@
 // week, so left as-is rather than re-verified (see freshness window below). Spot-
 // checked the "no current opening" companies from the 9-14 pass (Covington & Burling,
 // Credo AI) — still nothing open. No new roles found this week.
+//
+// 2026-09-21: rotating check of backlog companies not yet covered (Latham & Watkins,
+// BigID, Trustible, Wilson Sonsini). Latham's privacy/cyber openings are all
+// attorney-track (3-5+ years, bar required); BigID and Trustible have no privacy/
+// governance openings posted at all right now; Wilson Sonsini's business-professional
+// postings don't touch privacy/compliance. No new roles found. The 7 existing roles
+// were all first seen within the last week, so left unverified this pass per the
+// freshness window.
 const jobBoardData = {
-  asOf: "September 20, 2026",
+  asOf: "September 21, 2026",
   intro: "Open roles in tech policy, privacy, and AI governance — each one confirmed live directly on the employer's own careers page, not just pulled from a search result. Includes roles above entry level so you can see the full picture; check the experience line on each. Always double-check a posting is still open before applying, since roles can close quickly.",
   roles: [
     {
