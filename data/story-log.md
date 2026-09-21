@@ -63,7 +63,19 @@ got written up.
 | Australia's App Stores Now Have to Check Your ID Before an 18+ Download | Australia | age verification, app stores |
 | The Gulf's Biggest AI Bet Might Need American Money to Keep Growing | Saudi Arabia, UAE | G42, HUMAIN, chip exports |
 
-### Issue No. 4 — draft pool, NOT YET PUBLISHED (see below)
+### Issue No. 4 — Week of September 14–20, 2026
+| Story | Country | Topic tags |
+|---|---|---|
+| Meta's $18B Child-Safety Settlement Has a Catch | US | Meta, settlement, TikTok contingency |
+| Largest-Ever Collective Settlement Against Google | UK | Google, Play Store, app developers |
+| Tech Giants Say They've Solved AI's Water Problem. An Expert Says Not So Fast. | Global | data centers, water, Rystad Energy |
+| A Landmark Privacy Law Gets Delayed Before It Even Starts | Chile | Law 21.719, Senate, delay |
+| A Continental AI Strategy, Two Years In, Still Mostly on Paper | Africa (continental) | AU Continental AI Strategy, capacity |
+| The Under-16 Social Media Wave Spreads, Unevenly | Indonesia, Malaysia, Philippines | minors, social media, GR17, MyDigital ID |
+| Authors Bet They Can Beat Anthropic's Own Settlement | US | Anthropic, copyright, Carreyrou — **note: suit filed Dec 2025, not Sept 2026; used for the Sept 4 settlement-notice angle** |
+| Uber Fined €825 Million — for Conduct That Ended Four Years Ago | Netherlands/EU | Uber, GDPR, algorithmic deactivation |
+| National ID Data Leaked to a Trafficking Ring | Uganda | NIRA, Kaaya, trafficking |
+| "We Don't Lack Policy, We Lack a System That Works Together" | Africa (continental) | Hyperscalers Convergence Africa, interoperability |
 
 ---
 
@@ -71,6 +83,9 @@ got written up.
 
 | Post | Country | Topic tags | Date |
 |---|---|---|---|
+| Indonesia, Malaysia, and the Philippines Are Writing the Same Rule at Three Different Speeds | Indonesia, Malaysia, Philippines | minors, social media | 2026-09-20 |
+| Six Authors Turned Down $3,000 to Bet They Can Get $150,000 Instead | US | Anthropic, copyright, authors | 2026-09-20 |
+| Will TikTok Actually Join Meta's $17.1 Billion Settlement? Here's My Read. | US | Meta, TikTok, Snap, YouTube | 2026-09-20 |
 | The EU Just Made AI Labeling Mandatory. Does Your Country? | EU | AI labeling, deepfakes | 2026-09-12 |
 | Shein, Celsius, and Revolve Are Getting Sued Over Influencer Posts | US | FTC, influencer disclosure | 2026-09-12 |
 | 153 Million Driver's Licenses Just Got Stolen. I Never Even Got a Notification. | US | breach notification, ID theft | 2026-09-12 |
@@ -101,17 +116,20 @@ investigation over deepfakes (UK) · Zimbabwe POTRAZ on-site inspections begin
 data-center water crisis, Querétaro (Mexico) · Brazil AI bill stuck in
 Chamber (Brazil — **already published, see Issue 2**, don't reuse as new)
 
-### From the Issue No. 4 research pass (20-story pool, 2026-09-20), not selected for the top 10:
-NYC "Ban the Scan" biometric surveillance bill package (US) · Southeast Asia's
-under-16 social media wave — Indonesia/Malaysia/Philippines (multi-country) ·
-UAE privacy law still not enforceable after 4 years (UAE) · Australia PM
-seeks big tech backing for AI/online-safety rules (Australia) · Israel
-Amendment 13 enforcement powers ramping up (Israel) · Six authors opt out of
-Anthropic settlement, file new suits (US) · New Zealand Labour's AI Action
-Plan (New Zealand) · South Africa communities sue to halt data-center boom —
-Cape Town (South Africa) · Uganda NIRA official charged over trafficking-ring
-data leak (Uganda) · Africa "policy not system" — Hyperscalers Convergence
-Africa 2026 (continental)
+### From the Issue No. 4 research pass (28-story pool, 2026-09-20), not selected for the top 10:
+NYC "Ban the Scan" biometric surveillance bill package (US) · UAE privacy law
+still not enforceable after 4 years (UAE) · Australia PM seeks big tech
+backing for AI/online-safety rules (Australia) · Israel Amendment 13
+enforcement powers ramping up (Israel) · New Zealand Labour's AI Action Plan
+(New Zealand) · South Africa communities sue to halt data-center boom — Cape
+Town (South Africa) · Spain — first
+AI-agent-executed data breach reported to AEPD · US (California) — Newsom
+signs AI chatbot child-safety laws · Ireland — HSE fined €645K over
+psychiatric-hospital records access · Argentina/Uruguay — Milei vows
+"unregulated AI" vs. Uruguay joins binding CoE AI treaty · UK — AI enters
+statutory school safeguarding guidance (KCSIE 2026) · EU — CJEU clarifies
+GDPR damages standard (Quirin Privatbank) · Zambia — press-freedom chilling
+effect from cybersecurity law during elections
 
 Rejected as too stale/thin to use at all (checked and ruled out, not just
 skipped): Colombia AI-driven government downsizing (vague, no real details) ·
