@@ -2815,6 +2815,10 @@ const FLAGS = {
     ctx.beginPath(); ctx.ellipse(cx, cy, h * 0.09, h * 0.14, 0, 0, Math.PI * 2); ctx.fill();
     ctx.fillStyle = "#BB0000";
     ctx.beginPath(); ctx.ellipse(cx, cy, h * 0.055, h * 0.09, 0, 0, Math.PI * 2); ctx.fill();
+    // shield center is the same red as the band behind it, so give it a dark
+    // outline or it visually disappears into the flag and only the white ring shows
+    ctx.strokeStyle = "#000000"; ctx.lineWidth = h * 0.012;
+    ctx.beginPath(); ctx.ellipse(cx, cy, h * 0.055, h * 0.09, 0, 0, Math.PI * 2); ctx.stroke();
     ctx.strokeStyle = "#000000"; ctx.lineWidth = h * 0.02;
     ctx.beginPath(); ctx.moveTo(cx - h * 0.16, cy - h * 0.2); ctx.lineTo(cx + h * 0.16, cy + h * 0.2);
     ctx.moveTo(cx + h * 0.16, cy - h * 0.2); ctx.lineTo(cx - h * 0.16, cy + h * 0.2); ctx.stroke();
@@ -3169,7 +3173,100 @@ function buildCountry(code) {
     [/european data protection board|\bedpb\b/i, "https://edpb.europa.eu"],
     [/african union/i, "https://au.int"]
   ];
+  const LAW_URL_BY_CITATION = {
+    "Law No. 09-08 on the Protection of Individuals with regard to the Processing of Personal Data, 2009, enforced by the CNDP": "https://www.cndp.ma/images/lois/Loi-09-08-Fr.pdf",
+    "CNDP, Commission Nationale de Controle de la Protection des Donnees a Caractere Personnel, official guidance, cndp.ma": "https://www.cndp.ma/",
+    "Organic Law No. 2004-63 of 27 July 2004 on the Protection of Personal Data": "https://www.inpdp.tn/textes.xhtml",
+    "Decree-Law No. 2022-54 of 13 September 2022 on Combating Offences Related to Information and Communication Systems": "https://www.article19.org/wp-content/uploads/2023/03/Analysis-of-decree-law-54-English.pdf",
+    "Constitution of Tunisia, 2022, Article 30, which succeeds Article 24 of the 2014 Constitution": "https://www.constituteproject.org/constitution/Tunisia_2014",
+    "Nigeria Data Protection Act 2023, enforced by the Nigeria Data Protection Commission, NDPC": "https://ndpc.gov.ng/download/nigeria-data-protection-act-2023",
+    "Cybercrimes Prohibition and Prevention Act 2015, amended 2024, Section 24": "https://www.wipo.int/wipolex/en/legislation/details/22699",
+    "Constitution of the Federal Republic of Nigeria, Section 37": "https://www.constituteproject.org/constitution/Nigeria_2011",
+    "Law No. 2008-12 of 25 January 2008 on the Protection of Personal Data, enforced by the CDP, Commission de Protection des Donnees Personnelles": "https://senegalservices.sn/texte/loi-sur-la-protection-des-donnees-a-caractere-personnel",
+    "Algeria Law No 18-07 of 2018 on Protection of Personal Data, and its 2025 amendment, enforced by ANPDP, the National Data Protection Authority": "https://www.dlapiperdataprotection.com/index.html?t=law&c=DZ",
+    "Angola Law No 22 of 2011 on Personal Data Protection, enforced by the Data Protection Agency, APD": "https://www.dlapiperdataprotection.com/index.html?t=law&c=AO",
+    "Benin Digital Code, Law No 2017-20, amended by Law No 2020-35 of 2021, Book V on Protection of Personal Data, enforced by the APDP": "https://www.dlapiperdataprotection.com/index.html?t=law&c=BJ",
+    "Constitution of the Republic of Benin, 1990, Articles 20 and 21": "https://www.constituteproject.org/constitution/Benin_1990",
+    "Botswana Data Protection Act, 2024": "https://botswanalaws.com/bulletin/principal-legislation/bulletin-2024/act-18-of-2024---data-protection-act",
+    "Law No. 001-2021 AN (Burkina Faso)": "https://www.dlapiperdataprotection.com/index.html?t=law&c=BF",
+    "Law No. 133-V-2001 (Cabo Verde)": "https://www.dlapiperdataprotection.com/index.html?t=law&c=CV",
+    "Law No. 2024-017 of 23 December 2024 (Cameroon)": "https://prc.cm/en/multimedia/documents/10271-law-n-2024-017-of-23-12-2024-web",
+    "Law No. 2010-012 of 21 December 2010 (Cameroon cybersecurity)": "https://www.dlapiperdataprotection.com/index.html?t=law&c=CM",
+    "Law No. 007-PR-2015 (CAR, ANSICE)": "https://dataprotection.africa/central-african-republic/",
+    "Union of Comoros Personal Data Protection": "https://dataprotection.africa/comoros/",
+    "Digital Code Law No. 23-010, DRC": "https://www.dlapiperdataprotection.com/index.html?t=law&c=CD",
+    "Constitution of the DRC, Article 31": "https://www.wipo.int/wipolex/en/legislation/details/7449",
+    "Law No. 29-2019 Protection of Personal Data": "https://www.dlapiperdataprotection.com/index.html?t=law&c=CG",
+    "Law No. 2013-450 Personal Data, Cote d'Ivoire": "https://www.dlapiperdataprotection.com/index.html?t=law&c=CI",
+    "Law No. 151/2020 Personal Data, Egypt": "https://www.dlapiperdataprotection.com/index.html?t=law&c=EG",
+    "Data Protection Act 5 of 2022, Eswatini": "https://www.esccom.org.sz/legislation/DATA%20PROTECTION%20ACT.pdf",
+    "Personal Data Protection Proclamation 1321": "https://www.dlapiperdataprotection.com/index.html?t=law&c=ET",
+    "Law No. 025 of 2023, Gabon": "https://www.dlapiperdataprotection.com/index.html?t=law&c=GA",
+    "Gambia Personal Data Protection Act 2025": "https://dataprotection.africa/the-gambia/",
+    "Data Protection Act 2012 Act 843, Ghana": "https://www.dlapiperdataprotection.com/index.html?t=law&c=GH",
+    "Law 28 July 2016 Cybersecurity, Guinea": "https://www.dlapiperdataprotection.com/index.html?t=law&c=GN",
+    "Law 2013-015/2017-070, Mali": "https://ilo.org/dyn/natlex/natlex4.detail?p_lang=en&p_isn=113208&p_count=97735",
+    "Law 2017-020 Personal Data, Mauritania": "https://cyrilla.org/entity/w68s0sxycpq?page=1&file=17216572071852g9molyhm94.pdf",
+    "Constitution of Mauritania 1991, revised 2012, Article 13": "https://www.wipo.int/wipolex/en/legislation/details/14001",
+    "Data Protection Act 2017, Mauritius, enforced by the Data Protection Office": "https://dataprotection.govmu.org/Pages/The%20Law/Data-Protection-Act-2017.aspx",
+    "Information and Communication Technologies Act, Mauritius": "https://www.wipo.int/wipolex/en/legislation/details/7258",
+    "Constitution of Mauritius 1968, Section 9": "https://www.wipo.int/wipolex/en/legislation/details/7253",
+    "Constitution of Mozambique 2004, revised 2007, Article 71": "https://www.wipo.int/wipolex/en/legislation/details/5771",
+    "Electronic Transactions Law 2017, Mozambique": "https://lexafrica.com/2017/08/review-of-the-electronic-transactions-act-in-mozambique/",
+    "Constitution of Namibia, Article 13": "https://www.wipo.int/wipolex/en/legislation/details/9404",
+    "Draft Data Protection Bill 2021, Namibia": "https://action-namibia.org/wp-content/uploads/2022/10/Data-Protection-Draft-Bill-March-2022....pdf",
+    "Law number 2022-59 of 16 December 2022 on Personal Data Protection, Niger": "https://www.africadataprotection.org/en/pays/niger.html",
+    "Constitution of Niger 2010, Articles 27 and 29": "https://www.wipo.int/wipolex/en/legislation/details/11402",
+    "Law number 058 of 2021 relating to the Protection of Personal Data, Rwanda": "https://rwandalii.org/akn/rw/act/law/2021/58/eng@2021-10-15",
+    "Constitution of Rwanda 2003, revised 2015, Article 23": "https://www.constituteproject.org/constitution/Rwanda_2015.pdf?lang=en",
+    "ECOWAS Supplemental Act on Personal Data Protection": "https://africanlii.org/akn/aa-ecowas/act/2010/1-1/eng@2010-12-31",
+    "Kenya Data Protection Act 2019, enforced by the Office of the Data Protection Commissioner": "https://new.kenyalaw.org/akn/ke/act/2019/24/eng@2022-12-31",
+    "Nubian Rights Forum v Attorney General, High Court of Kenya": "https://globalfreedomofexpression.columbia.edu/wp-content/uploads/2021/10/Petition_56_58__59_of_2019_Consolidated.pdf",
+    "Constitution of Kenya 2010, Article 31": "https://new.kenyalaw.org/akn/ke/act/2010/constitution",
+    "Lesotho Data Protection Act 2013, enforced by the Data Protection Commission": "https://dataprotection.africa/lesotho/",
+    "Constitution of Lesotho 1993, Section 11, on protection of privacy": "https://www.wipo.int/wipolex/en/legislation/details/9016",
+    "Constitution of Liberia, Article 15, on freedom of expression": "https://www.liberianlegal.com/constitution1986.htm",
+    "Libya Law No. 5 of 2022, Combating Cybercrime": "https://lawsociety.ly/en/legislation/law-no-5-of-2022-regarding-combating-cybercrimes/",
+    "Libya Law No. 6 of 2022, Electronic Transactions": "https://lawsociety.ly/en/legislation/law-no-6-of-2022-concerning-electronic-transactions/",
+    "Constitution of Libya 2011, Articles 12 and 13": "https://lawsociety.ly/en/legislation/2011-constitutional-declaration/",
+    "Madagascar Law No. 2014-038, relating to protection of personal data": "https://digital.gov.mg/en/2022/07/05/loi-n-2014-038-sur-la-protection-des-donnees-a-caractere-personnel/",
+    "Commission Malgache de l'Informatique et des Libertes": "https://digital.gov.mg/wp-content/uploads/2025/12/manuel-procedures-cmil-03-dec-2025.pdf",
+    "Malawi Penal Code, Section 200, criminal defamation": "https://cpj.org/wp-content/uploads/2025/07/Ruling-summary-Criminal-Defamation-and-Freedom-of-Expression-ConCourt-Referral.-July-2025-Summary-.pdf",
+    "Malawi Penal Code, Sections 50 and 51, sedition": "https://malawilii.org/akn/mw/act/1929/22/eng@2014-12-31",
+    "Law No 03 2016 on Protection of Personal Data, Sao Tome and Principe": "https://www.nadpa-rapdp.org/sites/default/files/2020-11/Law_3_2016_protection_of_personal_data.pdf",
+    "Constitution of the Democratic Republic of Sao Tome and Principe": "https://www.constituteproject.org/constitution/Sao_Tome_and_Principe_2003",
+    "Penal Code, Law 6 2012, Article 185 on defamation, Sao Tome": "https://bwcimplementation.org/sites/default/files/resource/ST_Criminal%20Code_EN.pdf",
+    "Data Protection Act 2023, Act 24 of 2023, Seychelles": "https://www.gazette.sc/sites/default/files/2023-12/Act%2024%20-%202023%20-%20Data%20Protection%20Act%202023.pdf",
+    "Public Order Act 1965, Part Five, Sierra Leone": "https://www.sierra-leone.org/Laws/1965-46s.pdf",
+    "Cyber Security and Crime Act 2021, Sierra Leone": "https://sierralii.gov.sl/akn/sl/act/2021/7/eng@2021-11-25",
+    "Constitution of Sierra Leone 1991, Article 22": "https://www.sierra-leone.org/Laws/constitution1991.pdf",
+    "Data Protection Act 2023, Law No 005 of 2023, Somalia": "https://www.dataguidance.com/sites/default/files/somalia_data_protection_act-2.pdf",
+    "Provisional Constitution of the Federal Republic of Somalia": "https://www.wipo.int/wipolex/en/legislation/details/14305",
+    "Protection of Personal Information Act 4 of 2013, South Africa": "https://www.gov.za/sites/default/files/gcis_document/201409/3706726-11act4of2013protectionofpersonalinforcorrect.pdf",
+    "Regulation of Interception of Communications Act, South Africa": "https://www.gov.za/documents/regulation-interception-communications-and-provision-communication-related-information--13",
+    "Cybercrimes Act 19 of 2020, South Africa": "https://www.gov.za/documents/acts/cybercrimes-act-19-2020-english-afrikaans-01-jun-2021",
+    "Transitional Constitution of the Republic of South Sudan": "https://mojca.gov.ss/the-transitional-constitution-of-the-repulic-of-south-sudan/",
+    "Data Protection Africa, Sudan Fact Sheet": "https://dataprotection.africa/sudan/",
+    "Constitution of Sudan 2019, Constitutional Document": "https://www.constituteproject.org/constitution/Sudan_2019",
+    "Sudan Cybercrime Law 2020, amending the 2018 Law": "https://redress.org/wp-content/uploads/2020/07/2-Sudan-Amendments-July-2020-English-REDRESS-translation.pdf",
+    "Personal Data Protection Act 2022, Eswatini (ESCCOM)": "https://www.esccom.org.sz/legislation/DATA%20PROTECTION%20ACT.pdf",
+    "Cybercrimes Act 2015, Tanzania": "https://tanzlii.org/en/akn/tz/act/2015/14/eng@2015-05-22",
+    "Constitution of the United Republic of Tanzania 1977": "https://www.nao.go.tz/uploads/Constitution_of_the_United_Republic_of_Tanzania_en.pdf",
+    "Law No 2019-014 of October 29 2019 on the protection of personal data, Togo": "https://jo.gouv.tg/sites/default/files/JO/JOS_29_10_2019-64E%20ANNEE-N%C2%B026%20TER.pdf",
+    "Togo Cybersecurity and Fight against Cybercrime Law 2018": "https://jo.gouv.tg/sites/default/files/JO/JOS_07_12_2018-63E%20ANNEE%20N%C2%B024TER.pdf",
+    "Data Protection and Privacy Act 2019, Uganda": "https://ulii.org/akn/ug/act/2019/9/eng@2019-05-03",
+    "Computer Misuse Amendment Act 2022, Uganda": "https://bills.parliament.ug/attachments/Computer%20Misuse%20(Amendment)Act,%202022.pdf",
+    "Regulation of Interception of Communications Act, Uganda": "https://ulii.org/en/akn/ug/act/2010/18/eng@2023-12-31",
+    "Data Protection Act No 3 of 2021, Zambia": "https://www.parliament.gov.zm/sites/default/files/documents/acts/Act%20No.%203%20The%20Data%20Protection%20Act%202021_0.pdf",
+    "Cyber Security and Cyber Crimes Act No 2 of 2021, Zambia": "https://zambialii.org/akn/zm/act/2021/2/eng@2021-03-24",
+    "Constitution of Zambia, Article 17": "https://zambialii.org/akn/zm/act/1991/1/eng@2025-12-18",
+    "Cyber and Data Protection Act 2021, Zimbabwe": "https://potraz.gov.zw/wp-content/uploads/2025/02/Cyber-and-Data-Protection-Act-Chapter-1207.pdf",
+    "Interception of Communications Act, Zimbabwe": "https://zimlii.org/akn/zw/act/2007/6/eng@2022-03-11",
+    "Constitution of Zimbabwe 2013, Section 57": "https://zimlii.org/akn/zw/act/2013/1/eng%402017-09-07"
+  };
+
   function sourceLinkFor(text) {
+    if (LAW_URL_BY_CITATION[text]) return LAW_URL_BY_CITATION[text];
     const match = SOURCE_ORG_LINKS.find(([re]) => re.test(text));
     return match ? match[1] : null;
   }

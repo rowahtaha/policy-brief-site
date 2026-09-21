@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USA Law Library — The Digital Divide</title>
+<meta name="description" content="Every law cited in the Digital Rights of the USA atlas, individually verified and linked to its real source — searchable by state or citation.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="USA Law Library — The Digital Divide">
+<meta property="og:description" content="Every law cited in the Digital Rights of the USA atlas, individually verified and linked to its real source — searchable by state or citation.">
+<meta property="og:url" content="https://rowataha.com/usa-law-library.html">
+<meta property="og:image" content="https://rowataha.com/assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="USA Law Library — The Digital Divide">
+<meta name="twitter:description" content="Every law cited in the Digital Rights of the USA atlas, individually verified and linked to its real source — searchable by state or citation.">
+<meta name="twitter:image" content="https://rowataha.com/assets/logo.png">
+<style>
+  :root {
+    --page-bg: #F6F4EC;
+    --surface: #FFFFFF;
+    --surface-sunken: #EFEDE2;
+    --ink: #1B1D22;
+    --ink-soft: #5B5D63;
+    --line: #DEDACB;
+    --accent: #8C1C1C;
+    --accent-soft: #F2E1E1;
+    --shadow: 0 1px 2px rgba(20,20,15,.06), 0 10px 30px -12px rgba(20,20,15,.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page-bg: #15171B; --surface: #1D2026; --surface-sunken: #23262D;
+      --ink: #ECEAE2; --ink-soft: #A2A4AC; --line: #33363F;
+      --accent: #D97A7A; --accent-soft: #3A2427;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #15171B; --surface: #1D2026; --surface-sunken: #23262D;
+    --ink: #ECEAE2; --ink-soft: #A2A4AC; --line: #33363F;
+    --accent: #D97A7A; --accent-soft: #3A2427;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -12px rgba(0,0,0,.6);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page-bg); color: var(--ink);
+    font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 48px 28px 96px; }
+  .kicker {
+    display: inline-block; font: 700 12px/1 "IBM Plex Mono", Consolas, monospace;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+    background: var(--accent-soft); padding: 6px 12px; border-radius: 20px;
+  }
+  h1 { font: 800 44px/1.1 Georgia, serif; margin: 16px 0 10px; }
+  .intro { color: var(--ink-soft); max-width: 70ch; margin: 0 0 8px; }
+  .type-note { color: var(--ink-soft); font-size: 13px; margin: 0 0 36px; }
+  .type-note .dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:1px; }
+  .search {
+    display: block; width: 100%; max-width: 420px; padding: 11px 16px; margin-bottom: 28px;
+    border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font-size: 14px;
+  }
+  .search:focus { outline: none; border-color: var(--accent); }
+  .country-group { margin-bottom: 32px; }
+  .country-group h2 {
+    font: 700 20px/1.2 Georgia, serif; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  .law-row {
+    display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line);
+  }
+  .law-row:last-child { border-bottom: none; }
+  .law-dot { flex: none; width: 9px; height: 9px; border-radius: 50%; margin-top: 7px; }
+  .law-dot.primary { background: var(--accent); }
+  .law-dot.secondary { background: var(--ink-soft); }
+  .law-text { flex: 1; }
+  .law-text a { color: var(--ink); text-decoration: none; font-weight: 600; }
+  .law-text a:hover { color: var(--accent); text-decoration: underline; }
+  .law-type { display: block; font: 600 11px/1 "IBM Plex Mono", Consolas, monospace; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); margin-top: 4px; }
+  footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 13px; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p style="margin:0 0 16px;"><a href="usa-rights.html" style="color:var(--accent); text-decoration:none;">← Digital Rights of the USA</a></p>
+  <span class="kicker">Law Library</span>
+  <h1>USA: Laws Cited</h1>
+  <p class="intro">Every named law, constitution, and court ruling cited across the Digital Rights of the USA atlas, each linked to a real, verified source — its official text where findable (state legislature sites, official code archives, Justia's free public code mirror), or the most authoritative secondary source otherwise. General trackers (National Conference of State Legislatures, IAPP, Electronic Frontier Foundation, when cited as a whole) are linked inline on the state flyers themselves and aren't repeated here.</p>
+  <p class="type-note"><span class="dot" style="background:var(--accent)"></span>Primary source (the law's own text) &nbsp; <span class="dot" style="background:var(--ink-soft)"></span>Secondary source (a reliable summary or index)</p>
+
+  <input type="text" id="search" class="search" placeholder="Search laws or states…">
+
+  <div id="library"></div>
+
+  <footer>
+    Compiled from primary legislation, official state code archives, and legislature websites. Verify against the source before treating anything here as legal advice — laws and enforcement patterns shift, and state legislatures amend these rules every year.<br>
+    © 2026 Rowa Taha. Part of <a href="home.html">The Digital Divide</a>.
+  </footer>
+</div>
+
+<script>
+const LAWS = [
+{"citation":"Alabama Data Breach Notification Act of 2018, Ala. Code Section 8-38-1 et seq.","country":"Alabama","url":"https://law.justia.com/codes/alabama/title-8/chapter-38/","type":"primary"},
+{"citation":"California Consumer Privacy Act (CCPA) as amended by the California Privacy Rights Act (CPRA), enforced by the California Privacy Protection Agency","country":"California","url":"https://oag.ca.gov/privacy/ccpa","type":"primary"},
+{"citation":"California Genetic Information Privacy Act, Civil Code Section 56.18","country":"California","url":"https://law.justia.com/codes/california/code-civ/division-1/part-2-6/chapter-2-6/section-56-18/","type":"primary"},
+{"citation":"California Age Appropriate Design Code Act, Civil Code Section 1798.99.28 et seq.","country":"California","url":"https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202120220AB2273","type":"primary"},
+{"citation":"Alaska Personal Information Protection Act, AS 45.48","country":"Alaska","url":"https://law.justia.com/codes/alaska/title-45/chapter-48/","type":"primary"},
+{"citation":"Arizona Revised Statutes Section 18-545, data breach notification requirements","country":"Arizona","url":"https://law.justia.com/codes/arizona/2017/title-18/section-18-545/","type":"secondary"},
+{"citation":"Arkansas Social Media Safety Act of 2023, enjoined by federal court order","country":"Arkansas","url":"https://www.arkleg.state.ar.us/Bills/FTPDocument?path=%2FBills%2F2023R%2FPublic%2FSB396.pdf","type":"primary"},
+{"citation":"Colorado Privacy Act (CPA), enforced by the Colorado Attorney General","country":"Colorado","url":"https://coag.gov/resources/colorado-privacy-act/","type":"primary"},
+{"citation":"Colorado Artificial Intelligence Act, SB 24-205, repealed and replaced by SB 26-189, effective May 2026","country":"Colorado","url":"https://leg.colorado.gov/bills/sb24-205","type":"primary"},
+{"citation":"Colorado Senate Bill 22-113, facial recognition restrictions on state and local government agencies","country":"Colorado","url":"https://leg.colorado.gov/bills/sb22-113","type":"primary"},
+{"citation":"Connecticut Data Privacy Act (CTDPA), enforced by the Connecticut Attorney General","country":"Connecticut","url":"https://portal.ct.gov/ag/sections/privacy/the-connecticut-data-privacy-act","type":"primary"},
+{"citation":"Connecticut General Statutes Section 52-570d, all party consent for call recording","country":"Connecticut","url":"https://law.justia.com/codes/connecticut/2022/title-52/chapter-925/section-52-570d/","type":"primary"},
+{"citation":"Delaware Personal Data Privacy Act (DPDPA), enforced by the Delaware Attorney General","country":"Delaware","url":"https://legis.delaware.gov/BillDetail?legislationId=140388","type":"primary"},
+{"citation":"Delaware Online Privacy and Protection Act, protections for minors","country":"Delaware","url":"https://delcode.delaware.gov/title6/c012c/index.html","type":"primary"},
+{"citation":"District of Columbia Consumer Personal Information Security Breach Notification Act","country":"District of Columbia","url":"https://code.dccouncil.gov/us/dc/council/code/sections/28-3852","type":"primary"},
+{"citation":"Florida Digital Bill of Rights, Florida Statutes Section 501.701 et seq.","country":"Florida","url":"https://www.flsenate.gov/Laws/Statutes/2025/0501.701","type":"primary"},
+{"citation":"Florida Statutes Section 934.03, all party consent for call recording","country":"Florida","url":"https://www.flsenate.gov/Laws/Statutes/2021/934.03","type":"primary"},
+{"citation":"Georgia Code Section 10-1-910 et seq., data breach notification requirements","country":"Georgia","url":"https://law.justia.com/codes/georgia/title-10/chapter-1/article-34/section-10-1-912/","type":"primary"},
+{"citation":"Hawaii Revised Statutes Section 487N, security breach of personal information","country":"Hawaii","url":"https://law.justia.com/codes/hawaii/title-26/chapter-487n/","type":"primary"},
+{"citation":"Idaho Code Section 28-51-104 et seq., data breach notification requirements","country":"Idaho","url":"https://legislature.idaho.gov/statutesrules/idstat/title28/t28ch51/sect28-51-104/","type":"primary"},
+{"citation":"Illinois Biometric Information Privacy Act (BIPA), 740 ILCS 14","country":"Illinois","url":"https://www.ilga.gov/Legislation/ILCS/Articles?ActID=3004&ChapterID=57&Print=True","type":"primary"},
+{"citation":"Illinois Genetic Information Privacy Act, 410 ILCS 513","country":"Illinois","url":"https://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=1567","type":"primary"},
+{"citation":"Illinois Personal Information Protection Act, breach notification requirements","country":"Illinois","url":"https://law.justia.com/codes/illinois/chapter-815/act-815-ilcs-530/","type":"primary"},
+{"citation":"Indiana Consumer Data Protection Act, effective January 1, 2026","country":"Indiana","url":"https://iga.in.gov/ic/2024/Title_24/Article_15.pdf","type":"primary"},
+{"citation":"Indiana Code Section 24-4.9, data breach notification requirements","country":"Indiana","url":"https://law.justia.com/codes/indiana/title-24/article-4-9/","type":"primary"},
+{"citation":"Iowa Consumer Data Protection Act (Senate File 262), Iowa Code Chapter 715D","country":"Iowa","url":"https://www.legis.iowa.gov/docs/publications/LGI/90/SF262.pdf","type":"primary"},
+{"citation":"Kansas data breach notification law, Kan. Stat. Ann. Section 50-7a01 et seq.","country":"Kansas","url":"https://kslegislature.gov/li_2012/b2011_12/statute/050_000_0000_chapter/050_007a_0000_article/050_007a_0001_section/050_007a_0001_k/","type":"primary"},
+{"citation":"Kentucky Consumer Data Protection Act, House Bill 15","country":"Kentucky","url":"https://apps.legislature.ky.gov/recorddocuments/bill/24RS/hb15/bill.pdf","type":"primary"},
+{"citation":"Louisiana Database Security Breach Notification Law, La. Rev. Stat. Section 51:3071 et seq.","country":"Louisiana","url":"https://law.justia.com/codes/louisiana/revised-statutes/title-51/rs-51-3071/","type":"primary"},
+{"citation":"An Act To Protect the Privacy of Online Consumer Information, 35-A M.R.S. Section 9301","country":"Maine","url":"https://legislature.maine.gov/legis/bills/bills_129th/chapters/PUBLIC216.asp","type":"primary"},
+{"citation":"Maine facial surveillance restrictions, laws of 2021 and 2022","country":"Maine","url":"https://legislature.maine.gov/statutes/25/title25sec6001.html","type":"primary"},
+{"citation":"Maryland Online Data Privacy Act (MODPA), Md. Code, Commercial Law Section 14-4601 et seq.","country":"Maryland","url":"https://mgaleg.maryland.gov/2024RS/Chapters_noln/CH_455_sb0541e.pdf","type":"primary"},
+{"citation":"Massachusetts data security regulations, 201 CMR 17.00","country":"Massachusetts","url":"https://www.mass.gov/regulations/201-CMR-1700-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth","type":"primary"},
+{"citation":"Massachusetts wiretap act, Mass. Gen. Laws ch. 272 Section 99","country":"Massachusetts","url":"https://law.justia.com/codes/massachusetts/part-iv/title-i/chapter-272/section-99/","type":"primary"},
+{"citation":"Michigan Identity Theft Protection Act, breach notification provisions, Mich. Comp. Laws Section 445.72","country":"Michigan","url":"https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-445-72","type":"primary"},
+{"citation":"Minnesota Consumer Data Privacy Act, Minn. Stat. Chapter 325M","country":"Minnesota","url":"https://www.revisor.mn.gov/statutes/cite/325M/full","type":"primary"},
+{"citation":"Minnesota Digital Fair Repair Act, Minn. Stat. Section 325E.72","country":"Minnesota","url":"https://www.revisor.mn.gov/statutes/cite/325E.72","type":"primary"},
+{"citation":"Mississippi Walker Montgomery Protecting Children Online Act, House Bill 1126, and related litigation, NetChoice v Fitch","country":"Mississippi","url":"https://billstatus.ls.state.ms.us/documents/2024/pdf/HB/1100-1199/HB1126SG.pdf","type":"primary"},
+{"citation":"Missouri Constitution, Article I Section 15, as amended by 2014 Amendment 9","country":"Missouri","url":"http://www.moga.mo.gov/mostatutes/ConstArticles/Art01.html","type":"primary"},
+{"citation":"Missouri data breach notification law, Mo. Rev. Stat. Section 407.1500","country":"Missouri","url":"https://revisor.mo.gov/main/OneSection.aspx?section=407.1500","type":"primary"},
+{"citation":"Montana Consumer Data Privacy Act, Mont. Code Ann. Section 30-14-2801 et seq.","country":"Montana","url":"https://mca.legmt.gov/bills/mca/title_0300/chapter_0140/part_0280/sections_index.html","type":"primary"},
+{"citation":"Montana Genetic Information Privacy Act, Mont. Code Ann. Section 30-23-101 et seq.","country":"Montana","url":"https://mca.legmt.gov/bills/mca/title_0300/chapter_0230/part_0010/sections_index.html","type":"primary"},
+{"citation":"Nebraska Data Privacy Act (NDPA), effective January 1, 2025","country":"Nebraska","url":"https://www.nebraskalegislature.gov/laws/statutes.php?statute=87-1101","type":"primary"},
+{"citation":"Nevada Revised Statutes Chapter 603A, online privacy provisions","country":"Nevada","url":"https://www.leg.state.nv.us/nrs/nrs-603a.html","type":"primary"},
+{"citation":"New Hampshire Privacy Act, RSA 507-H, effective January 1, 2025","country":"New Hampshire","url":"https://gc.nh.gov/rsa/html/LII/507-H/507-H-mrg.htm","type":"primary"},
+{"citation":"New Hampshire Wiretapping and Eavesdropping Statute, RSA 570-A","country":"New Hampshire","url":"https://gc.nh.gov/rsa/html/nhtoc/nhtoc-lviii-570-a.htm","type":"primary"},
+{"citation":"New Jersey Data Privacy Act (NJDPA), effective January 15, 2025","country":"New Jersey","url":"https://law.justia.com/codes/new-jersey/title-56/section-56-8-166-4/","type":"secondary"},
+{"citation":"New York SHIELD Act, General Business Law Section 899-bb","country":"New York","url":"https://www.nysenate.gov/legislation/laws/GBS/899-BB","type":"primary"},
+{"citation":"New York Digital Fair Repair Act, effective 2023","country":"New York","url":"https://www.nysenate.gov/legislation/laws/GBS/399-NN","type":"primary"},
+{"citation":"New York SAFE for Kids Act, effective 2025","country":"New York","url":"https://www.nysenate.gov/legislation/bills/2023/S7694/amendment/A","type":"primary"},
+{"citation":"North Carolina Identity Theft Protection Act, breach notification provisions","country":"North Carolina","url":"https://www.ncleg.gov/EnactedLegislation/Statutes/PDF/ByArticle/Chapter_75/Article_2A.pdf","type":"primary"},
+{"citation":"North Dakota Century Code Chapter 51-30, breach notification provisions","country":"North Dakota","url":"https://ndlegis.gov/cencode/t51c30.html","type":"primary"},
+{"citation":"Ohio Data Protection Act, Ohio Revised Code Section 1354, cybersecurity safe harbor law","country":"Ohio","url":"https://codes.ohio.gov/ohio-revised-code/chapter-1354","type":"primary"},
+{"citation":"Oregon Consumer Privacy Act (OCPA), effective July 1, 2024","country":"Oregon","url":"https://oregon.public.law/statutes/ors_646a.570","type":"primary"},
+{"citation":"Oregon Right to Repair Act, effective 2025","country":"Oregon","url":"https://www.oregonlegislature.gov/bills_laws/lawsstatutes/2024orlaw0069.pdf","type":"primary"},
+{"citation":"Pennsylvania Breach of Personal Information Notification Act","country":"Pennsylvania","url":"https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/2005/0/0094..HTM","type":"primary"},
+{"citation":"Rhode Island Data Transparency and Privacy Protection Act (RIDTPPA)","country":"Rhode Island","url":"https://webserver.rilegislature.gov/Statutes/TITLE6/6-48.1/INDEX.htm","type":"primary"},
+{"citation":"Rhode Island General Laws, identity theft protection and breach notification statute","country":"Rhode Island","url":"https://law.justia.com/codes/rhode-island/title-11/chapter-11-49-3/section-11-49-3-4/","type":"primary"},
+{"citation":"South Carolina Insurance Data Security Act (sectoral, insurance only)","country":"South Carolina","url":"https://law.justia.com/codes/south-carolina/title-38/chapter-99/","type":"primary"},
+{"citation":"South Dakota Codified Laws Chapter 22-40, breach notification statute","country":"South Dakota","url":"https://sdlegislature.gov/Statutes/Codified_Laws/2047710","type":"primary"},
+{"citation":"Tennessee Information Protection Act (TIPA)","country":"Tennessee","url":"https://www.capitol.tn.gov/Bills/113/Bill/HB1181.pdf","type":"primary"},
+{"citation":"Tennessee data breach notification law","country":"Tennessee","url":"https://law.justia.com/codes/tennessee/title-47/chapter-18/part-21/section-47-18-2107/","type":"primary"},
+{"citation":"Texas Data Privacy and Security Act (TDPSA)","country":"Texas","url":"https://texas.public.law/statutes/tex._bus._and_com._code_title_11_subtitle_c_chapter_541","type":"primary"},
+{"citation":"Texas Capture or Use of Biometric Identifier Act (CUBI)","country":"Texas","url":"https://texas.public.law/statutes/tex._bus._and_com._code_section_503.001","type":"primary"},
+{"citation":"Texas Securing Children Online through Parental Empowerment (SCOPE) Act","country":"Texas","url":"https://statutes.capitol.texas.gov/Docs/BC/htm/BC.509.v2.htm","type":"primary"},
+{"citation":"Utah Consumer Privacy Act (UCPA)","country":"Utah","url":"https://le.utah.gov/xcode/Title13/Chapter61/C13-61_2022050420231231.pdf","type":"primary"},
+{"citation":"Utah Artificial Intelligence Policy Act","country":"Utah","url":"https://law.justia.com/codes/utah/title-13/chapter-72/part-1/section-101/","type":"primary"},
+{"citation":"Vermont data broker registration law, 9 V.S.A. Chapter 62","country":"Vermont","url":"https://legislature.vermont.gov/statutes/chapter/09/062","type":"primary"},
+{"citation":"Vermont Security Breach Notice Act","country":"Vermont","url":"https://legislature.vermont.gov/statutes/section/09/062/02435","type":"primary"},
+{"citation":"Virginia Consumer Data Protection Act (VCDPA)","country":"Virginia","url":"https://law.lis.virginia.gov/vacode/title59.1/chapter53/section59.1-575/","type":"primary"},
+{"citation":"Virginia breach notification law","country":"Virginia","url":"https://law.lis.virginia.gov/vacode/title18.2/chapter6/section18.2-186.6/","type":"primary"},
+{"citation":"Washington My Health My Data Act","country":"Washington","url":"https://app.leg.wa.gov/RCW/default.aspx?cite=19.373&full=true","type":"primary"},
+{"citation":"Washington Biometric Identifiers law, RCW 19.375","country":"Washington","url":"https://app.leg.wa.gov/RCW/default.aspx?cite=19.375&full=true","type":"primary"},
+{"citation":"Washington facial recognition law, RCW 43.386","country":"Washington","url":"https://app.leg.wa.gov/RCW/default.aspx?cite=43.386&full=true","type":"primary"},
+{"citation":"Washington right to repair law (ESHB 1483), effective January 1, 2026","country":"Washington","url":"https://app.leg.wa.gov/RCW/default.aspx?cite=19.415&full=true","type":"primary"},
+{"citation":"West Virginia breach notification law, W. Va. Code Section 46A-2A-101 et seq.","country":"West Virginia","url":"https://code.wvlegislature.gov/46A-2A-101/","type":"primary"},
+{"citation":"Wisconsin breach notification statute, Wis. Stat. Section 134.98","country":"Wisconsin","url":"https://docs.legis.wisconsin.gov/statutes/statutes/134/98","type":"primary"},
+{"citation":"Wyoming breach notification law, Wyo. Stat. Section 40-12-501 et seq.","country":"Wyoming","url":"https://law.justia.com/codes/wyoming/title-40/chapter-12/article-5/section-40-12-501/","type":"primary"}
+];
+
+const byCountry = {};
+LAWS.forEach(l => {
+  const key = l.country;
+  if (!byCountry[key]) byCountry[key] = [];
+  byCountry[key].push(l);
+});
+
+const countries = Object.keys(byCountry).sort();
+const libraryEl = document.getElementById('library');
+
+function render(filter) {
+  const q = (filter || '').trim().toLowerCase();
+  libraryEl.innerHTML = '';
+  countries.forEach(country => {
+    const items = byCountry[country].filter(l => !q || l.citation.toLowerCase().includes(q) || country.toLowerCase().includes(q));
+    if (!items.length) return;
+    const group = document.createElement('div');
+    group.className = 'country-group';
+    const h2 = document.createElement('h2');
+    h2.textContent = country;
+    group.appendChild(h2);
+    items.forEach(l => {
+      const row = document.createElement('div');
+      row.className = 'law-row';
+      row.innerHTML = `<span class="law-dot ${l.type}"></span>
+        <div class="law-text">
+          <a href="${l.url}" target="_blank" rel="noopener">${l.citation}</a>
+          <span class="law-type">${l.type === 'primary' ? 'Primary source' : 'Secondary source'}</span>
+        </div>`;
+      group.appendChild(row);
+    });
+    libraryEl.appendChild(group);
+  });
+  if (!libraryEl.children.length) {
+    libraryEl.innerHTML = '<p style="color:var(--ink-soft)">No matches.</p>';
+  }
+}
+
+document.getElementById('search').addEventListener('input', e => render(e.target.value));
+render('');
+</script>
+</body>
+</html>

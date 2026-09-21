@@ -337,6 +337,7 @@
         <span><i style="background:#8C2F26"></i> Not protected, not required</span>
       </div>
       <p class="verified-note">Content last verified: August 30, 2026. Laws and enforcement patterns shift — always confirm current status before relying on this for a legal decision.</p>
+      <p style="margin:10px 0 0;"><a href="usa-law-library.html" style="color:var(--accent); font-family:inherit; text-decoration:none;">Every law cited on this page, searchable and linked to its source →</a></p>
     </header>
     <a href="#mainContent" class="hero-cta">Explore the atlas &#8595;</a>
     <div class="hero-scroll-hint">50 states, the District of Columbia, and 20 questions each</div>
@@ -645,8 +646,8 @@ const STATES = {
     highlight: "Colorado was one of the first states after California to pass a comprehensive privacy law, and it followed up with one of the country's first broad laws regulating high risk artificial intelligence systems. It also restricts government use of facial recognition and requires companies to honor universal opt out signals.",
     sources: [
       "Colorado Privacy Act (CPA), enforced by the Colorado Attorney General",
-      "Colorado Artificial Intelligence Act, SB 24-205",
-      "Colorado House Bill 21-1110, facial recognition restrictions on state agencies",
+      "Colorado Artificial Intelligence Act, SB 24-205, repealed and replaced by SB 26-189, effective May 2026",
+      "Colorado Senate Bill 22-113, facial recognition restrictions on state and local government agencies",
       "International Association of Privacy Professionals, US State Privacy Legislation Tracker"
     ],
     qa: [
@@ -660,7 +661,7 @@ const STATES = {
       {q:"Can you personally sue a company that violates your privacy?", a:"no", note:"The CPA is enforced only by the Attorney General and district attorneys, with no private right of action for individuals."},
       {q:"Is your biometric data given extra legal protection?", a:"yes", note:"The CPA classifies biometric data as sensitive, requiring opt in consent before it can be processed."},
       {q:"Is there a public registry of data brokers who trade your information?", a:"no", note:"Colorado does not currently require data brokers to register with the state."},
-      {q:"Are there limits on police use of facial recognition on you?", a:"yes", note:"House Bill 21-1110 restricts state agency use of facial recognition and requires testing, notice, and human review safeguards."},
+      {q:"Are there limits on police use of facial recognition on you?", a:"yes", note:"Senate Bill 22-113 restricts state and local government agency use of facial recognition and requires testing, notice, and human review safeguards."},
       {q:"Do police need a warrant for your digital location or message data?", a:"yes", note:"Colorado's constitution has been read by its courts to provide strong protection against warrantless searches of digital data, on top of federal Carpenter protections."},
       {q:"Are automated and AI driven decisions about you regulated?", a:"yes", note:"The Colorado AI Act, taking effect in 2026, requires developers and deployers of high risk AI systems to assess and disclose algorithmic discrimination risks."},
       {q:"Can someone legally record your phone call without telling you?", a:"yes", note:"Colorado is a one-party consent state, so a call can be recorded if just one participant agrees."},
@@ -1276,7 +1277,7 @@ const STATES = {
     title: "Strong Privacy Rights Plus An Actual Repair Law",
     highlight: "Minnesota's privacy law requires companies to disclose the specific third parties they share your data with, a right most other states do not offer. It paired that with one of the country's few right to repair laws covering ordinary consumer electronics.",
     sources: [
-      "Minnesota Consumer Data Privacy Act, Minn. Stat. Section 325O",
+      "Minnesota Consumer Data Privacy Act, Minn. Stat. Chapter 325M",
       "Minnesota Digital Fair Repair Act, Minn. Stat. Section 325E.72",
       "International Association of Privacy Professionals, US State Privacy Legislation Tracker"
     ],
@@ -1311,8 +1312,7 @@ const STATES = {
     title: "A New Privacy Law Facing Its Own Court Challenges",
     highlight: "Mississippi passed a consumer privacy law in 2024 and separately tried to require age verification and parental consent for minors on social media, but the social media law has been tied up in federal court over free speech concerns.",
     sources: [
-      "Mississippi Consumer Data Privacy Act, House Bill 1126",
-      "Mississippi Walker Montgomery Protecting Children Online Act, and related litigation, NetChoice v Fitch",
+      "Mississippi Walker Montgomery Protecting Children Online Act, House Bill 1126, and related litigation, NetChoice v Fitch",
       "National Conference of State Legislatures, State privacy legislation tracker"
     ],
     qa: [
@@ -1382,7 +1382,7 @@ const STATES = {
     highlight: "Montana passed a Virginia style privacy law with no right to cure violations before being sued by the Attorney General, plus one of the country's few standalone genetic privacy laws requiring consent before a DNA testing company can use or share your genetic data.",
     sources: [
       "Montana Consumer Data Privacy Act, Mont. Code Ann. Section 30-14-2801 et seq.",
-      "Montana Genetic Information Privacy Act, Mont. Code Ann. Section 30-14-2901 et seq.",
+      "Montana Genetic Information Privacy Act, Mont. Code Ann. Section 30-23-101 et seq.",
       "International Association of Privacy Professionals, US State Privacy Legislation Tracker"
     ],
     qa: [
@@ -2121,7 +2121,7 @@ const STATES = {
       "Washington My Health My Data Act",
       "Washington Biometric Identifiers law, RCW 19.375",
       "Washington facial recognition law, RCW 43.386",
-      "Washington right to repair law, effective 2024"
+      "Washington right to repair law (ESHB 1483), effective January 1, 2026"
     ],
     qa: [
       {q:"Is there a comprehensive data privacy law protecting you here?", a:"no", note:"A general Washington Privacy Act has repeatedly failed in the legislature, so the state relies on narrower sectoral laws instead."},
@@ -2788,7 +2788,92 @@ function buildCountry(code) {
     [/european data protection board|\bedpb\b/i, "https://edpb.europa.eu"],
     [/african union/i, "https://au.int"]
   ];
+  const LAW_URL_BY_CITATION = {
+    "National Conference of State Legislatures, State data breach notification laws tracker": "https://www.ncsl.org/technology-and-communication/security-breach-notification-laws",
+    "National Conference of State Legislatures, State privacy legislation tracker": "https://www.ncsl.org/technology-and-communication/state-laws-related-to-digital-privacy",
+    "Nevada Attorney General, consumer data privacy guidance": "https://ag.nv.gov/Hot_Topics/Citizen/Consumer_Protection/",
+    "Alabama Data Breach Notification Act of 2018, Ala. Code Section 8-38-1 et seq.": "https://law.justia.com/codes/alabama/title-8/chapter-38/",
+    "California Consumer Privacy Act (CCPA) as amended by the California Privacy Rights Act (CPRA), enforced by the California Privacy Protection Agency": "https://oag.ca.gov/privacy/ccpa",
+    "California Genetic Information Privacy Act, Civil Code Section 56.18": "https://law.justia.com/codes/california/code-civ/division-1/part-2-6/chapter-2-6/section-56-18/",
+    "California Age Appropriate Design Code Act, Civil Code Section 1798.99.28 et seq.": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202120220AB2273",
+    "Alaska Personal Information Protection Act, AS 45.48": "https://law.justia.com/codes/alaska/title-45/chapter-48/",
+    "Arizona Revised Statutes Section 18-545, data breach notification requirements": "https://law.justia.com/codes/arizona/2017/title-18/section-18-545/",
+    "Arkansas Social Media Safety Act of 2023, enjoined by federal court order": "https://www.arkleg.state.ar.us/Bills/FTPDocument?path=%2FBills%2F2023R%2FPublic%2FSB396.pdf",
+    "Colorado Privacy Act (CPA), enforced by the Colorado Attorney General": "https://coag.gov/resources/colorado-privacy-act/",
+    "Colorado Artificial Intelligence Act, SB 24-205, repealed and replaced by SB 26-189, effective May 2026": "https://leg.colorado.gov/bills/sb24-205",
+    "Colorado Senate Bill 22-113, facial recognition restrictions on state and local government agencies": "https://leg.colorado.gov/bills/sb22-113",
+    "Connecticut Data Privacy Act (CTDPA), enforced by the Connecticut Attorney General": "https://portal.ct.gov/ag/sections/privacy/the-connecticut-data-privacy-act",
+    "Connecticut General Statutes Section 52-570d, all party consent for call recording": "https://law.justia.com/codes/connecticut/2022/title-52/chapter-925/section-52-570d/",
+    "Delaware Personal Data Privacy Act (DPDPA), enforced by the Delaware Attorney General": "https://legis.delaware.gov/BillDetail?legislationId=140388",
+    "Delaware Online Privacy and Protection Act, protections for minors": "https://delcode.delaware.gov/title6/c012c/index.html",
+    "District of Columbia Consumer Personal Information Security Breach Notification Act": "https://code.dccouncil.gov/us/dc/council/code/sections/28-3852",
+    "Florida Digital Bill of Rights, Florida Statutes Section 501.701 et seq.": "https://www.flsenate.gov/Laws/Statutes/2025/0501.701",
+    "Florida Statutes Section 934.03, all party consent for call recording": "https://www.flsenate.gov/Laws/Statutes/2021/934.03",
+    "Georgia Code Section 10-1-910 et seq., data breach notification requirements": "https://law.justia.com/codes/georgia/title-10/chapter-1/article-34/section-10-1-912/",
+    "Hawaii Revised Statutes Section 487N, security breach of personal information": "https://law.justia.com/codes/hawaii/title-26/chapter-487n/",
+    "Idaho Code Section 28-51-104 et seq., data breach notification requirements": "https://legislature.idaho.gov/statutesrules/idstat/title28/t28ch51/sect28-51-104/",
+    "Illinois Biometric Information Privacy Act (BIPA), 740 ILCS 14": "https://www.ilga.gov/Legislation/ILCS/Articles?ActID=3004&ChapterID=57&Print=True",
+    "Illinois Genetic Information Privacy Act, 410 ILCS 513": "https://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=1567",
+    "Illinois Personal Information Protection Act, breach notification requirements": "https://law.justia.com/codes/illinois/chapter-815/act-815-ilcs-530/",
+    "Indiana Consumer Data Protection Act, effective January 1, 2026": "https://iga.in.gov/ic/2024/Title_24/Article_15.pdf",
+    "Indiana Code Section 24-4.9, data breach notification requirements": "https://law.justia.com/codes/indiana/title-24/article-4-9/",
+    "Iowa Consumer Data Protection Act (Senate File 262), Iowa Code Chapter 715D": "https://www.legis.iowa.gov/docs/publications/LGI/90/SF262.pdf",
+    "Kansas data breach notification law, Kan. Stat. Ann. Section 50-7a01 et seq.": "https://kslegislature.gov/li_2012/b2011_12/statute/050_000_0000_chapter/050_007a_0000_article/050_007a_0001_section/050_007a_0001_k/",
+    "Kentucky Consumer Data Protection Act, House Bill 15": "https://apps.legislature.ky.gov/recorddocuments/bill/24RS/hb15/bill.pdf",
+    "Louisiana Database Security Breach Notification Law, La. Rev. Stat. Section 51:3071 et seq.": "https://law.justia.com/codes/louisiana/revised-statutes/title-51/rs-51-3071/",
+    "An Act To Protect the Privacy of Online Consumer Information, 35-A M.R.S. Section 9301": "https://legislature.maine.gov/legis/bills/bills_129th/chapters/PUBLIC216.asp",
+    "Maine facial surveillance restrictions, laws of 2021 and 2022": "https://legislature.maine.gov/statutes/25/title25sec6001.html",
+    "Maryland Online Data Privacy Act (MODPA), Md. Code, Commercial Law Section 14-4601 et seq.": "https://mgaleg.maryland.gov/2024RS/Chapters_noln/CH_455_sb0541e.pdf",
+    "Massachusetts data security regulations, 201 CMR 17.00": "https://www.mass.gov/regulations/201-CMR-1700-standards-for-the-protection-of-personal-information-of-residents-of-the-commonwealth",
+    "Massachusetts wiretap act, Mass. Gen. Laws ch. 272 Section 99": "https://law.justia.com/codes/massachusetts/part-iv/title-i/chapter-272/section-99/",
+    "Michigan Identity Theft Protection Act, breach notification provisions, Mich. Comp. Laws Section 445.72": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-445-72",
+    "Minnesota Consumer Data Privacy Act, Minn. Stat. Chapter 325M": "https://www.revisor.mn.gov/statutes/cite/325M/full",
+    "Minnesota Digital Fair Repair Act, Minn. Stat. Section 325E.72": "https://www.revisor.mn.gov/statutes/cite/325E.72",
+    "Mississippi Walker Montgomery Protecting Children Online Act, House Bill 1126, and related litigation, NetChoice v Fitch": "https://billstatus.ls.state.ms.us/documents/2024/pdf/HB/1100-1199/HB1126SG.pdf",
+    "Missouri Constitution, Article I Section 15, as amended by 2014 Amendment 9": "http://www.moga.mo.gov/mostatutes/ConstArticles/Art01.html",
+    "Missouri data breach notification law, Mo. Rev. Stat. Section 407.1500": "https://revisor.mo.gov/main/OneSection.aspx?section=407.1500",
+    "Montana Consumer Data Privacy Act, Mont. Code Ann. Section 30-14-2801 et seq.": "https://mca.legmt.gov/bills/mca/title_0300/chapter_0140/part_0280/sections_index.html",
+    "Montana Genetic Information Privacy Act, Mont. Code Ann. Section 30-23-101 et seq.": "https://mca.legmt.gov/bills/mca/title_0300/chapter_0230/part_0010/sections_index.html",
+    "Nebraska Data Privacy Act (NDPA), effective January 1, 2025": "https://www.nebraskalegislature.gov/laws/statutes.php?statute=87-1101",
+    "Nevada Revised Statutes Chapter 603A, online privacy provisions": "https://www.leg.state.nv.us/nrs/nrs-603a.html",
+    "New Hampshire Privacy Act, RSA 507-H, effective January 1, 2025": "https://gc.nh.gov/rsa/html/LII/507-H/507-H-mrg.htm",
+    "New Hampshire Wiretapping and Eavesdropping Statute, RSA 570-A": "https://gc.nh.gov/rsa/html/nhtoc/nhtoc-lviii-570-a.htm",
+    "New Jersey Data Privacy Act (NJDPA), effective January 15, 2025": "https://law.justia.com/codes/new-jersey/title-56/section-56-8-166-4/",
+    "New York SHIELD Act, General Business Law Section 899-bb": "https://www.nysenate.gov/legislation/laws/GBS/899-BB",
+    "New York Digital Fair Repair Act, effective 2023": "https://www.nysenate.gov/legislation/laws/GBS/399-NN",
+    "New York SAFE for Kids Act, effective 2025": "https://www.nysenate.gov/legislation/bills/2023/S7694/amendment/A",
+    "North Carolina Identity Theft Protection Act, breach notification provisions": "https://www.ncleg.gov/EnactedLegislation/Statutes/PDF/ByArticle/Chapter_75/Article_2A.pdf",
+    "North Dakota Century Code Chapter 51-30, breach notification provisions": "https://ndlegis.gov/cencode/t51c30.html",
+    "Ohio Data Protection Act, Ohio Revised Code Section 1354, cybersecurity safe harbor law": "https://codes.ohio.gov/ohio-revised-code/chapter-1354",
+    "Oregon Consumer Privacy Act (OCPA), effective July 1, 2024": "https://oregon.public.law/statutes/ors_646a.570",
+    "Oregon Right to Repair Act, effective 2025": "https://www.oregonlegislature.gov/bills_laws/lawsstatutes/2024orlaw0069.pdf",
+    "Pennsylvania Breach of Personal Information Notification Act": "https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/2005/0/0094..HTM",
+    "Rhode Island Data Transparency and Privacy Protection Act (RIDTPPA)": "https://webserver.rilegislature.gov/Statutes/TITLE6/6-48.1/INDEX.htm",
+    "Rhode Island General Laws, identity theft protection and breach notification statute": "https://law.justia.com/codes/rhode-island/title-11/chapter-11-49-3/section-11-49-3-4/",
+    "South Carolina Insurance Data Security Act (sectoral, insurance only)": "https://law.justia.com/codes/south-carolina/title-38/chapter-99/",
+    "South Dakota Codified Laws Chapter 22-40, breach notification statute": "https://sdlegislature.gov/Statutes/Codified_Laws/2047710",
+    "Tennessee Information Protection Act (TIPA)": "https://www.capitol.tn.gov/Bills/113/Bill/HB1181.pdf",
+    "Tennessee data breach notification law": "https://law.justia.com/codes/tennessee/title-47/chapter-18/part-21/section-47-18-2107/",
+    "Texas Data Privacy and Security Act (TDPSA)": "https://texas.public.law/statutes/tex._bus._and_com._code_title_11_subtitle_c_chapter_541",
+    "Texas Capture or Use of Biometric Identifier Act (CUBI)": "https://texas.public.law/statutes/tex._bus._and_com._code_section_503.001",
+    "Texas Securing Children Online through Parental Empowerment (SCOPE) Act": "https://statutes.capitol.texas.gov/Docs/BC/htm/BC.509.v2.htm",
+    "Utah Consumer Privacy Act (UCPA)": "https://le.utah.gov/xcode/Title13/Chapter61/C13-61_2022050420231231.pdf",
+    "Utah Artificial Intelligence Policy Act": "https://law.justia.com/codes/utah/title-13/chapter-72/part-1/section-101/",
+    "Vermont data broker registration law, 9 V.S.A. Chapter 62": "https://legislature.vermont.gov/statutes/chapter/09/062",
+    "Vermont Security Breach Notice Act": "https://legislature.vermont.gov/statutes/section/09/062/02435",
+    "Virginia Consumer Data Protection Act (VCDPA)": "https://law.lis.virginia.gov/vacode/title59.1/chapter53/section59.1-575/",
+    "Virginia breach notification law": "https://law.lis.virginia.gov/vacode/title18.2/chapter6/section18.2-186.6/",
+    "Washington My Health My Data Act": "https://app.leg.wa.gov/RCW/default.aspx?cite=19.373&full=true",
+    "Washington Biometric Identifiers law, RCW 19.375": "https://app.leg.wa.gov/RCW/default.aspx?cite=19.375&full=true",
+    "Washington facial recognition law, RCW 43.386": "https://app.leg.wa.gov/RCW/default.aspx?cite=43.386&full=true",
+    "Washington right to repair law (ESHB 1483), effective January 1, 2026": "https://app.leg.wa.gov/RCW/default.aspx?cite=19.415&full=true",
+    "West Virginia breach notification law, W. Va. Code Section 46A-2A-101 et seq.": "https://code.wvlegislature.gov/46A-2A-101/",
+    "Wisconsin breach notification statute, Wis. Stat. Section 134.98": "https://docs.legis.wisconsin.gov/statutes/statutes/134/98",
+    "Wyoming breach notification law, Wyo. Stat. Section 40-12-501 et seq.": "https://law.justia.com/codes/wyoming/title-40/chapter-12/article-5/section-40-12-501/"
+  };
+
   function sourceLinkFor(text) {
+    if (LAW_URL_BY_CITATION[text]) return LAW_URL_BY_CITATION[text];
     const match = SOURCE_ORG_LINKS.find(([re]) => re.test(text));
     return match ? match[1] : null;
   }
