@@ -1399,3 +1399,86 @@ footer a { color: var(--muted); text-decoration: underline; }
 @media (max-width: 480px) {
   .jb-stats { gap: 20px 26px; }
 }
+
+/* ---------- Translate widget ---------- */
+/* Points visitors to their browser's own built-in page translation rather
+   than embedding a third-party script (Google Translate, etc.) that would
+   ship visitor page content to a company they didn't choose — the same
+   privacy trade-off already rejected for analytics. Injected by nav.js so
+   every page gets it without touching each page's own markup. */
+
+.translate-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: var(--ink);
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  padding: 9px 16px 9px 13px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px -8px rgba(26, 34, 51, 0.28);
+}
+
+.translate-fab:hover { border-color: var(--accent); color: var(--accent); }
+.translate-fab .globe-icon { font-size: 14px; line-height: 1; }
+
+.translate-pop {
+  position: fixed;
+  right: 20px;
+  bottom: 68px;
+  z-index: 401;
+  width: min(300px, calc(100vw - 40px));
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 18px 20px;
+  box-shadow: 0 16px 40px -12px rgba(26, 34, 51, 0.35);
+}
+
+.translate-pop[hidden] { display: none; }
+
+.translate-pop h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+}
+
+.translate-pop p {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 10px;
+}
+
+.translate-pop p:last-of-type { margin-bottom: 0; }
+.translate-pop strong { color: var(--ink); }
+
+.translate-pop .close-x {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.translate-pop .close-x:hover { color: var(--accent); }
+
+@media (max-width: 480px) {
+  .translate-fab { right: 14px; bottom: 14px; }
+  .translate-pop { right: 14px; bottom: 60px; }
+}
