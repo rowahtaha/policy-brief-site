@@ -1401,11 +1401,10 @@ footer a { color: var(--muted); text-decoration: underline; }
 }
 
 /* ---------- Translate widget ---------- */
-/* Points visitors to their browser's own built-in page translation rather
-   than embedding a third-party script (Google Translate, etc.) that would
-   ship visitor page content to a company they didn't choose — the same
-   privacy trade-off already rejected for analytics. Injected by nav.js so
-   every page gets it without touching each page's own markup. */
+/* Google's free Website Translator, loaded on demand by nav.js only once a
+   visitor opens the panel, so the page translates in place with no
+   extension or download. .goog-te-* rules below restyle Google's injected
+   markup to match the site instead of its default look. */
 
 .translate-fab {
   position: fixed;
@@ -1460,8 +1459,41 @@ footer a { color: var(--muted); text-decoration: underline; }
   margin: 0 0 10px;
 }
 
-.translate-pop p:last-of-type { margin-bottom: 0; }
+.translate-pop p:last-of-type { margin-bottom: 10px; }
 .translate-pop strong { color: var(--ink); }
+
+.translate-loading {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Google's widget renders as .goog-te-gadget-simple with a couple of
+   internally-generated child elements whose class names Google reserves
+   the right to change, so only the stable outer classes are styled here.
+   Its own "Translated to: X / Show original" bar at the top of the page
+   is Google's, not ours, and is left alone rather than fought with a
+   selector likely to break on Google's next markup update. */
+#google_translate_element .goog-te-gadget-simple {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+#google_translate_element .goog-te-gadget-simple,
+#google_translate_element .goog-te-gadget-simple * {
+  color: var(--ink) !important;
+  text-decoration: none !important;
+}
+
+#google_translate_element .goog-te-gadget-icon { display: none; }
 
 .translate-pop .close-x {
   position: absolute;

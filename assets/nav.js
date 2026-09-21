@@ -23,10 +23,10 @@
 })();
 
 // Floating "Translate" button, present on every page that loads this
-// script. Points visitors to their browser's own built-in translation
-// instead of embedding a third-party translate widget that would send
-// page content to a company they didn't choose — see the CSS comment
-// above .translate-fab for why.
+// script. Loads Google's free Website Translator widget on demand (only
+// when a visitor actually opens the panel) so the page translates in
+// place, right here, with no extension or download — nothing beyond the
+// standard widget script runs until someone asks for a translation.
 (function () {
   var fab = document.createElement("button");
   fab.type = "button";
@@ -39,15 +39,13 @@
   pop.className = "translate-pop";
   pop.id = "translatePop";
   pop.setAttribute("role", "dialog");
-  pop.setAttribute("aria-label", "How to translate this page");
+  pop.setAttribute("aria-label", "Translate this page");
   pop.hidden = true;
   pop.innerHTML =
     '<button type="button" class="close-x" aria-label="Close">×</button>' +
-    '<h4>Read this in another language</h4>' +
-    '<p>This site uses your browser’s own built-in translation rather than a third-party translate widget — nothing on this page gets sent anywhere else to make that work.</p>' +
-    '<p><strong>Chrome or Edge:</strong> click the translate icon in the address bar, or right-click the page and choose “Translate to…”</p>' +
-    '<p><strong>Safari:</strong> click the “Aa” icon in the address bar, then “Translate to…”</p>' +
-    '<p><strong>Firefox:</strong> needs a translation extension — it doesn’t ship one built in.</p>';
+    '<h4>Translate this page</h4>' +
+    '<p>Pick a language and the page translates right here — nothing to install.</p>' +
+    '<div id="google_translate_element"><span class="translate-loading">Loading languages…</span></div>';
 
   document.body.appendChild(fab);
   document.body.appendChild(pop);
@@ -57,10 +55,32 @@
     fab.setAttribute("aria-expanded", "false");
   }
 
+  var widgetRequested = false;
+  function loadWidget() {
+    if (widgetRequested) return;
+    widgetRequested = true;
+    window.googleTranslateElementInit = function () {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          autoDisplay: false,
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        },
+        "google_translate_element"
+      );
+      var loading = pop.querySelector(".translate-loading");
+      if (loading) loading.remove();
+    };
+    var script = document.createElement("script");
+    script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    document.body.appendChild(script);
+  }
+
   fab.addEventListener("click", function () {
     var willOpen = pop.hidden;
     pop.hidden = !willOpen;
     fab.setAttribute("aria-expanded", String(willOpen));
+    if (willOpen) loadWidget();
   });
 
   pop.querySelector(".close-x").addEventListener("click", closePop);
