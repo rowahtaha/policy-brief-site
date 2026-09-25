@@ -36,53 +36,19 @@
 // replacing old ones. Checked a fresh backlog slice (RelyanceAI, Troutman Pepper
 // Locke, Willkie, Arnold & Porter, Baker McKenzie, Cooley, Jenner & Block, Orrick,
 // WilmerHale, Paul Hastings) and found 2 new genuine matches at Troutman Pepper Locke
-// and Cooley (added below, on top). The rest had nothing beyond attorney-track or
-// unrelated (AML/KYC, IT risk) postings. Also moved Troutman Pepper Locke and Cooley
-// from job-network-data.js's backlog into researched. Did not re-verify the 7 existing
-// roles' live status (all under 7-8 days old, well inside the freshness window) —
-// two of them (Holland & Knight, Skadden) sit on Workday pages that don't render for
-// automated fetches, same as always; that's a tooling limitation, not a signal they
-// expired.
+// and Cooley. Did not re-verify the 7 existing roles' live status (all under 7-8 days
+// old, well inside the freshness window) — two of them (Holland & Knight, Skadden)
+// sit on Workday pages that don't render for automated fetches, same as always;
+// that's a tooling limitation, not a signal they expired.
+//
+// 2026-09-21 (third pass, same day): Rowa asked to remove the 3 roles just added
+// (Troutman Pepper Locke's Legal Data Analyst, and Cooley's two IG roles) — pulled
+// from the board. Moved Troutman Pepper Locke and Cooley back to job-network-data.js's
+// backlog to match.
 const jobBoardData = {
   asOf: "September 21, 2026",
   intro: "Open roles in tech policy, privacy, and AI governance — each one confirmed live directly on the employer's own careers page, not just pulled from a search result. Includes roles above entry level so you can see the full picture; check the experience line on each. Always double-check a posting is still open before applying, since roles can close quickly.",
   roles: [
-    {
-      company: "Troutman Pepper Locke",
-      role: "Legal Data Analyst — Privacy, Cyber & AI",
-      location: "New York, NY (also posted for Atlanta, GA — confirm exact location on application)",
-      link: "https://troutman.wd5.myworkdayjobs.com/en-US/TPRecruit1/job/Legal-Data-Analyst---Privacy--Cyber---AI_R4071",
-      note: "Builds and maintains a Privacy Litigation & State AG Enforcement Tracker; sits at the intersection of privacy/cyber/AI law and data analysis, including validating GenAI outputs.",
-      caveat: "Req R4071 corroborated across ZipRecruiter, RemoteRocketship, and BeBee reposting the same Workday listing; the Workday page itself didn't render for direct verification.",
-      barRequired: "not required (J.D./M.B.A./M.L.S. preferred, not mandatory)",
-      experience: "2+ years in privacy, cybersecurity, data protection, or AI-related legal practice",
-      workMode: "hybrid",
-      firstSeen: "2026-09-21"
-    },
-    {
-      company: "Cooley LLP",
-      role: "IG Compliance & Security Analyst",
-      location: "Chicago, IL",
-      link: "https://www.linkedin.com/jobs/view/ig-compliance-security-analyst-at-cooley-llp-4406018868",
-      note: "Information Governance & Data Privacy team. Day-to-day compliance/security execution — vendor and internal security assessments, audit support, ISO 27001/NIST framework tracking.",
-      caveat: "Found via LinkedIn/Indeed; Cooley's own careers portal doesn't expose a static link for this posting — search cooley.com/careers to confirm directly.",
-      barRequired: "not required",
-      experience: "not specified in the listing",
-      workMode: null,
-      firstSeen: "2026-09-21"
-    },
-    {
-      company: "Cooley LLP",
-      role: "Information Governance Regulatory and Privacy Manager",
-      location: "Santa Monica, CA or Reston, VA",
-      link: "https://www.ziprecruiter.com/c/Cooley-LLP/Job/Information-Governance-Regulatory-and-Privacy-Manager/-in-Reston,VA?jid=196ee6603858d283",
-      note: "Same IG department as the Analyst role above — records & information management plus GRC (governance, risk, compliance) oversight.",
-      caveat: "5+ years directly applicable experience required (3+ in GRC/info-security/auditing) — above your ~2 years. Included per your standing request to see the fuller market rather than filter by seniority. Found via ZipRecruiter; no direct cooley.com link located.",
-      barRequired: "not required",
-      experience: "5+ years",
-      workMode: null,
-      firstSeen: "2026-09-21"
-    },
     {
       company: "Holland & Knight",
       role: "Privacy and Compliance Analyst",
