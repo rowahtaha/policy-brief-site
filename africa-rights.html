@@ -325,8 +325,8 @@
   }
 
   footer.note {
-    margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--line);
-    color: var(--ink-soft); font-size: 13px; max-width: 62ch;
+    margin-top: 0; padding-top: 20px; border-top: 1px solid var(--line);
+    color: var(--ink-soft); font-size: 13px; width: 100%; box-sizing: border-box; padding-left: 28px; padding-right: 28px; padding-bottom: 40px;
   }
 </style>
 
@@ -420,7 +420,11 @@
       <span class="kicker">Compare</span>
       <h2>Compare countries side by side</h2>
       <p>Pick two to five countries below to line up their answers to all twenty questions in one table.</p>
-    </div>
+      <div class="legend" style="justify-content:flex-start; margin:0 0 18px;">
+        <span><i style="background:#2F6B4F"></i> Protected, required by law</span>
+        <span><i style="background:#8A6A1F"></i> Partial or conditional</span>
+        <span><i style="background:#8C2F26"></i> Not protected, not required</span>
+      </div>    </div>
     <div class="compare-picker" id="comparePicker"></div>
     <p class="compare-hint" id="compareHint"></p>
     <div class="compare-table-wrap" id="compareTableWrap"></div>
@@ -433,12 +437,12 @@
       <p>Each country answers the same twenty questions across a set of flyer cards, with its bio and cited sources underneath. Pick any country on the map above and it will open right here.</p>
     </div>
   </section>
+</div>
 
   <footer class="note">
-    <p style="margin:0 0 14px">Sourced from primary legislation, official regulator guidance, and reporting from Freedom House and Human Rights Watch, as catalogued in the Digital Rights Atlas. Verify against the listed sources before treating anything here as legal advice. Laws and enforcement patterns shift.</p>
+    <p style="margin:0 0 14px">Sourced from primary legislation, official regulator guidance, and reporting from Freedom House, the Committee to Protect Journalists, and ARTICLE19, as catalogued in the Digital Rights Atlas. Verify against the listed sources before treating anything here as legal advice. Laws and enforcement patterns shift.</p>
     <p style="margin:0">Digital Rights of Africa. Copyright 2026 Rowa Taha. All rights reserved.</p>
   </footer>
-</div>
 
 <div class="lightbox" id="lightbox">
   <button class="close" type="button" id="lightboxClose">Close</button>
@@ -3217,6 +3221,19 @@ function buildCountry(code) {
     "Constitution of Mozambique 2004, revised 2007, Articles 41, 68 and 71": "https://www.constituteproject.org/constitution/Mozambique_2007",
     "Press Law 1991, Mozambique": "https://www.scribd.com/document/739862370/Lei-18-91-liberdade-de-imprensa",
     "Reporting on the Rwanda Single Digital ID System biometric enrollment program, Biometric Update, 2026": "https://www.biometricupdate.com/202606/rwanda-accelerates-biometric-enrollment-ahead-of-digital-id-switch",
+    "ECOWAS Supplemental Act on Personal Data Protection, 2010, applicable to Guinea-Bissau as a member state": "https://africanlii.org/akn/aa-ecowas/act/2010/1-1/eng@2010-12-31",
+    "Wikipedia, Guinea-Bissau country overview, and Human rights in Guinea-Bissau": "https://en.wikipedia.org/wiki/Human_rights_in_Guinea-Bissau",
+    "Kenya Data Protection Act 2019, enforced by the Office of the Data Protection Commissioner, ODPC": "https://kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/2019/TheDataProtectionAct__No24of2019.pdf",
+    "Computer Misuse and Cybercrimes Act 2018, amended 2025, Sections 22 and 23 nullified by the Court of Appeal in March 2026": "https://bowmanslaw.com/insights/kenya-court-of-appeal-upholds-cybercrime-law-but-strikes-down-fake-news-offences/",
+    "Nubian Rights Forum v Attorney General, High Court of Kenya, 2021, on the Huduma Namba biometric ID system": "https://privacyinternational.org/long-read/3373/kenyan-court-ruling-huduma-namba-identity-system-good-bad-and-lessons",
+    "Constitution of Lesotho 1993, Section 11, on protection of privacy of home and other property": "https://www.constituteproject.org/constitution/Lesotho_2018",
+    "Wikipedia, Lesotho country overview": "https://en.wikipedia.org/wiki/Lesotho",
+    "Constitution of Liberia, Article 15, on freedom of expression and of the press": "https://www.constituteproject.org/constitution/Liberia_1986",
+    "ECOWAS Supplemental Act on Personal Data Protection, 2010, signed by Liberia but not yet implemented nationally": "https://africanlii.org/akn/aa-ecowas/act/2010/1-1/eng@2010-12-31",
+    "ICNL, Civic Freedom Monitor, Liberia": "https://www.icnl.org/resources/research/ijnl/liberia",
+    "Wikipedia, Liberia country overview": "https://en.wikipedia.org/wiki/Liberia",
+    "Libya Law No. 6 of 2022, Electronic Transactions, Articles 77 and 78": "https://lawsociety.ly/en/legislation/law-no-6-of-2022-concerning-electronic-transactions/",
+    "Constitution of Libya 2011, Articles 12 and 13, on privacy and confidentiality of communications": "https://www.constituteproject.org/constitution/Libya_2011",
     "Organic Law No. 2017-58 of 2017 on Eliminating Violence Against Women, cyber violence provisions": "http://www.legislation.tn/en/detailtexte/Loi-num-2017-58-du-11-08-2017-jort-2017-065__2017065000581",
     "Penal Code of Senegal, Article 255, on false news": "https://www.article19.org/resources/senegal-laws-for-disinformation/",
     "Algeria Cybercrime Law of 2009 and Penal Code amendments published May 2024": "https://www.icnl.org/resources/library/law-no-09-04-of-august-5-2009-regulating-the-prevention-of-and-the-fight-against-offences-linked-to-information-and-communication-technologies",

@@ -311,8 +311,8 @@
   }
 
   footer.note {
-    margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--line);
-    color: var(--ink-soft); font-size: 13px; max-width: 62ch;
+    margin-top: 0; padding-top: 20px; border-top: 1px solid var(--line);
+    color: var(--ink-soft); font-size: 13px; width: 100%; box-sizing: border-box; padding-left: 28px; padding-right: 28px; padding-bottom: 40px;
   }
 </style>
 
@@ -353,7 +353,11 @@
       <span class="kicker">Compare</span>
       <h2>Compare countries side by side</h2>
       <p>Pick up to ten countries below to line up their answers to all twenty questions in one table.</p>
-    </div>
+      <div class="legend" style="justify-content:flex-start; margin:0 0 18px;">
+        <span><i style="background:#2F6B4F"></i> Protected, required by law</span>
+        <span><i style="background:#8A6A1F"></i> Partial or conditional</span>
+        <span><i style="background:#8C2F26"></i> Not protected, not required</span>
+      </div>    </div>
     <div class="compare-picker" id="comparePicker"></div>
     <p class="compare-hint" id="compareHint"></p>
     <div class="compare-table-wrap" id="compareTableWrap"></div>
@@ -405,12 +409,12 @@
       </a>
     </div>
   </section>
+</div>
 
   <footer class="note">
     <p style="margin:0 0 14px">Sourced from primary legislation, official regulator guidance, and reporting from Freedom House, the Committee to Protect Journalists, and ARTICLE19, as catalogued in the Digital Rights Atlas. Verify against the listed sources before treating anything here as legal advice. Laws and enforcement patterns shift.</p>
     <p style="margin:0">Digital Rights of the Globe. Copyright 2026 Rowa Taha. All rights reserved.</p>
   </footer>
-</div>
 
 <div class="lightbox" id="lightbox">
   <button class="close" type="button" id="lightboxClose">Close</button>
