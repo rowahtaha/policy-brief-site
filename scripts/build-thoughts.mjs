@@ -96,14 +96,28 @@ function pageShell({ title, description, ogUrl, ogImage, ogType = "website", pre
 <link rel="stylesheet" href="${prefix}assets/style.css">
 ${head}</head>
 <body>
-
-<header class="masthead">
-  <div class="wrap">
-    <a href="${prefix}home.html" class="masthead-brand">
-      <img src="${prefix}assets/logo.png?v=2" alt="The Digital Divide logo" class="masthead-logo">
-      <h1>The Digital Divide</h1>
-    </a>
-    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="true">☰</button>
+<style id="dd-strip-css">
+.dd-strip{border-bottom:1px solid #d9d2c2;padding:22px 0;background:#faf8f3;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;position:relative;z-index:50}
+.dd-strip .dd-in{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.dd-strip a{text-decoration:none}
+.dd-brand{display:flex;align-items:center;gap:11px;color:inherit}
+.dd-brand img{width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:center 22%;flex-shrink:0}
+.dd-brand span{font-weight:700;font-size:1rem;letter-spacing:-.1px;color:#14110f}
+.dd-nav{display:flex;gap:28px;flex-wrap:wrap;font-size:12.5px;font-weight:600;letter-spacing:.6px;text-transform:uppercase}
+.dd-nav a{color:#14110f;padding-bottom:3px;border-bottom:1px solid transparent}
+.dd-nav a:hover{color:#8c1c1c;border-bottom-color:#8c1c1c}
+@media(max-width:560px){.dd-nav{gap:16px}}
+</style>
+<header class="dd-strip">
+  <div class="dd-in">
+    <a href="${prefix}home.html" class="dd-brand"><img src="${prefix}assets/logo.png?v=2" alt="The Digital Divide"><span>The Digital Divide</span></a>
+    <nav class="dd-nav">
+      <a href="${prefix}home.html">Home</a>
+      <a href="${prefix}about.html">About</a>
+      <a href="${prefix}thoughts.html">Thoughts</a>
+      <a href="${prefix}newsletter.html">Newsletter</a>
+      <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">Contact</a>
+    </nav>
   </div>
 </header>
 ${body}
