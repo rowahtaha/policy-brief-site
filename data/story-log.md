@@ -21,6 +21,20 @@ got written up.
 
 ## Newsletter — published issues
 
+### Issue No. 5 — Week of September 21–28, 2026
+| Story | Country | Topic tags |
+|---|---|---|
+| OpenAI and Anthropic Ask the UN for Rules. Washington Says No. | Global | AI governance, UN Security Council |
+| India Signs the World's First Global Cybercrime Treaty | India, Global | UN treaty, cybercrime |
+| Four AI Labs Get Sued Over Their Own Safety Pledge | US | AI labs, antitrust, safety pledge |
+| Brussels Wants to Call AWS and Azure "Gatekeepers." | EU | DMA, gatekeeper, cloud, AWS, Azure |
+| A Province Is Suing OpenAI Over a Mass Shooting Its Reviewers Reportedly Saw Coming | Canada | OpenAI, litigation, school shooting — **content note: involves school shooting and suicide** |
+| Roblox and Discord Say a Sexual-Assault Survivor Law Doesn't Cover What Happened on Their Apps | US | Roblox, Discord, arbitration, EFAA — **content note: child sexual exploitation litigation** |
+| Brazil Gives ChatGPT, Claude, Gemini and Five Others 10 Days to Explain Their Deepfake Filters | Brazil | ANPD, deepfake, AI safety |
+| Seven Japanese Ministries Tell Google, Meta and X: Stop the Deepfake Investment Scams | Japan | deepfake ads, investment fraud |
+| Australia Passed a Law Making Big Tech Pay for News | Australia | news bargaining, legislation |
+| California Signs the Country's Most Detailed Data-Center Law | US (California) | data centers, water, grid costs |
+
 ### Issue No. 1 — Week of August 24–30, 2026
 | Story | Country | Topic tags |
 |---|---|---|
@@ -83,6 +97,11 @@ got written up.
 
 | Post | Country | Topic tags | Date |
 |---|---|---|---|
+| Brussels Wants to Call the Cloud a "Gatekeeper." That's a Bigger Deal Than the Headline Sounds. | EU | DMA, gatekeeper, cloud, AWS, Azure | 2026-09-28 |
+| Australia Just Told Big Tech: Pay Eight Publishers, Not Just One | Australia | news bargaining, legislation | 2026-09-28 |
+| Roblox Said Its Age Checks Worked. Australia's Own Testers Proved Otherwise. | Australia | Roblox, eSafety, age verification, child safety | 2026-09-28 |
+| The US Just Cut Off Zimbabwe's Health Funding Over a Data Clause. Here's What Was Actually In It. | Zimbabwe, US | data sovereignty, health funding | 2026-09-28 |
+| China Just Created a New Category for Companies That Hold 10 Million People's Data | China | PIPL, large-scale personal information handler | 2026-09-28 |
 | Indonesia, Malaysia, and the Philippines Are Writing the Same Rule at Three Different Speeds | Indonesia, Malaysia, Philippines | minors, social media | 2026-09-20 |
 | Six Authors Turned Down $3,000 to Bet They Can Get $150,000 Instead | US | Anthropic, copyright, authors | 2026-09-20 |
 | Will TikTok Actually Join Meta's $17.1 Billion Settlement? Here's My Read. | US | Meta, TikTok, Snap, YouTube | 2026-09-20 |
@@ -100,6 +119,9 @@ got written up.
 ---
 
 ## Story Bank — researched but not yet used
+
+### From the Issue No. 5 research pass (51-story pool), not selected for the top 10:
+The remaining ~41 verified stories from this pass are tracked in the live interactive Story Bank artifact rather than duplicated here in full (see [[story_bank_artifact]] memory for the link). Notable ones worth re-checking first for Issue 6: i2 (G20 "Carolina Principles"), i4 (EU AI Office enforcement wave), i5 (EU KIDS Act), i6 (Council of Europe AI treaty stalled), b2 (xAI drops Apple suit), b3 (Google ad-tech remedies unsealed), b4 (TikTok Alabama settlement), b5 (Pentagon/Anthropic supply-chain designation), b6 (Meta NameTag/BIPA suit), b7 (Apple App Store DMA letter), l2–l8 (Montana deepfake ruling, NY SAFE for Kids, Australia enforcement gap, South Africa POPIA pattern, Bangladesh cybercrime law, Pakistan security framework, Vietnam AI law feature).
 
 Stories that were fully researched (real sources, verified) but didn't make an
 issue's top 10. Fair game to pull from later **as long as you re-verify the
