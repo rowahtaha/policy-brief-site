@@ -17,21 +17,14 @@
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-<style id="dd-strip-css">
-.dd-strip{border-bottom:1px solid #d9d2c2;padding:22px 0;background:#faf8f3;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;position:relative;z-index:50}
-.dd-strip .dd-in{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.dd-strip a{text-decoration:none}
-.dd-brand{display:flex;align-items:center;gap:11px;color:inherit}
-.dd-brand img{width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:center 22%;flex-shrink:0}
-.dd-brand span{font-weight:700;font-size:1rem;letter-spacing:-.1px;color:#14110f}
-.dd-nav{display:flex;gap:28px;flex-wrap:wrap;font-size:12.5px;font-weight:600;letter-spacing:.6px;text-transform:uppercase}
-.dd-nav a{color:#14110f;padding-bottom:3px;border-bottom:1px solid transparent}
-.dd-nav a:hover{color:#8c1c1c;border-bottom-color:#8c1c1c}
-@media(max-width:560px){.dd-nav{gap:16px}}
-</style><header class="dd-strip">
-  <div class="dd-in">
-    <a href="../home.html" class="dd-brand"><img src="../assets/logo.png?v=2" alt="The Digital Divide"><span>The Digital Divide</span></a>
-    <nav class="dd-nav">
+
+<header class="hp-header">
+  <div class="wrap">
+    <a href="../home.html" class="hp-brand">
+      <img src="../assets/logo.png?v=2" alt="The Digital Divide">
+      <span>The Digital Divide</span>
+    </a>
+    <nav class="hp-nav">
       <a href="../home.html">Home</a>
       <a href="../about.html">About</a>
       <a href="../thoughts.html">Thoughts</a>
@@ -41,35 +34,22 @@
   </div>
 </header>
 
+<main class="hp-main">
+  <div class="iss-wrap">
 
-<div class="layout">
-  <aside class="sidebar">
-    <nav>
-      <a href="../globe-rights.html">Digital Rights Projects</a>
-      <a href="../newsletter.html" class="active">Newsletter</a>
-      <a href="../subscribe.html">Subscribe</a>
-      <a href="../thoughts.html">Blog</a>
-      <a href="../about.html">About</a>
-    </nav>
-  </aside>
+    <p class="iss-back"><a href="../newsletter.html">&larr; Newsletter archive</a></p>
 
-  <main class="content" style="max-width:900px;">
+    <div class="iss-dateline">Issue No. 2 &middot; Week of September 1–7, 2026</div>
+    <h1 class="iss-title">Ten Stories, and Half of Them Weren't True the Way They First Sounded</h1>
+    <p class="iss-byline">By Rowa Taha</p>
 
-    <div class="kicker" style="text-align:left; margin-bottom:4px;">The Rowa Report</div>
-    <div class="dateline">Issue No. 2 · Week of September 1–7, 2026</div>
-    <h2>Ten Stories, and Half of Them Weren't True the Way They First Sounded</h2>
-    <p class="byline">By Rowa Taha</p>
+    <p class="iss-lede">This week I went digging into ten AI-policy stories from around the world, and by the time I'd finished checking sources, five of them turned out to be wrong, thin, or overstated compared to how they were first circulating. That's the real story underneath all ten. Here's the week, corrected where it needed correcting, followed by what it means.</p>
 
-    <hr class="rule">
-
-    <p class="lede">This week I went digging into ten AI-policy stories from around the world, and by the time I'd finished checking sources, five of them turned out to be wrong, thin, or overstated compared to how they were first circulating. That's the real story underneath all ten. Here's the week, corrected where it needed correcting, followed by what it means.</p>
-
-    <div class="news-grid single-col">
-
-      <div class="news-card">
-        <div class="news-card-banner cat-ai-governance"><span class="icon">🤖</span><span class="cat-label">AI Governance — United States</span></div>
-        <div class="news-card-body">
-          <span class="num">01</span>
+    <div class="iss-story-list">
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">01</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-ai-governance">AI Governance — United States</div>
           <h3>NYC's AI Moratorium Has a Backstory: A Teacher "Stoplight" Policy Nobody Talked About</h3>
           <p>Okay so NYC just told public schools "no ChatGPT till 9th grade" and I have thoughts, but also a plot twist I didn't know about until I went digging.</p>
           <p>The headline part first, because it's a big deal. Mamdani and the new chancellor rolled out what they're calling the country's biggest generative AI moratorium in schools, and it's not a soft suggestion, it's a real rule. Kids from pre-K through 8th grade can't use generative AI in class at all, and companion chatbots, the "AI friend" kind, are banned for literally every grade, even high school. There's screen time caps too now, 30 minutes a day max for grades 3-5, 45 minutes for 6-8. High schoolers get a little breathing room, some small supervised pilot programs, plus twice-a-year lessons on how AI actually works and where it messes up. It's only for one year — they want to study what happens before deciding what's next.</p>
@@ -84,12 +64,11 @@
             <a class="src-link" href="https://www.thenationalnews.com/future/technology/2026/09/04/ai-school-ban-mamdani-calculator/" target="_blank" rel="noopener">The National →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-data-rights"><span class="icon">🔒</span><span class="cat-label">Data Rights — Zimbabwe</span></div>
-        <div class="news-card-body">
-          <span class="num">02</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">02</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-data-rights">Data Rights — Zimbabwe</div>
           <h3>Zimbabwe Regulator Starts Mandatory Data-Protection Inspections</h3>
           <p>Zimbabwe just turned data protection from a paperwork exercise into something regulators can actually show up and check on, and I think this is one of those stories that's easy to scroll past but is honestly a bigger deal than it looks.</p>
           <p>Starting September 1, POTRAZ began actually inspecting organizations, not just requiring them to fill out compliance forms, under Regulatory Notice 2 of 2026. They're checking whether you've got a data controller license, a Data Protection Officer, real cybersecurity. They're going risk-based: banks, insurers, hospitals, schools, universities, churches, government ministries, mining companies, and NGOs go first, because those are the places holding the most sensitive data on the most people.</p>
@@ -103,12 +82,11 @@
             <a class="src-link" href="https://www.veritaszim.net/node/8052" target="_blank" rel="noopener">Veritas Zimbabwe →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-legislation"><span class="icon">🏛️</span><span class="cat-label">Legislation — Nigeria</span></div>
-        <div class="news-card-body">
-          <span class="num">03</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">03</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-legislation">Legislation — Nigeria</div>
           <h3>Nigeria's Digital Economy Bill Inches Toward AI Rules, Details Still Vague</h3>
           <p>This one's been in the pipeline for almost a year and it keeps almost-but-not-quite becoming law, which honestly says a lot about how legislatures actually work versus how the press releases make it sound.</p>
           <p>Nigeria's Senate has been pushing the National Digital Economy and E-Governance Bill, sponsored by Senator Afolabi Salisu, who back in November 2025 was telling reporters it would be signed into law before the end of that year. It's now September 2026. The bill has cleared public hearing and is sitting in third reading, waiting on harmonization between the Senate and House before it goes to President Tinubu for assent.</p>
@@ -122,12 +100,11 @@
             <a class="src-link" href="https://thesun.ng/digital-economy-bill-to-minimize-corruption-enhance-digital-exchange-prepare-nigeria-for-ai-senator-salisu/" target="_blank" rel="noopener">The Sun Nigeria (jobs angle) →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-ai-governance"><span class="icon">🤖</span><span class="cat-label">AI Governance — South Africa</span></div>
-        <div class="news-card-body">
-          <span class="num">04</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">04</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-ai-governance">AI Governance — South Africa</div>
           <h3>South Africa's AI Policy, Pulled Over Fake Citations, Still Has No Timeline</h3>
           <p>This is the story from this batch I keep thinking about, because it's a live demonstration of the exact risk everyone keeps warning about with AI, and it happened inside a government AI policy of all places.</p>
           <p>South Africa's Department of Communications published a Draft National AI Policy in the Government Gazette on April 10, 2026, for public comment. It proposed a whole new bureaucracy: a National AI Commission, an AI Ethics Board, an AI Regulatory Authority, an AI Ombudsperson, a National AI Safety Institute, even an AI Insurance Superfund. Ambitious stuff.</p>
@@ -141,12 +118,11 @@
             <a class="src-link" href="https://theconversation.com/south-africas-ai-policy-cited-fake-research-created-by-ai-what-lessons-need-to-be-learned-281671" target="_blank" rel="noopener">The Conversation →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-legislation"><span class="icon">🏛️</span><span class="cat-label">Legislation — Vietnam</span></div>
-        <div class="news-card-body">
-          <span class="num">05</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">05</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-legislation">Legislation — Vietnam</div>
           <h3>Vietnam Passes Southeast Asia's First Binding AI Law</h3>
           <p>While everyone's watching the EU AI Act and wondering when the US will do anything, Vietnam just quietly became the first country in Southeast Asia with an actual binding AI law, and the vote wasn't even close.</p>
           <p>On December 10, 2025, Vietnam's National Assembly passed the Law on Artificial Intelligence, 429 votes to 434 — that's 90.7% in favor. Eight chapters, 35 articles, effective March 1, 2026, with a grace period to March 2027 for most AI systems (September 2027 if you're in health, education, or finance, which tracks — those are the sectors where getting it wrong hurts the most).</p>
@@ -160,12 +136,11 @@
             <a class="src-link" href="https://blogs.duanemorris.com/vietnam/2026/03/03/vietnam-the-first-law-on-artificial-intelligence-what-you-must-know/" target="_blank" rel="noopener">Duane Morris →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-data-centers"><span class="icon">⚡</span><span class="cat-label">Data Centers — Indonesia</span></div>
-        <div class="news-card-body">
-          <span class="num">06</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">06</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-data-centers">Data Centers — Indonesia</div>
           <h3>Indonesia's Data Law Isn't Fully Active Yet — But the AI Money Already Is</h3>
           <p>This is the one where I have feelings, because on paper it's a straightforward business story — foreign AI company invests big in Southeast Asia — and I don't think it should get reported that flatly.</p>
           <p>Indonesia's data protection law, the PDP Law, has technically been in force since October 2024. And on August 4, 2026, CoreWeave announced it will build three data centers there — its first move into the Asia-Pacific region, adding 360 megawatts of contracted power, expected online in 2028.</p>
@@ -179,12 +154,11 @@
             <a class="src-link" href="https://news.mongabay.com/2026/07/indonesias-blackouts-reignite-debate-over-coal-dependent-energy-transition/" target="_blank" rel="noopener">Mongabay →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-accountability"><span class="icon">📰</span><span class="cat-label">Accountability — United Kingdom</span></div>
-        <div class="news-card-body">
-          <span class="num">07</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">07</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-accountability">Accountability — United Kingdom</div>
           <h3>UK's Own Committee Says the Online Safety Act "Is Not Working"</h3>
           <p>Remember when the UK passed the Online Safety Act and everyone treated it as the enforcement answer to platform accountability? Parliament's own committee just said, basically, not so fast.</p>
           <p>The House of Lords Communications and Digital Committee opened a formal inquiry into whether the Act is actually working, with written submissions due September 7, 2026. Committee chair Baroness Keeley didn't hedge: "It is now clear that the act is not working as well as it should." That's not an outside critic — that's the committee that's supposed to be overseeing implementation.</p>
@@ -198,12 +172,11 @@
             <a class="src-link" href="https://uklitigation.cooley.com/house-of-lords-launches-review-of-uk-online-safety-act/" target="_blank" rel="noopener">Cooley →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-legislation"><span class="icon">🏛️</span><span class="cat-label">Legislation — Brazil</span></div>
-        <div class="news-card-body">
-          <span class="num">08</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">08</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-legislation">Legislation — Brazil</div>
           <h3>Brazil's AI Bill Isn't Heading to a Senate Vote — It's Stuck in the Chamber</h3>
           <p>I need to correct something here, because the version of this story floating around said Brazil's AI bill was headed for "a final Senate vote on September 16." I went looking for that vote. I can't find it, and what I found instead is a clearer, honestly more interesting story about how this bill has actually been moving.</p>
           <p>Brazil's Bill 2338/2023, the Marco Legal da Inteligência Artificial, already passed the Senate on December 10, 2024 — over a year and a half ago. It then moved to the Chamber of Deputies on March 17, 2025, where a special committee took over. As of the most recent reporting I could verify, the bill was still in that committee, with a Chamber vote expected "before the August 2026 recess." I could not confirm a specific September 16 date anywhere, so if you see that circulating, treat it as unverified.</p>
@@ -217,12 +190,11 @@
             <a class="src-link" href="https://regulations.ai/regulations/RAI-BR-NA-PDLN2XX-2023" target="_blank" rel="noopener">Regulations.AI tracker →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-legislation"><span class="icon">🏛️</span><span class="cat-label">Legislation — Argentina</span></div>
-        <div class="news-card-body">
-          <span class="num">09</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">09</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-legislation">Legislation — Argentina</div>
           <h3>Argentina's Provinces Are Regulating AI Piecemeal — and Tucumán Leads</h3>
           <p>Argentina still has zero national AI law, and the honest way to describe what's happening is that provinces are just doing it themselves, at different speeds, with different priorities, and the patchwork is more interesting than a single national bill would be.</p>
           <p>Buenos Aires province approved Resolución 9/2025, setting rules for how AI systems can be used across the public administration, with a specific focus on making sure automated decisions can't affect fundamental rights without human accountability behind them. It's explicitly modeled on OECD and UNESCO guidance, and came with real infrastructure behind it — a new data center built to keep training data anonymized and stored on state infrastructure rather than sent to some foreign cloud.</p>
@@ -236,12 +208,11 @@
             <a class="src-link" href="https://www.elciudadano.com/en/argentina-proposes-legal-measures-to-penalize-non-consensual-ai-generated-sexual-content/03/17/" target="_blank" rel="noopener">El Ciudadano →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-ai-governance"><span class="icon">🤖</span><span class="cat-label">AI Governance — Australia / New Zealand</span></div>
-        <div class="news-card-body">
-          <span class="num">10</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">10</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-ai-governance">AI Governance — Australia / New Zealand</div>
           <h3>Australia Built an AI Office. New Zealand's Election Has One Party's AI Policy.</h3>
           <p>This is a fun one because it's really a story about contrast: Australia just did something big, and New Zealand's political class is having a very public identity crisis about whether to follow.</p>
           <p>On July 15, 2026, Australian PM Anthony Albanese announced what his government is calling the first legislated national AI framework in the world, and immediately stood up an Office of AI. It's not just symbolic: companies can't train AI on Australian creative work without consent and compensation, and — this is the part I actually care about — data centers now have to underwrite their own power supply, pay their full grid connection costs, and reduce power draw when the grid needs it to.</p>
@@ -255,21 +226,29 @@
             <a class="src-link" href="https://waateanews.com/2026/07/19/calls-grow-for-new-zealand-to-establish-a-national-office-of-ai/" target="_blank" rel="noopener">Waatea News →</a>
           </div>
         </div>
-      </div>
-
+      </article>
     </div>
 
-    <hr class="rule">
+    <div class="iss-end">
+      <div class="iss-end-mark">&mdash; End of Issue No. 2 &mdash;</div>
+      <a class="iss-end-cta" href="../newsletter.html">Back to the archive <span class="arrow">&rarr;</span></a>
+    </div>
 
-    <p><a href="../newsletter.html">← Back to newsletter archive</a></p>
+  </div>
+</main>
 
-  </main>
-</div>
-
-<footer>
+<footer class="hp-footer">
   <div class="wrap">
-    © 2026 Rowa Taha. All rights reserved.<br>
-    Also posted on <a href="https://substack.com/@rowataha" target="_blank" rel="noopener">Substack</a> and <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">LinkedIn</a>
+    <div class="hp-footer-word">The Digital Divide</div>
+    <div class="hp-footer-tag">Data Rights for All</div>
+    <nav>
+      <a href="../home.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../thoughts.html">Thoughts</a>
+      <a href="../newsletter.html">Newsletter</a>
+      <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">Contact</a>
+    </nav>
+    <div class="hp-copy">&copy; 2026 Rowa Taha. All rights reserved.</div>
   </div>
 </footer>
 

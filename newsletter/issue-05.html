@@ -17,21 +17,14 @@
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-<style id="dd-strip-css">
-.dd-strip{border-bottom:1px solid #d9d2c2;padding:22px 0;background:#faf8f3;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;position:relative;z-index:50}
-.dd-strip .dd-in{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.dd-strip a{text-decoration:none}
-.dd-brand{display:flex;align-items:center;gap:11px;color:inherit}
-.dd-brand img{width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:center 22%;flex-shrink:0}
-.dd-brand span{font-weight:700;font-size:1rem;letter-spacing:-.1px;color:#14110f}
-.dd-nav{display:flex;gap:28px;flex-wrap:wrap;font-size:12.5px;font-weight:600;letter-spacing:.6px;text-transform:uppercase}
-.dd-nav a{color:#14110f;padding-bottom:3px;border-bottom:1px solid transparent}
-.dd-nav a:hover{color:#8c1c1c;border-bottom-color:#8c1c1c}
-@media(max-width:560px){.dd-nav{gap:16px}}
-</style><header class="dd-strip">
-  <div class="dd-in">
-    <a href="../home.html" class="dd-brand"><img src="../assets/logo.png?v=2" alt="The Digital Divide"><span>The Digital Divide</span></a>
-    <nav class="dd-nav">
+
+<header class="hp-header">
+  <div class="wrap">
+    <a href="../home.html" class="hp-brand">
+      <img src="../assets/logo.png?v=2" alt="The Digital Divide">
+      <span>The Digital Divide</span>
+    </a>
+    <nav class="hp-nav">
       <a href="../home.html">Home</a>
       <a href="../about.html">About</a>
       <a href="../thoughts.html">Thoughts</a>
@@ -41,35 +34,22 @@
   </div>
 </header>
 
+<main class="hp-main">
+  <div class="iss-wrap">
 
-<div class="layout">
-  <aside class="sidebar">
-    <nav>
-      <a href="../globe-rights.html">Digital Rights Projects</a>
-      <a href="../newsletter.html" class="active">Newsletter</a>
-      <a href="../subscribe.html">Subscribe</a>
-      <a href="../thoughts.html">Blog</a>
-      <a href="../about.html">About</a>
-    </nav>
-  </aside>
+    <p class="iss-back"><a href="../newsletter.html">&larr; Newsletter archive</a></p>
 
-  <main class="content" style="max-width:900px;">
+    <div class="iss-dateline">Issue No. 5 &middot; Week of September 21–28, 2026</div>
+    <h1 class="iss-title">Nobody Checked Until Somebody Did</h1>
+    <p class="iss-byline">By Rowa Taha</p>
 
-    <div class="kicker" style="text-align:left; margin-bottom:4px;">The Rowa Report</div>
-    <div class="dateline">Issue No. 5 · Week of September 21–28, 2026</div>
-    <h2>Nobody Checked Until Somebody Did</h2>
-    <p class="byline">By Rowa Taha</p>
+    <p class="iss-lede">This week's stories share a mechanism more than a topic: a public commitment, a safety pledge, an age-check feature, an advance warning, that held up fine until an outside party actually tested it.</p>
 
-    <hr class="rule">
-
-    <p class="lede">This week's stories share a mechanism more than a topic: a public commitment, a safety pledge, an age-check feature, an advance warning, that held up fine until an outside party actually tested it.</p>
-
-    <div class="news-grid single-col">
-
-      <div class="news-card">
-        <div class="news-card-banner cat-ai-governance"><span class="icon">🤖</span><span class="cat-label">AI Governance — Global</span></div>
-        <div class="news-card-body">
-          <span class="num">01</span>
+    <div class="iss-story-list">
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">01</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-ai-governance">AI Governance — Global</div>
           <h3>OpenAI and Anthropic Ask the UN for Rules. Washington Says No.</h3>
           <p>At a Sept. 23 UN Security Council session, OpenAI CEO Sam Altman asked the 15-member body to help standardize how countries measure AI capabilities and report system failures. Anthropic CEO Dario Amodei proposed something narrower: binding international agreements specifically on preventing bio-weapons misuse and requiring "loss-of-control" testing, meaning tests to confirm an AI system can still be shut down or contained if it starts behaving in ways its developers didn't intend. Amodei told the council that "AI could be a risk to humanity as a whole."<a class="cite" href="https://www.cnn.com/2026/09/23/tech/altman-amodei-ai-safety-un-security-council" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.aljazeera.com/news/2026/9/24/ai-corporate-leaders-tell-un-the-industry-needs-global-regulation" target="_blank" rel="noopener">[2]</a></p>
           <p>The US delegation rejected the idea of "global governance" of AI outright in its response, without engaging with either proposal specifically. The session closed with no joint statement and no working group formed.<a class="cite" href="https://www.cnn.com/2026/09/23/tech/altman-amodei-ai-safety-un-security-council" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.rappler.com/technology/ai-leaders-warn-un-general-assembly-2026-security-risks/" target="_blank" rel="noopener">[3]</a></p>
@@ -80,12 +60,11 @@
             <a class="src-link" href="https://www.rappler.com/technology/ai-leaders-warn-un-general-assembly-2026-security-risks/" target="_blank" rel="noopener">Rappler →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-legislation"><span class="icon">🏛️</span><span class="cat-label">International Treaty — India</span></div>
-        <div class="news-card-body">
-          <span class="num">02</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">02</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-legislation">International Treaty — India</div>
           <h3>India Signs the World's First Global Cybercrime Treaty</h3>
           <p>External Affairs Minister S. Jaishankar signed the UN Convention against Cybercrime on Sept. 25 at UN Headquarters, making India the latest of 91 countries to put their name on the first binding global framework for cross-border cybercrime cooperation. The treaty sets shared standards for evidence-sharing between countries, extradition, and joint investigations into ransomware and online fraud networks that cross national borders, something individual countries have struggled to coordinate on for years.<a class="cite" href="https://www.unodc.org/unodc/en/cybercrime/convention/home.html" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.un.org/en/peace-and-security/basic-facts-about-global-cybercrime-treaty" target="_blank" rel="noopener">[2]</a></p>
           <p>Signing and ratifying are two different steps, and the gap between them here is wide. Only three of the 91 signatories, Qatar, Azerbaijan, and Vietnam, have actually ratified the treaty so far. It needs 40 ratifications before it takes effect for anyone at all. Ratification is a domestic legislative process separate from signing, and it can stall for years even in countries whose governments support the treaty in principle.<a class="cite" href="https://www.unodc.org/unodc/en/cybercrime/convention/home.html" target="_blank" rel="noopener">[1]</a></p>
@@ -96,12 +75,11 @@
             <a class="src-link" href="https://cyberpeace.org/resources/blogs/india-just-signed-the-worlds-first-global-cybercrime-treaty-a-global-rulebook-for-a-borderless-crime" target="_blank" rel="noopener">CyberPeace Foundation →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-lawsuit"><span class="icon">⚖️</span><span class="cat-label">Big Tech / Antitrust — United States</span></div>
-        <div class="news-card-body">
-          <span class="num">03</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">03</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-lawsuit">Big Tech / Antitrust — United States</div>
           <h3>Four AI Labs Get Sued Over Their Own Safety Pledge</h3>
           <p>On Sept. 12, Anthropic CEO Dario Amodei publicly urged the AI industry to slow model releases for safety reasons. OpenAI's Sam Altman, xAI's Elon Musk, and Google DeepMind's Demis Hassabis each responded in public agreement that same day, an unusual moment of alignment between four labs that otherwise compete on almost everything. A week later, on Sept. 19, a class action filed in the Northern District of California turned that agreement into a legal claim: that the labs' coordinated statement was an illegal pact to substitute collective restraint for individual competition.<a class="cite" href="https://www.cnn.com/2026/09/19/business/ai-slowdown-lawsuit-antitrust" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.euronews.com/next/2026/09/21/for-once-big-tech-agreed-on-something-now-its-being-sued-for-it" target="_blank" rel="noopener">[2]</a></p>
           <p>The legal theory reframes what looked, on its face, like responsible self-governance. The complaint argues that paying subscribers who expected competitive pressure to keep driving rapid product improvement instead got four labs agreeing, in public and on the same day, to slow down together. That coordination, the suit claims, shortchanged subscribers rather than protecting anyone.<a class="cite" href="https://www.cnn.com/2026/09/19/business/ai-slowdown-lawsuit-antitrust" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.pbs.org/newshour/nation/lawsuit-says-anthropic-openai-spacexai-and-google-made-illegal-agreement-on-ai-slowdown" target="_blank" rel="noopener">[3]</a></p>
@@ -112,12 +90,11 @@
             <a class="src-link" href="https://www.pbs.org/newshour/nation/lawsuit-says-anthropic-openai-spacexai-and-google-made-illegal-agreement-on-ai-slowdown" target="_blank" rel="noopener">PBS NewsHour →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-accountability"><span class="icon">📰</span><span class="cat-label">Big Tech / Regulation — European Union</span></div>
-        <div class="news-card-body">
-          <span class="num">04</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">04</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-accountability">Big Tech / Regulation — European Union</div>
           <h3>Brussels Wants to Call AWS and Azure "Gatekeepers." The Companies Get Until Fall to Argue Back.</h3>
           <p>The European Commission reached a preliminary position on June 25, 2026 that Amazon's AWS and Microsoft's Azure, the two largest cloud providers operating in the EU, should be designated as Digital Markets Act "gatekeepers," a status so far applied mostly to consumer-facing platforms like search engines and app stores. The Commission's concern is specifically about AI: bundling proprietary AI models and tooling directly into cloud infrastructure creates lock-in, making it harder for EU businesses to switch providers once they've built their AI stack on top of a given cloud.<a class="cite" href="https://digital-markets-act.ec.europa.eu/commission-reaches-preliminary-position-amazons-and-microsofts-market-leading-cloud-services-should-2026-06-25_en" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.theregister.com/legal/2026/06/25/european-commission-lines-up-amazon-and-microsoft-for-cloud-gatekeeper-status/5262127" target="_blank" rel="noopener">[2]</a></p>
           <p>Both companies are in their formal response window this September, arguing their case before Brussels makes a final call. If the designation is confirmed, they'd get six months to comply with interoperability requirements and data-access obligations meant to let customers and competitors move more freely between providers. DMA fines for non-compliance can reach 10% of a company's global annual turnover, not just its EU revenue.<a class="cite" href="https://digital-markets-act.ec.europa.eu/commission-reaches-preliminary-position-amazons-and-microsofts-market-leading-cloud-services-should-2026-06-25_en" target="_blank" rel="noopener">[1]</a></p>
@@ -128,12 +105,11 @@
             <a class="src-link" href="https://www.datacenterdynamics.com/en/news/aws-and-microsoft-designated-gatekeepers-under-europes-digital-markets-act/" target="_blank" rel="noopener">DataCenterDynamics →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-lawsuit"><span class="icon">⚖️</span><span class="cat-label">Lawsuit — Canada</span></div>
-        <div class="news-card-body">
-          <span class="num">05</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">05</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-lawsuit">Lawsuit — Canada</div>
           <h3>A Province Is Suing OpenAI Over a Mass Shooting Its Reviewers Reportedly Saw Coming</h3>
           <p><em>Content note: this story involves a school shooting and suicide.</em> British Columbia sued OpenAI and Sam Altman on Sept. 22, 2026 in US federal court over the deadliest school shooting in the province's history. The complaint alleges that OpenAI's own human content reviewers flagged a teenager's repeated references to gun violence in ChatGPT conversations in June 2025, and internally recommended notifying Canadian police, but no warning was sent. In February 2026, that same teenager killed an educational assistant and five students, all 12 and 13 years old, along with her own mother and stepbrother, before taking her own life at Tumbler Ridge Secondary School.<a class="cite" href="https://www.aljazeera.com/news/2026/9/22/canadas-bc-sues-openai-over-chatgpt-role-in-tumbler-ridge-school-shooting" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.nationalobserver.com/2026/09/22/news/bc-sues-openai-saying-one-call-could-have-prevented-tumbler-ridge-mass-shooting" target="_blank" rel="noopener">[2]</a><a class="cite" href="https://www.cbc.ca/news/canada/british-columbia/bc-government-announce-update-openai-legal-action-9.7352395" target="_blank" rel="noopener">[3]</a></p>
           <p>The lawsuit's central claim isn't about what the AI said to her. It's about what OpenAI's own safety process reportedly already knew and didn't act on. If the account of a reviewer flagging the conversations and recommending a police notification holds up, this becomes a case about whether a company followed its own stated safety protocol once a real warning sign appeared in front of an actual employee, not a novel question about AI-caused harm.<a class="cite" href="https://www.aljazeera.com/news/2026/9/22/canadas-bc-sues-openai-over-chatgpt-role-in-tumbler-ridge-school-shooting" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.nationalobserver.com/2026/09/22/news/bc-sues-openai-saying-one-call-could-have-prevented-tumbler-ridge-mass-shooting" target="_blank" rel="noopener">[2]</a></p>
@@ -144,12 +120,11 @@
             <a class="src-link" href="https://www.cbc.ca/news/canada/british-columbia/bc-government-announce-update-openai-legal-action-9.7352395" target="_blank" rel="noopener">CBC News →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-lawsuit"><span class="icon">⚖️</span><span class="cat-label">Lawsuit — United States</span></div>
-        <div class="news-card-body">
-          <span class="num">06</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">06</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-lawsuit">Lawsuit — United States</div>
           <h3>Roblox and Discord Say a Sexual-Assault Survivor Law Doesn't Cover What Happened on Their Apps</h3>
           <p><em>Content note: this story involves child sexual exploitation litigation.</em> On Sept. 23, 2026, Roblox and Discord asked a California federal judge to send bellwether claims in a child sexual exploitation multidistrict litigation to private arbitration. Their argument rests on a narrow reading of the Ending Forced Arbitration of Sexual Assault and Sexual Harassment Act, the 2022 federal law letting survivors bypass forced-arbitration clauses in sexual assault or harassment cases. The companies contend the law only applies when the platform itself commits the misconduct, not when a third-party user does.<a class="cite" href="https://www.mlex.com/mlex/articles/2529096/roblox-discord-seek-to-compel-arbitration-in-abuse-mdl" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.law360.com/articles/2529096/roblox-discord-seek-to-compel-arbitration-in-abuse-mdl" target="_blank" rel="noopener">[2]</a></p>
           <p>That argument has already lost once. A California state court rejected the identical position in February 2026, ruling the law's language is "expansive" enough to cover platform liability even when the direct abuse was committed by another user. Roblox and Discord are now making the same argument in federal court, on the multidistrict litigation track, where the earlier state ruling doesn't bind the outcome.<a class="cite" href="https://www.mlex.com/mlex/articles/2529096/roblox-discord-seek-to-compel-arbitration-in-abuse-mdl" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.harrismartin.com/publications/27/MDL/articles/102633/roblox-seeks-arbitration-of-bellwether-adult-predator-mdl-actions/" target="_blank" rel="noopener">[3]</a></p>
@@ -160,12 +135,11 @@
             <a class="src-link" href="https://www.harrismartin.com/publications/27/MDL/articles/102633/roblox-seeks-arbitration-of-bellwether-adult-predator-mdl-actions/" target="_blank" rel="noopener">HarrisMartin →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-ai-governance"><span class="icon">🤖</span><span class="cat-label">AI Governance — Brazil</span></div>
-        <div class="news-card-body">
-          <span class="num">07</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">07</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-ai-governance">AI Governance — Brazil</div>
           <h3>Brazil Gives ChatGPT, Claude, Gemini and Five Others 10 Days to Explain Their Deepfake Filters</h3>
           <p>Brazil's data protection authority, ANPD, opened a compliance sweep in August 2026 covering 22 platforms total, both social networks and AI tools, over safeguards against generating or editing non-consensual intimate imagery. Eight AI providers were named specifically: Google Play, Apple's App Store, Microsoft Copilot, Anthropic's Claude, DeepSeek, Google's Gemini, OpenAI's ChatGPT, Meta AI, and Perplexity, each given 10 working days to detail exactly how their filtering and detection systems work.<a class="cite" href="https://www.techpolicy.press/global-digital-policy-roundup-august-2026/" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.cnnbrasil.com.br/politica/anpd-monitora-22-redes-sociais-e-apps-de-ia-por-deepfakes-e-crimes-virtuais/" target="_blank" rel="noopener">[2]</a></p>
           <p>Regulators asking companies to explain their systems within a set window is routine. What's notable here is the level of detail demanded. ANPD isn't asking whether these tools have policies against non-consensual intimate content, it's asking for the technical specifics of detection and filtering, a much harder question to answer with a policy document alone.<a class="cite" href="https://www.cnnbrasil.com.br/politica/anpd-monitora-22-redes-sociais-e-apps-de-ia-por-deepfakes-e-crimes-virtuais/" target="_blank" rel="noopener">[2]</a><a class="cite" href="https://olhardigital.com.br/2026/08/21/internet-e-redes-sociais/anpd-coloca-chatgpt-gemini-instagram-e-outras-plataformas-na-mira" target="_blank" rel="noopener">[3]</a></p>
@@ -176,12 +150,11 @@
             <a class="src-link" href="https://olhardigital.com.br/2026/08/21/internet-e-redes-sociais/anpd-coloca-chatgpt-gemini-instagram-e-outras-plataformas-na-mira" target="_blank" rel="noopener">Olhar Digital →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-accountability"><span class="icon">📰</span><span class="cat-label">Accountability — Japan</span></div>
-        <div class="news-card-body">
-          <span class="num">08</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">08</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-accountability">Accountability — Japan</div>
           <h3>Seven Japanese Ministries Tell Google, Meta and X: Stop the Deepfake Investment Scams</h3>
           <p>Japan's Digital Agency, National Police Agency, and five other ministries jointly demanded on Aug. 7, 2026 that Google, Meta, TikTok Japan, LINE Yahoo, and X tighten advertiser verification, after a wave of deepfake ads impersonating Japanese celebrities and business figures was used to push investment fraud. Verification plans are due Oct. 16, with full compliance reports required by March 16, 2027. Separate reporting put losses from the scam wave at roughly $804 million.<a class="cite" href="https://www.digital.go.jp/en/news/b96e34b8-0af0-4fe3-b6b5-2191726c8cc5" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.mlex.com/mlex/technology/articles/2510909" target="_blank" rel="noopener">[2]</a><a class="cite" href="https://www.techtimes.com/articles/323490/20260807/meta-had-six-weeks-stop-japans-804m-scam-crisis-it-chose-revenue.htm" target="_blank" rel="noopener">[3]</a></p>
           <p>The detail that stands out most is timing, not money. Separate reporting found Meta had roughly six weeks' advance notice of the coming government request before it was formally issued, and critics argue the company prioritized ad revenue over tightening verification in that window. Six weeks is enough time to meaningfully slow a known ad-fraud pattern if a platform is motivated to act on it.<a class="cite" href="https://www.techtimes.com/articles/323490/20260807/meta-had-six-weeks-stop-japans-804m-scam-crisis-it-chose-revenue.htm" target="_blank" rel="noopener">[3]</a></p>
@@ -192,12 +165,11 @@
             <a class="src-link" href="https://www.techtimes.com/articles/323490/20260807/meta-had-six-weeks-stop-japans-804m-scam-crisis-it-chose-revenue.htm" target="_blank" rel="noopener">Tech Times →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-legislation"><span class="icon">🏛️</span><span class="cat-label">Legislation — Australia</span></div>
-        <div class="news-card-body">
-          <span class="num">09</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">09</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-legislation">Legislation — Australia</div>
           <h3>Australia Passed a Law Making Big Tech Pay for News, or Deal With at Least Eight Publishers</h3>
           <p>Australia's News Media Bargaining Charge Bill 2026 cleared Parliament on Aug. 20, 2026 and took effect a week later, on Aug. 27. It's a tighter version of Australia's original 2021 news bargaining code, which relied on platforms voluntarily striking deals to avoid being formally "designated" under the law. The new bill sets a hard default: any social media or search platform earning more than A$250 million in Australian digital ad revenue now has to strike commercial deals with at least eight separate news companies, or pay a 2.75% levy on that Australian ad revenue instead.<a class="cite" href="https://www.mi-3.com.au/21-08-2026/news-media-bargaining-incentive-clears-parliament-275-charge-be-levvied-big-tech" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://mumbrella.com.au/news-bargaining-incentive-and-gambling-ad-reforms-passed-in-parliament-934064" target="_blank" rel="noopener">[2]</a></p>
           <p>That 2.75% rate is higher than the 2.5% originally proposed when the bill was drafted, meaning the number moved up, not down, during the legislative process. Levies aimed at powerful platforms usually get negotiated lower before passage, not raised.<a class="cite" href="https://www.mi-3.com.au/21-08-2026/news-media-bargaining-incentive-clears-parliament-275-charge-be-levvied-big-tech" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7524" target="_blank" rel="noopener">[3]</a></p>
@@ -208,12 +180,11 @@
             <a class="src-link" href="https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r7524" target="_blank" rel="noopener">Parliament of Australia (official) →</a>
           </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-data-centers"><span class="icon">⚡</span><span class="cat-label">Data Centers — United States</span></div>
-        <div class="news-card-body">
-          <span class="num">10</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">10</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-data-centers">Data Centers — United States</div>
           <h3>California Signs the Country's Most Detailed Data-Center Law</h3>
           <p>Gov. Gavin Newsom signed seven bills on Sept. 21, AB 1577, 2383, 2469, and 2619, plus SB 886, 887, and 1168, building a state data-center registry, mandatory water-use disclosure at the permitting stage, and new environmental review requirements under the California Environmental Quality Act. Together they form the most detailed state-level data-center regulatory package in the country.<a class="cite" href="https://www.gov.ca.gov/2026/09/21/governor-newsom-signs-most-comprehensive-data-center-laws-in-the-nation-providing-communities-more-control-on-water-electricity-and-land-use/" target="_blank" rel="noopener">[1]</a><a class="cite" href="https://calmatters.org/economy/technology/2026/09/new-california-laws-data-centers/" target="_blank" rel="noopener">[2]</a></p>
           <p>The registry requirement is the piece most likely to matter beyond California. Right now, most states have no central record of where data centers are, how much water they draw, or how much electricity demand they add to the grid. A public registry turns that into information regulators, journalists, and residents can actually access, rather than something utilities and developers control the disclosure of on their own timeline.<a class="cite" href="https://calmatters.org/economy/technology/2026/09/new-california-laws-data-centers/" target="_blank" rel="noopener">[2]</a><a class="cite" href="https://www.lawyer-monthly.com/2026/09/gavin-newsom-signs-seven-california-data-centre-laws-covering-power-water-and-land-use/" target="_blank" rel="noopener">[3]</a></p>
@@ -224,21 +195,29 @@
             <a class="src-link" href="https://www.lawyer-monthly.com/2026/09/gavin-newsom-signs-seven-california-data-centre-laws-covering-power-water-and-land-use/" target="_blank" rel="noopener">Lawyer Monthly →</a>
           </div>
         </div>
-      </div>
-
+      </article>
     </div>
 
-    <hr class="rule">
+    <div class="iss-end">
+      <div class="iss-end-mark">&mdash; End of Issue No. 5 &mdash;</div>
+      <a class="iss-end-cta" href="../newsletter.html">Back to the archive <span class="arrow">&rarr;</span></a>
+    </div>
 
-    <p><a href="../newsletter.html">← Back to newsletter archive</a></p>
+  </div>
+</main>
 
-  </main>
-</div>
-
-<footer>
+<footer class="hp-footer">
   <div class="wrap">
-    © 2026 Rowa Taha. All rights reserved.<br>
-    Also posted on <a href="https://substack.com/@rowataha" target="_blank" rel="noopener">Substack</a> and <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">LinkedIn</a>
+    <div class="hp-footer-word">The Digital Divide</div>
+    <div class="hp-footer-tag">Data Rights for All</div>
+    <nav>
+      <a href="../home.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../thoughts.html">Thoughts</a>
+      <a href="../newsletter.html">Newsletter</a>
+      <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">Contact</a>
+    </nav>
+    <div class="hp-copy">&copy; 2026 Rowa Taha. All rights reserved.</div>
   </div>
 </footer>
 

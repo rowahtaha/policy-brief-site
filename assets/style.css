@@ -1542,6 +1542,171 @@ footer a { color: var(--muted); text-decoration: underline; }
   .nl-subscribe-band { padding: 52px 0; }
 }
 
+/* ==========================================================
+   Individual newsletter issue pages — editorial redesign
+   (scoped to newsletter/issue-NN.html only)
+   ========================================================== */
+
+.iss-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.iss-back {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin: 0 0 28px;
+}
+
+.iss-dateline {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.iss-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+  margin: 0 0 16px;
+  color: var(--hp-black);
+}
+
+.iss-byline {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 36px;
+}
+
+.iss-lede {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--ink);
+  border-left: 3px solid var(--accent);
+  padding: 2px 0 2px 22px;
+  margin: 0 0 60px;
+}
+
+.iss-story-list { margin-bottom: 8px; }
+
+.iss-story {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.iss-story:first-child { padding-top: 0; }
+
+.iss-story-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  color: var(--rule);
+  font-variant-numeric: tabular-nums;
+}
+
+.iss-story-main { min-width: 0; }
+
+.iss-story-cat {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.iss-story h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 800;
+  font-size: 1.55rem;
+  line-height: 1.28;
+  margin: 0 0 18px;
+  color: var(--hp-black);
+  text-wrap: balance;
+}
+
+.iss-story-main p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+
+.iss-story-main .src-row {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+}
+
+.iss-story-main a.src-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.iss-cat-lawsuit { color: #8c1c1c; }
+.iss-cat-legislation { color: #2c3e6b; }
+.iss-cat-ai-governance { color: #5b3a7a; }
+.iss-cat-data-rights { color: #1f5138; }
+.iss-cat-accountability { color: #b5651d; }
+.iss-cat-data-centers { color: #4a5a6a; }
+.iss-cat-trade { color: #2f5f8a; }
+
+.iss-end {
+  text-align: center;
+  padding: 56px 0 12px;
+}
+
+.iss-end-mark {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin: 0 0 22px;
+}
+
+.iss-end-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  padding: 13px 26px;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.iss-end-cta:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+.iss-end-cta .arrow { transition: transform .15s ease; }
+.iss-end-cta:hover .arrow { transform: translateX(4px); }
+
+@media (max-width: 640px) {
+  .iss-story { grid-template-columns: 1fr; gap: 6px; padding: 34px 0; }
+  .iss-story-num { font-size: 1.3rem; color: var(--accent); }
+  .iss-title { letter-spacing: -0.2px; }
+}
+
 /* ---------- Job board: verified-openings list ---------- */
 
 .jb-stats {

@@ -17,21 +17,14 @@
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-<style id="dd-strip-css">
-.dd-strip{border-bottom:1px solid #d9d2c2;padding:22px 0;background:#faf8f3;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;position:relative;z-index:50}
-.dd-strip .dd-in{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.dd-strip a{text-decoration:none}
-.dd-brand{display:flex;align-items:center;gap:11px;color:inherit}
-.dd-brand img{width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:center 22%;flex-shrink:0}
-.dd-brand span{font-weight:700;font-size:1rem;letter-spacing:-.1px;color:#14110f}
-.dd-nav{display:flex;gap:28px;flex-wrap:wrap;font-size:12.5px;font-weight:600;letter-spacing:.6px;text-transform:uppercase}
-.dd-nav a{color:#14110f;padding-bottom:3px;border-bottom:1px solid transparent}
-.dd-nav a:hover{color:#8c1c1c;border-bottom-color:#8c1c1c}
-@media(max-width:560px){.dd-nav{gap:16px}}
-</style><header class="dd-strip">
-  <div class="dd-in">
-    <a href="../home.html" class="dd-brand"><img src="../assets/logo.png?v=2" alt="The Digital Divide"><span>The Digital Divide</span></a>
-    <nav class="dd-nav">
+
+<header class="hp-header">
+  <div class="wrap">
+    <a href="../home.html" class="hp-brand">
+      <img src="../assets/logo.png?v=2" alt="The Digital Divide">
+      <span>The Digital Divide</span>
+    </a>
+    <nav class="hp-nav">
       <a href="../home.html">Home</a>
       <a href="../about.html">About</a>
       <a href="../thoughts.html">Thoughts</a>
@@ -41,144 +34,150 @@
   </div>
 </header>
 
+<main class="hp-main">
+  <div class="iss-wrap">
 
-<div class="layout">
-  <aside class="sidebar">
-    <nav>
-      <a href="../globe-rights.html">Digital Rights Projects</a>
-      <a href="../newsletter.html" class="active">Newsletter</a>
-      <a href="../subscribe.html">Subscribe</a>
-      <a href="../thoughts.html">Blog</a>
-      <a href="../about.html">About</a>
-    </nav>
-  </aside>
+    <p class="iss-back"><a href="../newsletter.html">&larr; Newsletter archive</a></p>
 
-  <main class="content" style="max-width:900px;">
+    <div class="iss-dateline">Issue No. 1 &middot; Week of August 24–30, 2026</div>
+    <h1 class="iss-title">The World's Top 10 Tech Policy Stories This Week</h1>
+    <p class="iss-byline">By Rowa Taha</p>
 
-    <div class="kicker" style="text-align:left; margin-bottom:4px;">The Rowa Report</div>
-    <div class="dateline">Issue No. 1 · Week of August 24–30, 2026</div>
-    <h2>The World's Top 10 Tech Policy Stories This Week</h2>
-    <p class="byline">By Rowa Taha</p>
+    <p class="iss-lede">Ten stories, eight jurisdictions, one question running under all of them: who gets to consent, and who gets to say no? Here's the week in tech policy from around the world, followed by what it means.</p>
 
-    <hr class="rule">
-
-    <p class="lede">Ten stories, eight jurisdictions, one question running under all of them: who gets to consent, and who gets to say no? Here's the week in tech policy from around the world, followed by what it means.</p>
-
-    <div class="news-grid">
-
-      <div class="news-card">
-        <div class="news-card-banner cat-lawsuit"><span class="icon">⚖️</span><span class="cat-label">Lawsuit — United States</span></div>
-        <div class="news-card-body">
-          <span class="num">01</span>
+    <div class="iss-story-list">
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">01</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-lawsuit">Lawsuit — United States</div>
           <h3>Meta Pays $16.68B to Settle Teen Safety Claims</h3>
           <p>Meta disclosed on August 26 it will pay up to $16.68 billion to resolve claims from 29 states that it designed Facebook and Instagram to be addictive to minors. It must now roll out daily time caps, overnight restrictions, and stronger age verification nationwide.</p>
-          <a class="src-link" href="https://finance.yahoo.com/news/meta-settles-us-states-over-130318028.html" target="_blank" rel="noopener">Yahoo Finance →</a>
+          <div class="src-row">
+            <a class="src-link" href="https://finance.yahoo.com/news/meta-settles-us-states-over-130318028.html" target="_blank" rel="noopener">Yahoo Finance →</a>
+          </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-legislation"><span class="icon">🏛️</span><span class="cat-label">Legislation — European Union</span></div>
-        <div class="news-card-body">
-          <span class="num">02</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">02</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-legislation">Legislation — European Union</div>
           <h3>EU's AI Act Transparency Rules Kick In</h3>
           <p>As of August 2, AI systems must disclose when a user is talking to a machine and label deepfakes as artificial. But the Act's toughest rules — covering biometrics, employment, and essential services — were pushed back to December 2027.</p>
-          <a class="src-link" href="https://www.aljazeera.com/news/2026/8/6/what-came-into-force-with-the-eus-ai-act-this-week-and-what-didnt" target="_blank" rel="noopener">Al Jazeera →</a>
+          <div class="src-row">
+            <a class="src-link" href="https://www.aljazeera.com/news/2026/8/6/what-came-into-force-with-the-eus-ai-act-this-week-and-what-didnt" target="_blank" rel="noopener">Al Jazeera →</a>
+          </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-accountability"><span class="icon">📰</span><span class="cat-label">Accountability — Nigeria</span></div>
-        <div class="news-card-body">
-          <span class="num">03</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">03</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-accountability">Accountability — Nigeria</div>
           <h3>Nigeria Investigates Meta, Google, and X Over News Content</h3>
           <p>Nigeria's competition authority opened an investigation into Meta, Alphabet, and X — plus unnamed generative AI platforms — over uncompensated use of copyrighted news content, as its data protection regulator signals it will intensify enforcement.</p>
-          <a class="src-link" href="https://www.concurrences.com/en/bulletin/news-issues/august-2026-iii/the-nigerian-competition-authority-opens-investigations-into-3-big-tech" target="_blank" rel="noopener">Concurrences →</a>
+          <div class="src-row">
+            <a class="src-link" href="https://www.concurrences.com/en/bulletin/news-issues/august-2026-iii/the-nigerian-competition-authority-opens-investigations-into-3-big-tech" target="_blank" rel="noopener">Concurrences →</a>
+          </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-ai-governance"><span class="icon">🤖</span><span class="cat-label">AI Governance — China</span></div>
-        <div class="news-card-body">
-          <span class="num">04</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">04</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-ai-governance">AI Governance — China</div>
           <h3>China Fines 12 Firms in First Week of Companion-AI Rules</h3>
           <p>China's new framework treating AI agents as a distinct legal category took effect July 15. Within the first week of enforcing its companion-AI rules, regulators fined 12 companies a combined 4.2 million RMB.</p>
-          <a class="src-link" href="https://iapp.org/news/a/notes-from-the-asia-pacific-region-china-rolls-out-new-ai-governance-data-protection-measures" target="_blank" rel="noopener">IAPP →</a>
+          <div class="src-row">
+            <a class="src-link" href="https://iapp.org/news/a/notes-from-the-asia-pacific-region-china-rolls-out-new-ai-governance-data-protection-measures" target="_blank" rel="noopener">IAPP →</a>
+          </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-data-rights"><span class="icon">🔒</span><span class="cat-label">Data Rights — Brazil</span></div>
-        <div class="news-card-body">
-          <span class="num">05</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">05</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-data-rights">Data Rights — Brazil</div>
           <h3>Brazil Puts ChatGPT, Claude, and TikTok Under Monitoring</h3>
           <p>Brazil's data authority began formally monitoring 22 platforms and AI tools — including Instagram, TikTok, and major chatbots — for compliance with children's data protections, part of a 2026–27 plan that includes 20 targeted AI-practice inspections.</p>
-          <a class="src-link" href="https://www.mlex.com/mlex/data-privacy-security/articles/2516607" target="_blank" rel="noopener">MLex →</a>
+          <div class="src-row">
+            <a class="src-link" href="https://www.mlex.com/mlex/data-privacy-security/articles/2516607" target="_blank" rel="noopener">MLex →</a>
+          </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-data-rights"><span class="icon">🔒</span><span class="cat-label">Data Rights — South Korea</span></div>
-        <div class="news-card-body">
-          <span class="num">06</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">06</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-data-rights">Data Rights — South Korea</div>
           <h3>South Korea May Let AI Firms Train on Data Without Consent</h3>
           <p>An amendment cleared committee with bipartisan support that would let companies use personal data to train AI beyond its original collection purpose — without the person's consent — if the privacy regulator approves. A floor vote was expected as early as mid-August.</p>
-          <a class="src-link" href="https://iapp.org/news/a/trusting-the-regulator-not-the-rules-south-korea-s-ai-data-amendment" target="_blank" rel="noopener">IAPP →</a>
+          <div class="src-row">
+            <a class="src-link" href="https://iapp.org/news/a/trusting-the-regulator-not-the-rules-south-korea-s-ai-data-amendment" target="_blank" rel="noopener">IAPP →</a>
+          </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-legislation"><span class="icon">🏛️</span><span class="cat-label">Legislation — India</span></div>
-        <div class="news-card-body">
-          <span class="num">07</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">07</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-legislation">Legislation — India</div>
           <h3>India Moves Toward an AI Liability Framework</h3>
           <p>Public feedback on the Digital India Act has closed, and reporting indicates a statutory framework establishing legal liability for AI-related harms is being finalized ahead of the fall parliamentary session — a notable step for the world's most populous country.</p>
-          <a class="src-link" href="https://responsibleailabs.ai/knowledge-hub/articles/global-ai-regulation-2026" target="_blank" rel="noopener">Responsible AI Labs →</a>
+          <div class="src-row">
+            <a class="src-link" href="https://responsibleailabs.ai/knowledge-hub/articles/global-ai-regulation-2026" target="_blank" rel="noopener">Responsible AI Labs →</a>
+          </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-data-centers"><span class="icon">⚡</span><span class="cat-label">Data Centers — United States</span></div>
-        <div class="news-card-body">
-          <span class="num">08</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">08</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-data-centers">Data Centers — United States</div>
           <h3>70% of Americans Oppose a New AI Data Center Nearby</h3>
           <p>A Gallup poll found 70% opposition to new AI data centers in respondents' own neighborhoods — more than oppose a nuclear plant nearby. Pennsylvania's governor signed an executive order tightening data center development standards as water use and electricity prices become flashpoints.</p>
-          <a class="src-link" href="https://www.cnbc.com/2026/08/29/tech-backlash-ai-data-centers-elections.html" target="_blank" rel="noopener">CNBC →</a>
+          <div class="src-row">
+            <a class="src-link" href="https://www.cnbc.com/2026/08/29/tech-backlash-ai-data-centers-elections.html" target="_blank" rel="noopener">CNBC →</a>
+          </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-trade"><span class="icon">🌍</span><span class="cat-label">Trade — UK / South Korea</span></div>
-        <div class="news-card-body">
-          <span class="num">09</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">09</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-trade">Trade — UK / South Korea</div>
           <h3>UK-South Korea Trade Deal Bans Forced Data Localization</h3>
           <p>Negotiators concluded an upgraded free trade agreement with a dedicated digital trade chapter, guaranteeing cross-border data flows and prohibiting unjustified data localization requirements.</p>
-          <a class="src-link" href="https://www.techuk.org/resource/global-tech-trade-policy-update.html" target="_blank" rel="noopener">techUK →</a>
+          <div class="src-row">
+            <a class="src-link" href="https://www.techuk.org/resource/global-tech-trade-policy-update.html" target="_blank" rel="noopener">techUK →</a>
+          </div>
         </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-card-banner cat-lawsuit"><span class="icon">⚖️</span><span class="cat-label">Lawsuit — United States / Australia</span></div>
-        <div class="news-card-body">
-          <span class="num">10</span>
+      </article>
+      <article class="iss-story">
+        <div class="iss-story-num" aria-hidden="true">10</div>
+        <div class="iss-story-main">
+          <div class="iss-story-cat iss-cat-lawsuit">Lawsuit — United States / Australia</div>
           <h3>FTC Takes Zillow and Redfin to Trial</h3>
           <p>The FTC's case accusing Zillow and Redfin of colluding on rental advertising went to trial on August 21 — one of several fronts testing how far competition law reaches into platform-driven markets, alongside Australia's parallel case against Meta opening September 1.</p>
-          <a class="src-link" href="https://www.mlex.com/mlex/mergers-acquisitions/articles/2517388" target="_blank" rel="noopener">MLex →</a>
+          <div class="src-row">
+            <a class="src-link" href="https://www.mlex.com/mlex/mergers-acquisitions/articles/2517388" target="_blank" rel="noopener">MLex →</a>
+          </div>
         </div>
-      </div>
-
+      </article>
     </div>
 
-    <hr class="rule">
+    <div class="iss-end">
+      <div class="iss-end-mark">&mdash; End of Issue No. 1 &mdash;</div>
+      <a class="iss-end-cta" href="../newsletter.html">Back to the archive <span class="arrow">&rarr;</span></a>
+    </div>
 
-    <p><a href="../newsletter.html">← Back to newsletter archive</a></p>
+  </div>
+</main>
 
-  </main>
-</div>
-
-<footer>
+<footer class="hp-footer">
   <div class="wrap">
-    © 2026 Rowa Taha. All rights reserved.<br>
-    Also posted on <a href="https://substack.com/@rowataha" target="_blank" rel="noopener">Substack</a> and <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">LinkedIn</a>
+    <div class="hp-footer-word">The Digital Divide</div>
+    <div class="hp-footer-tag">Data Rights for All</div>
+    <nav>
+      <a href="../home.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../thoughts.html">Thoughts</a>
+      <a href="../newsletter.html">Newsletter</a>
+      <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">Contact</a>
+    </nav>
+    <div class="hp-copy">&copy; 2026 Rowa Taha. All rights reserved.</div>
   </div>
 </footer>
 
