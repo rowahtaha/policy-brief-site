@@ -688,11 +688,28 @@ const FLAG_SWATCH = {
   UZB:"#1EB53A", VNM:"#DA251D", IRN:"#239F40"
 };
 
-function verdictColor(a) {
-  return a === "yes" ? "#2F6B4F" : a === "no" ? "#8C2F26" : "#8A6A1F";
+// Most questions are phrased so "yes" means the protection exists. A few describe
+// a risk instead, where "yes" is the LESS protective answer (e.g. "yes" you can be
+// criminally charged for criticizing the government, or "yes" photos of people in
+// public can be taken/published without consent). List those here so the color and
+// label flip to match what the answer actually means for the person's rights.
+const INVERTED_QUESTIONS = new Set([
+  "Can you be criminally charged for criticizing the government online?",
+  "Are there legal consequences for speaking badly about someone online?",
+  "Is it allowed to take and publish photos of people in public?",
+  "Does your data flow freely between countries, with no cross-border data transfer restrictions?"
+]);
+function effectiveAnswer(a, q) {
+  if (!INVERTED_QUESTIONS.has(q)) return a;
+  return a === "yes" ? "no" : a === "no" ? "yes" : a;
 }
-function verdictLabel(a) {
-  return a === "yes" ? "PROTECTED" : a === "no" ? "NOT PROTECTED" : "PARTIAL";
+function verdictColor(a, q) {
+  const e = effectiveAnswer(a, q);
+  return e === "yes" ? "#2F6B4F" : e === "no" ? "#8C2F26" : "#8A6A1F";
+}
+function verdictLabel(a, q) {
+  const e = effectiveAnswer(a, q);
+  return e === "yes" ? "PROTECTED" : e === "no" ? "NOT PROTECTED" : "PARTIAL";
 }
 
 function drawTracked(ctx, text, x, y, tracking, rtl) {
@@ -1737,11 +1754,11 @@ function drawFlyer(canvas, country, part, total, startIndex, qaChunk, totalQuest
     for (const l of qLines) { ctx.fillText(l, qX, qy); qy += QLH; }
 
     qy += GAP_A;
-    const vColor = verdictColor(item.a);
+    const vColor = verdictColor(item.a, item.q);
     ctx.fillStyle = vColor;
     ctx.fillRect(qX, qy - 15, 17, 17);
     ctx.font = "700 19px " + MONO;
-    drawTracked(ctx, verdictLabel(item.a), qX + 24, qy, 1.2);
+    drawTracked(ctx, verdictLabel(item.a, item.q), qX + 24, qy, 1.2);
 
     qy += GAP_B;
     ctx.font = "700 29px " + SANS;
@@ -2098,8 +2115,8 @@ function renderCompare() {
       td.className = "vcell";
       const badge = document.createElement("span");
       badge.className = "vbadge";
-      badge.style.background = verdictColor(item.a);
-      badge.textContent = verdictLabel(item.a);
+      badge.style.background = verdictColor(item.a, item.q);
+      badge.textContent = verdictLabel(item.a, item.q);
       const note = document.createElement("span");
       note.className = "vnote";
       note.textContent = item.note;
