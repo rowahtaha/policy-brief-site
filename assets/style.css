@@ -1300,6 +1300,232 @@ footer a { color: var(--muted); text-decoration: underline; }
   .hp-footer { padding: 48px 0 34px; }
 }
 
+/* ==========================================================
+   Newsletter page — editorial redesign (scoped to newsletter.html only)
+   ========================================================== */
+
+.nl-hero {
+  max-width: 640px;
+  padding: 56px 0 48px;
+}
+
+.nl-hero-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin: 0 0 16px;
+  color: var(--hp-black);
+}
+
+.nl-hero-sub {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin: 0 0 28px;
+  max-width: 480px;
+}
+
+.nl-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  padding: 14px 28px;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.nl-hero-cta:hover { background: #6e1515; text-decoration: none; }
+.nl-hero-cta .arrow { transition: transform .15s ease; }
+.nl-hero-cta:hover .arrow { transform: translateX(4px); }
+
+/* ---- Featured issue ---- */
+
+.nl-featured {
+  border-top: 1px solid var(--hp-black);
+  border-bottom: 1px solid var(--hp-black);
+  padding: 56px 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.nl-featured-number {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 800;
+  font-size: clamp(4rem, 9vw, 7rem);
+  line-height: 0.85;
+  color: var(--rule);
+}
+
+.nl-featured-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.nl-featured-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.nl-featured-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.nl-featured-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.12;
+  margin: 0 0 16px;
+  color: var(--hp-black);
+}
+
+.nl-featured-excerpt {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 640px;
+  margin: 0 0 24px;
+}
+
+.nl-featured-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.nl-featured-cta .arrow { transition: transform .15s ease; }
+.nl-featured-cta:hover .arrow { transform: translateX(4px); }
+
+/* ---- Archive list ---- */
+
+.nl-archive-list { margin-top: 4px; }
+
+.nl-archive-item {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 22px;
+  align-items: baseline;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--rule);
+  color: inherit;
+  text-decoration: none;
+}
+
+.nl-archive-item:first-child { padding-top: 0; }
+.nl-archive-item:hover { text-decoration: none; }
+.nl-archive-item:hover .nl-archive-title { color: var(--accent); }
+
+.nl-archive-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--rule);
+}
+
+.nl-archive-body { min-width: 0; }
+
+.nl-archive-title {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  color: var(--hp-black);
+  margin-bottom: 6px;
+  transition: color .15s ease;
+}
+
+.nl-archive-excerpt {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+  max-width: 60ch;
+}
+
+.nl-archive-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .nl-archive-item { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
+  .nl-archive-num { font-size: 1rem; }
+  .nl-archive-date { text-align: left; }
+}
+
+/* ---- Subscribe band ---- */
+
+.nl-subscribe-band {
+  background: var(--paper-2);
+  border-top: 1px solid var(--rule);
+  padding: 72px 0;
+  text-align: center;
+}
+
+.nl-subscribe-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 14px;
+  color: var(--hp-black);
+}
+
+.nl-subscribe-sub {
+  color: var(--muted);
+  font-size: 1.02rem;
+  max-width: 480px;
+  margin: 0 auto 30px;
+}
+
+.nl-subscribe-embed {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.nl-subscribe-alt {
+  margin: 16px 0 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+}
+
+.nl-subscribe-alt a { color: var(--muted); text-decoration: underline; }
+
+@media (max-width: 780px) {
+  .nl-hero { padding: 40px 0 32px; }
+  .nl-featured { grid-template-columns: 1fr; gap: 20px; padding: 40px 0; }
+  .nl-featured-number { font-size: 3.2rem; }
+  .nl-subscribe-band { padding: 52px 0; }
+}
+
 /* ---------- Job board: verified-openings list ---------- */
 
 .jb-stats {
