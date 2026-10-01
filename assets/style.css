@@ -1322,24 +1322,24 @@ footer a { color: var(--muted); text-decoration: underline; }
 
 .nl-hero {
   max-width: 640px;
-  padding: 56px 0 48px;
+  padding: 32px 0 26px;
 }
 
 .nl-hero-headline {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 800;
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
-  line-height: 1.05;
+  font-size: clamp(2.5rem, 5.5vw, 3.8rem);
+  line-height: 1.04;
   letter-spacing: -1px;
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   color: var(--hp-black);
 }
 
 .nl-hero-sub {
   font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   color: var(--muted);
-  margin: 0 0 28px;
+  margin: 0 0 20px;
   max-width: 480px;
 }
 
@@ -1368,10 +1368,10 @@ footer a { color: var(--muted); text-decoration: underline; }
 .nl-featured {
   border-top: 1px solid var(--hp-black);
   border-bottom: 1px solid var(--hp-black);
-  padding: 56px 0;
+  padding: 32px 0;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 40px;
+  gap: 32px;
   align-items: start;
 }
 
@@ -1387,13 +1387,13 @@ footer a { color: var(--muted); text-decoration: underline; }
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   flex-wrap: wrap;
 }
 
 .nl-featured-label {
   font-family: 'Inter', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -1402,25 +1402,25 @@ footer a { color: var(--muted); text-decoration: underline; }
 
 .nl-featured-date {
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
 }
 
 .nl-featured-title {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 800;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  line-height: 1.12;
-  margin: 0 0 16px;
+  font-size: clamp(2rem, 4.5vw, 2.9rem);
+  line-height: 1.1;
+  margin: 0 0 14px;
   color: var(--hp-black);
 }
 
 .nl-featured-excerpt {
   color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 1.15rem;
+  line-height: 1.6;
   max-width: 640px;
-  margin: 0 0 24px;
+  margin: 0 0 16px;
 }
 
 .nl-featured-cta {
@@ -1439,6 +1439,12 @@ footer a { color: var(--muted); text-decoration: underline; }
 .nl-featured-cta:hover .arrow { transform: translateX(4px); }
 
 /* ---- Archive list ---- */
+/* Overrides .hp-section's generous homepage padding with something
+   tighter, specific to this page -- home.html is untouched since that
+   rule is matched by class alone and this is more specific by source
+   order, not by touching .hp-section itself. */
+.nl-archive { padding: 40px 0; }
+.nl-archive .hp-section-head { margin-bottom: 22px; }
 
 .nl-archive-list { margin-top: 4px; }
 
@@ -1447,7 +1453,7 @@ footer a { color: var(--muted); text-decoration: underline; }
   grid-template-columns: 52px 1fr auto;
   gap: 22px;
   align-items: baseline;
-  padding: 26px 0;
+  padding: 18px 0;
   border-bottom: 1px solid var(--rule);
   color: inherit;
   text-decoration: none;
@@ -1460,7 +1466,7 @@ footer a { color: var(--muted); text-decoration: underline; }
 .nl-archive-num {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: var(--rule);
 }
 
@@ -1470,8 +1476,8 @@ footer a { color: var(--muted); text-decoration: underline; }
   display: block;
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
-  font-size: 1.2rem;
-  line-height: 1.3;
+  font-size: 1.32rem;
+  line-height: 1.28;
   color: var(--hp-black);
   margin-bottom: 6px;
   transition: color .15s ease;
@@ -1480,14 +1486,14 @@ footer a { color: var(--muted); text-decoration: underline; }
 .nl-archive-excerpt {
   display: block;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 1.5;
   max-width: 60ch;
 }
 
 .nl-archive-date {
   font-family: 'Inter', sans-serif;
-  font-size: 11.5px;
+  font-size: 12.5px;
   color: var(--muted);
   white-space: nowrap;
   text-align: right;
@@ -1504,22 +1510,22 @@ footer a { color: var(--muted); text-decoration: underline; }
 .nl-subscribe-band {
   background: var(--paper-2);
   border-top: 1px solid var(--rule);
-  padding: 72px 0;
+  padding: 44px 0;
   text-align: center;
 }
 
 .nl-subscribe-title {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  margin: 0 0 14px;
+  font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+  margin: 0 0 12px;
   color: var(--hp-black);
 }
 
 .nl-subscribe-sub {
   color: var(--muted);
-  font-size: 1.02rem;
+  font-size: 1.12rem;
   max-width: 480px;
-  margin: 0 auto 30px;
+  margin: 0 auto 22px;
 }
 
 .nl-subscribe-embed {
@@ -1536,10 +1542,10 @@ footer a { color: var(--muted); text-decoration: underline; }
 .nl-subscribe-alt a { color: var(--muted); text-decoration: underline; }
 
 @media (max-width: 780px) {
-  .nl-hero { padding: 40px 0 32px; }
-  .nl-featured { grid-template-columns: 1fr; gap: 20px; padding: 40px 0; }
+  .nl-hero { padding: 24px 0 20px; }
+  .nl-featured { grid-template-columns: 1fr; gap: 16px; padding: 24px 0; }
   .nl-featured-number { font-size: 3.2rem; }
-  .nl-subscribe-band { padding: 52px 0; }
+  .nl-subscribe-band { padding: 32px 0; }
 }
 
 /* ==========================================================
@@ -1550,52 +1556,52 @@ footer a { color: var(--muted); text-decoration: underline; }
 .iss-wrap {
   max-width: 760px;
   margin: 0 auto;
-  padding: 48px 24px 80px;
+  padding: 32px 24px 50px;
 }
 
 .iss-back {
   font-family: 'Inter', sans-serif;
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 600;
-  margin: 0 0 28px;
+  margin: 0 0 20px;
 }
 
 .iss-dateline {
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .iss-title {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 800;
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  line-height: 1.08;
+  font-size: clamp(2.2rem, 5vw, 3.3rem);
+  line-height: 1.06;
   letter-spacing: -0.5px;
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   color: var(--hp-black);
 }
 
 .iss-byline {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
-  margin: 0 0 36px;
+  margin: 0 0 24px;
 }
 
 .iss-lede {
   font-family: 'Source Serif 4', Georgia, serif;
   font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.6;
+  font-size: 1.32rem;
+  line-height: 1.55;
   color: var(--ink);
   border-left: 3px solid var(--accent);
   padding: 2px 0 2px 22px;
-  margin: 0 0 60px;
+  margin: 0 0 36px;
 }
 
 .iss-story-list { margin-bottom: 8px; }
@@ -1603,8 +1609,8 @@ footer a { color: var(--muted); text-decoration: underline; }
 .iss-story {
   display: grid;
   grid-template-columns: 60px 1fr;
-  gap: 24px;
-  padding: 44px 0;
+  gap: 20px;
+  padding: 28px 0;
   border-bottom: 1px solid var(--rule);
 }
 
@@ -1623,28 +1629,28 @@ footer a { color: var(--muted); text-decoration: underline; }
 
 .iss-story-cat {
   font-family: 'Inter', sans-serif;
-  font-size: 11.5px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .iss-story h3 {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 800;
-  font-size: 1.55rem;
-  line-height: 1.28;
-  margin: 0 0 18px;
+  font-size: 1.68rem;
+  line-height: 1.25;
+  margin: 0 0 14px;
   color: var(--hp-black);
   text-wrap: balance;
 }
 
 .iss-story-main p {
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.65;
   color: var(--ink);
-  margin: 0 0 20px;
+  margin: 0 0 14px;
 }
 
 .iss-story-main .src-row {
@@ -1656,7 +1662,7 @@ footer a { color: var(--muted); text-decoration: underline; }
 
 .iss-story-main a.src-link {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 600;
 }
 
@@ -1670,15 +1676,15 @@ footer a { color: var(--muted); text-decoration: underline; }
 
 .iss-end {
   text-align: center;
-  padding: 56px 0 12px;
+  padding: 36px 0 8px;
 }
 
 .iss-end-mark {
   font-family: 'Playfair Display', Georgia, serif;
   font-style: italic;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--muted);
-  margin: 0 0 22px;
+  margin: 0 0 16px;
 }
 
 .iss-end-cta {
@@ -1702,9 +1708,10 @@ footer a { color: var(--muted); text-decoration: underline; }
 .iss-end-cta:hover .arrow { transform: translateX(4px); }
 
 @media (max-width: 640px) {
-  .iss-story { grid-template-columns: 1fr; gap: 6px; padding: 34px 0; }
+  .iss-story { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
   .iss-story-num { font-size: 1.3rem; color: var(--accent); }
   .iss-title { letter-spacing: -0.2px; }
+  .iss-wrap { padding: 24px 20px 36px; }
 }
 
 /* ---------- Job board: verified-openings list ---------- */
