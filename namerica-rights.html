@@ -250,6 +250,12 @@
     font-size: 13px; z-index: 9999; opacity: 0; transition: opacity .2s; pointer-events: none;
   }
   .share-toast.visible { opacity: 1; }
+  .share-btn-big {
+    display: block; width: 100%; margin-top: 24px; padding: 16px 24px;
+    font-family: inherit; font-size: 16px; font-weight: 700; text-align: center;
+    background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer;
+  }
+  .share-btn-big:hover { opacity: 0.88; }
   .flag-chip { width: 13px; height: 13px; border-radius: 2px; flex: none; align-self: center; }
   .country-head h2 {
     font: 600 28px/1 Georgia, "Iowan Old Style", Palatino, serif; margin: 0;
@@ -1531,6 +1537,14 @@ function renderCompare() {
 
   compareTableWrap.innerHTML = "";
   compareTableWrap.appendChild(table);
+
+  const bottomShareBtn = buildShareBtn("Share this comparison \u2197", () => {
+    const url = location.origin + location.pathname + "?compare=" + compareSelected.join(",");
+    const names = compareSelected.map(c => COUNTRIES[c].name).join(", ");
+    shareOrCopyLink(url, "Digital Rights Comparison", "Compare " + names + " on The Digital Divide.");
+  });
+  bottomShareBtn.classList.add("share-btn-big");
+  compareTableWrap.appendChild(bottomShareBtn);
 }
 
 COUNTRY_ORDER.forEach(code => {
