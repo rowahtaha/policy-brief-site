@@ -21,6 +21,20 @@ got written up.
 
 ## Newsletter — published issues
 
+### Issue No. 6 — Week of September 28–October 4, 2026
+| Story | Country | Topic tags |
+|---|---|---|
+| The G20 Just Agreed AI Shouldn't Get Its Own Regulator | Global (G20) | AI governance, Carolina Principles |
+| 19 EU Countries Just Designed Their First Joint AI Project | EU | IPCEI, industrial policy |
+| Trump Signs a "Superintelligence" Order. Six AI Companies Sign a Pact With No Penalties Attached. | US / Global | AI governance, executive order |
+| The UN Counted 300 Internet Shutdowns in Two Years | Global | internet freedom, shutdowns |
+| Human Rights Watch Wants a UN Labor Treaty for Gig Workers | Global (9 countries) | labor rights, ILO, algorithms |
+| Pakistan Sets Baseline Security Rules for Everyone's Data | Pakistan | data security, CERT framework |
+| Brazil Fines TikTok $30 Million Over a Feed Kids Could Reach Without Registering | Brazil | LGPD, children's data |
+| 22 Days Late: Japan Disciplines KDDI Over How It Handled a 12-Million-Person Breach | Japan | data breach, disclosure delay |
+| California Bans AI-Only Firing Decisions | US (California) | SB 947, workplace AI |
+| Rwanda Just Created Its First Agency Dedicated Entirely to AI | Rwanda | AI governance, institution-building |
+
 ### Issue No. 5 — Week of September 21–28, 2026
 | Story | Country | Topic tags |
 |---|---|---|

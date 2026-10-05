@@ -1673,6 +1673,9 @@ footer a { color: var(--muted); text-decoration: underline; }
 .iss-cat-accountability { color: #b5651d; }
 .iss-cat-data-centers { color: #4a5a6a; }
 .iss-cat-trade { color: #2f5f8a; }
+.iss-cat-industrial-policy { color: #1f6b6b; }
+.iss-cat-internet-freedom { color: #8a6a1f; }
+.iss-cat-labor-rights { color: #a4456b; }
 
 .iss-end {
   text-align: center;
