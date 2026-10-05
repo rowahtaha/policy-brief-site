@@ -237,6 +237,19 @@
     display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
     padding-bottom: 14px; margin-bottom: 26px; border-bottom: 1px solid var(--line);
   }
+  .share-btn {
+    font-family: inherit; font-size: 12px; font-weight: 600; line-height: 1.4;
+    padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--accent); cursor: pointer;
+  }
+  .share-btn:hover { border-color: var(--accent); }
+  .card .share-btn { display: block; margin-top: 8px; width: 100%; }
+  .share-toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: #1a1a1a; color: #fff; padding: 10px 18px; border-radius: 8px;
+    font-size: 13px; z-index: 9999; opacity: 0; transition: opacity .2s; pointer-events: none;
+  }
+  .share-toast.visible { opacity: 1; }
   .flag-chip { width: 13px; height: 13px; border-radius: 2px; flex: none; align-self: center; }
   .country-head h2 {
     font: 600 28px/1 Georgia, "Iowan Old Style", Palatino, serif; margin: 0;
@@ -394,6 +407,7 @@
       </div>    </div>
     <div class="compare-picker" id="comparePicker"></div>
     <p class="compare-hint" id="compareHint"></p>
+    <button type="button" id="compareShareBtn" class="share-btn" style="display:none;">Share this comparison &#8599;</button>
     <div class="compare-table-wrap" id="compareTableWrap"></div>
   </section>
 
@@ -1161,6 +1175,62 @@ function packQA(qa, cw) {
   return chunks;
 }
 
+function shareOrCopyLink(url, title, text) {
+  if (navigator.share) {
+    navigator.share({ title, text, url }).catch(() => {});
+  } else if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(() => {
+      showShareToast("Link copied");
+    }).catch(() => { window.prompt("Copy this link:", url); });
+  } else {
+    window.prompt("Copy this link:", url);
+  }
+}
+
+function shareCanvasImage(canvas, filename, title, text) {
+  canvas.toBlob(blob => {
+    if (!blob) return;
+    const file = new File([blob], filename, { type: "image/png" });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      navigator.share({ files: [file], title, text }).catch(() => {});
+      return;
+    }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showShareToast("Image downloaded");
+  }, "image/png");
+}
+
+function showShareToast(msg) {
+  let toast = document.getElementById("shareToast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "shareToast";
+    toast.className = "share-toast";
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.classList.add("visible");
+  clearTimeout(toast._hideTimer);
+  toast._hideTimer = setTimeout(() => { toast.classList.remove("visible"); }, 1800);
+}
+
+function buildShareBtn(label, onClick, extraStyle) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "share-btn";
+  btn.textContent = label;
+  if (extraStyle) btn.style.cssText = extraStyle;
+  btn.addEventListener("click", (e) => { e.stopPropagation(); onClick(); });
+  return btn;
+}
+
 function buildCountry(code) {
   const country = COUNTRIES[code];
   const chunks = packQA(country.qa, W - MARGIN * 2);
@@ -1176,6 +1246,10 @@ function buildCountry(code) {
     <h2>${country.name}</h2>
     <span class="sub">${total} cards, ${country.qa.length} questions</span>`;
   block.appendChild(head);
+  head.appendChild(buildShareBtn("Share \u2197", () => {
+    const url = location.origin + location.pathname + "?country=" + encodeURIComponent(code);
+    shareOrCopyLink(url, "Digital Rights: " + country.name, "See " + country.name + "'s digital rights flyers on The Digital Divide.");
+  }, "margin-left:auto;"));
 
   const bio = document.createElement("p");
   bio.className = "bio";
@@ -1207,6 +1281,9 @@ function buildCountry(code) {
     caption.className = "caption";
     caption.textContent = `Card ${part} of ${total}`;
     card.appendChild(caption);
+    card.appendChild(buildShareBtn("Share image", () => {
+      shareCanvasImage(canvas, country.name.replace(/\s+/g, "-") + "-card-" + part + "-of-" + total + ".png", country.name + " Digital Rights", "Card " + part + " of " + total + " from The Digital Divide's Digital Rights Atlas.");
+    }));
 
     gallery.appendChild(card);
     drawFlyer(canvas, country, part, total, startIndex, qaChunk, country.qa.length);
@@ -1372,6 +1449,12 @@ let compareSelected = [];
 const comparePicker = document.getElementById("comparePicker");
 const compareHint = document.getElementById("compareHint");
 const compareTableWrap = document.getElementById("compareTableWrap");
+const compareShareBtn = document.getElementById("compareShareBtn");
+compareShareBtn.addEventListener("click", () => {
+  const url = location.origin + location.pathname + "?compare=" + compareSelected.join(",");
+  const names = compareSelected.map(c => COUNTRIES[c].name).join(", ");
+  shareOrCopyLink(url, "Digital Rights Comparison", "Compare " + names + " on The Digital Divide.");
+});
 
 function toggleCompare(code) {
   const i = compareSelected.indexOf(code);
@@ -1393,6 +1476,7 @@ function renderCompare() {
   if (compareSelected.length === 0) {
     compareHint.textContent = `Select up to ${COMPARE_MAX} countries to build a comparison table.`;
     compareTableWrap.innerHTML = "";
+    compareShareBtn.style.display = "none";
     return;
   }
   if (compareSelected.length === 1) {
@@ -1400,6 +1484,8 @@ function renderCompare() {
   } else {
     compareHint.textContent = `Comparing ${compareSelected.length} of ${COMPARE_MAX} countries. Click the x on a column to remove it.`;
   }
+
+  compareShareBtn.style.display = compareSelected.length >= 2 ? "inline-block" : "none";
 
   const questions = COUNTRIES[COUNTRY_ORDER[0]].qa.map(item => item.q);
   const table = document.createElement("table");
@@ -1456,6 +1542,22 @@ COUNTRY_ORDER.forEach(code => {
   comparePicker.appendChild(btn);
 });
 renderCompare();
+
+(function hydrateFromURL() {
+  const params = new URLSearchParams(location.search);
+  const countryParam = params.get("country");
+  const compareParam = params.get("compare");
+  if (countryParam && COUNTRIES[countryParam]) {
+    showCountry(countryParam);
+  }
+  if (compareParam) {
+    compareSelected = compareParam.split(",").filter(c => COUNTRIES[c]).slice(0, COMPARE_MAX);
+    renderCompare();
+    if (compareSelected.length && !countryParam) {
+      document.getElementById("compare").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+})();
 </script>
 
 </body></html>
