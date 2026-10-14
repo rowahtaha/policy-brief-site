@@ -21,6 +21,20 @@ got written up.
 
 ## Newsletter — published issues
 
+### Issue No. 7 — Week of October 5–11, 2026
+| Story | Country | Topic tags |
+|---|---|---|
+| AI Data Centers Are Tearing Towns Apart — Literally | US | data centers, community backlash, death threats |
+| Betting Big on Data Centers While Scotland Votes to Block Them | UK | data centers, Scotland moratorium, grid/water |
+| AI Just Lowered the Bar for Hacking Two Countries at Once | South Korea, Japan | cyberattacks, AI-assisted crime |
+| New Delhi Promises an AI Rulebook, No Law Yet | India | AI regulation, MeitY consultation paper — **note: paper not yet published as of Issue 7; confirm before citing as released** |
+| The AI Act Turns One Month Old. GDPR Is Still Doing the Actual Enforcing. | EU | AI Act enforcement, GDPR, Digital Omnibus |
+| A Nigerian Court Said Meta Can't Make Tracking the Price of Using Instagram | Nigeria | Meta, behavioral advertising, NDPA, constitutional privacy |
+| A President Said the Quiet Part Out Loud ("shut down power for half the country") | Kenya | data centers, Microsoft, G42, grid capacity — **note: talks first stalled May 2026, resurfaced in regional coverage this week; not breaking news, flag as such if reused again** |
+| Four More Plaintiffs Just Joined the AI-Copyright Pile-On | US, Argentina | OpenAI, Microsoft, copyright, Seattle Times, Newsday, WikiHow, Editorial Perfil |
+| Google's Ad-Tech Punishment, Finally Public | US | Google, ad-tech antitrust remedies — **follow-up to Issue 3** |
+| The World's First Binding AI Treaty Still Only Has One Real Member | Council of Europe (EU, Switzerland) | AI treaty, ratification, Framework Convention on AI |
+
 ### Issue No. 6 — Week of September 28–October 4, 2026
 | Story | Country | Topic tags |
 |---|---|---|
@@ -138,7 +152,7 @@ got written up.
 30 new verified stories added to the Story Bank artifact for Issue No. 6 (ids i8–i11, b23–b30, l23–l40), covering the week of roughly Sept 24 – Oct 4, 2026. Highlights: Trump's "Superintelligence" EO + 6-company White House accord (i8), EU AI Office's GPAI enforcement going fully live with retroactive reach (i9), OpenAI firing 3 safety researchers over a leak (b23), the FTC opening a probe into OpenAI/Anthropic/METR the day after they signed Trump's accord (b24), OpenAI's own AI agents breaching 100+ organizations' sites (b25), the $14B TikTok divestiture deal clearing the White House (b26), Nigeria fining Meta $220M (b28), Texas AG investigating Character.AI + 14 platforms (b29), California's "No Robo Bosses Act" (l23), China's new cyberspace inspection rules (l24), Brazil running its Oct 4 election under strict AI deepfake rules (l26), New Zealand's under-16/AI-companion bill dying with Parliament's dissolution (l28), and a Challenger Gray report putting AI behind ~22% of all 2026 US layoffs (l31). Full text and sources for all 30 are in the live Story Bank artifact, not duplicated here.
 
 ### From the Issue No. 5 research pass (51-story pool), not selected for the top 10:
-The remaining ~41 verified stories from this pass are tracked in the live interactive Story Bank artifact rather than duplicated here in full (see [[story_bank_artifact]] memory for the link). Notable ones worth re-checking first for Issue 6: i2 (G20 "Carolina Principles"), i4 (EU AI Office enforcement wave), i5 (EU KIDS Act), i6 (Council of Europe AI treaty stalled), b2 (xAI drops Apple suit), b3 (Google ad-tech remedies unsealed), b4 (TikTok Alabama settlement), b5 (Pentagon/Anthropic supply-chain designation), b6 (Meta NameTag/BIPA suit), b7 (Apple App Store DMA letter), l2–l8 (Montana deepfake ruling, NY SAFE for Kids, Australia enforcement gap, South Africa POPIA pattern, Bangladesh cybercrime law, Pakistan security framework, Vietnam AI law feature).
+The remaining ~41 verified stories from this pass are tracked in the live interactive Story Bank artifact rather than duplicated here in full (see [[story_bank_artifact]] memory for the link). **i6 (Council of Europe AI treaty stalled) and b3 (Google ad-tech remedies unsealed) were used in Issue 7 — don't reuse as new.** Still open and notable, worth re-checking first for Issue 8: i4 (EU AI Office enforcement wave), i5 (EU KIDS Act), b2 (xAI drops Apple suit), b4 (TikTok Alabama settlement), b5 (Pentagon/Anthropic supply-chain designation), b6 (Meta NameTag/BIPA suit), b7 (Apple App Store DMA letter), b19 (Roblox Australia court-enforceable undertaking), l2–l6, l8, l9, l11–l19, l21, l22 (Montana deepfake ruling, NY SAFE for Kids, Australia enforcement gap, South Africa POPIA pattern, Bangladesh cybercrime law, Pakistan security framework, Vietnam AI law feature, and others — see artifact for full list).
 
 Stories that were fully researched (real sources, verified) but didn't make an
 issue's top 10. Fair game to pull from later **as long as you re-verify the
