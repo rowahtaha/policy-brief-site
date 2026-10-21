@@ -21,6 +21,20 @@ got written up.
 
 ## Newsletter — published issues
 
+### Issue No. 8 — Week of October 12–18, 2026
+| Story | Country | Topic tags |
+|---|---|---|
+| Delhi Shut Off the Internet to Stop a Protest. The Supreme Court Said No. | India | internet shutdown, Supreme Court, electoral rolls |
+| Taiwan Moves to Make Smuggling AI Chips to China a Crime, Not Just a Fine | Taiwan | export controls, chips, Taiwan-US trade deal |
+| Pakistan's President Imposes Emergency Rule in Khyber Pakhtunkhwa | Pakistan | emergency rule, Articles 232/234 — **reframed from original "internet shutdown" pick; verification found the real story is the political/emergency-rule angle, not connectivity** |
+| Azerbaijan Blocked TikTok, Instagram and X Over a Hijab Ban | Azerbaijan | platform block, hijab ban, protests — first newsletter story on Azerbaijan |
+| The Philippines' Cybersecurity Bill Clears the House, 198-3-1 | Philippines | HB 9605, National Cybersecurity Agency, critical infrastructure |
+| Eight Years for an Inside Job That Tried to Extort a Payment Company | South Africa | Cybercrimes Act, Ecentric Payment Systems, Erasmus sentencing — **swapped in for the originally-picked Nigeria/MultiChoice fine, which verification found was from July 2025, not fresh — dropped as stale** |
+| China Proposes Export Controls on 23 AI Technologies | China | export controls, Announcement No. 48 |
+| India's Supreme Court Won't Say Yet Whether the Government Can Exempt Itself From Its Own Privacy Law | India | DPDP Act, Section 17(2), constitutional challenge |
+| South Korea Built a Narrow Legal Door for Training AI on Your Data — Not a Wide One | South Korea | PIPA amendment, AI training data, PIPC pre-approval |
+| A Smaller, More Specific African Regulator Forum Than It First Looked | Kenya | iPRIS, Communications Authority of Kenya, capacity-building |
+
 ### Issue No. 7 — Week of October 5–11, 2026
 | Story | Country | Topic tags |
 |---|---|---|
