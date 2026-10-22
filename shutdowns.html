@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internet Shutdowns Map · The Digital Divide</title>
+<meta name="description" content="An interactive map of countries where governments have cut off the internet during protests, elections, wars, exams and coups. Click any country for the dates and reasons.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Internet Shutdowns Map · The Digital Divide">
+<meta property="og:description" content="Where governments have switched off the internet, when, and why. Click any country.">
+<meta property="og:url" content="https://rowataha.com/shutdowns.html">
+<meta property="og:image" content="https://rowataha.com/assets/logo.png?v=2">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.dd-strip{border-bottom:1px solid #d9d2c2;padding:22px 0;background:#faf8f3;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;position:relative;z-index:50}
+.dd-strip .dd-in{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.dd-strip a{text-decoration:none}
+.dd-brand{display:flex;align-items:center;gap:11px;color:inherit}
+.dd-brand img{width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:center 22%;flex-shrink:0}
+.dd-brand span{font-weight:700;font-size:1rem;letter-spacing:-.1px;color:#14110f}
+.dd-nav{display:flex;gap:28px;flex-wrap:wrap;font-size:12.5px;font-weight:600;letter-spacing:.6px;text-transform:uppercase}
+.dd-nav a{color:#14110f;padding-bottom:3px;border-bottom:1px solid transparent}
+.dd-nav a:hover{color:#8c1c1c;border-bottom-color:#8c1c1c}
+@media(max-width:560px){.dd-nav{gap:16px}}
+
+:root{
+  --sd-new:#8c1c1c; --sd-mid:#c4574a; --sd-old:#ebb3a6; --sd-none:#e6e1d6;
+  --sd-border:#faf8f2; --sd-sel:#1a2233;
+}
+.sd-kicker{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.sd-lede{color:var(--muted);font-size:1.05rem;margin-top:4px}
+.sd-stats{display:flex;gap:28px;flex-wrap:wrap;margin:18px 0 6px;font-family:'Inter',sans-serif}
+.sd-stats div{min-width:110px}
+.sd-stats b{display:block;font-size:1.9rem;line-height:1.1;color:var(--ink)}
+.sd-stats span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.sd-filters{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 14px;font-family:'Inter',sans-serif}
+.sd-chip{border:1px solid var(--rule);background:#fff;color:var(--ink);font:600 13px 'Inter',sans-serif;padding:7px 13px;border-radius:999px;cursor:pointer}
+.sd-chip:hover{border-color:var(--accent)}
+.sd-chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.sd-wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}
+.sd-mapbox{position:relative;background:#fff;border:1px solid var(--rule);border-radius:10px;padding:8px;overflow:hidden}
+.sd-mapbox svg{display:block;width:100%;height:auto;touch-action:manipulation}
+.sd-country{stroke:var(--sd-border);stroke-width:.5;transition:opacity .15s}
+.sd-country.has{cursor:pointer}
+.sd-country.has:hover{opacity:.8}
+.sd-country.sel{stroke:var(--sd-sel);stroke-width:1.6}
+.sd-loading{padding:80px 20px;text-align:center;color:var(--muted);font-family:'Inter',sans-serif}
+.sd-zoom{position:absolute;right:14px;bottom:14px;display:flex;flex-direction:column;gap:4px}
+.sd-zoom button{width:32px;height:32px;border:1px solid var(--rule);background:#fff;border-radius:6px;font:600 16px 'Inter',sans-serif;cursor:pointer;color:var(--ink)}
+.sd-tip{position:absolute;pointer-events:none;background:var(--ink);color:#fff;font:500 12.5px 'Inter',sans-serif;padding:6px 9px;border-radius:6px;white-space:nowrap;opacity:0;transform:translate(-50%,-120%)}
+.sd-legend{display:flex;gap:16px;flex-wrap:wrap;margin:10px 2px 0;font:500 12.5px 'Inter',sans-serif;color:var(--muted)}
+.sd-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.sd-panel{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:18px 18px 8px;position:sticky;top:20px;max-height:calc(100vh - 40px);overflow:auto}
+.sd-panel h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin:0 0 2px}
+.sd-panel .sd-sub{font:500 12.5px 'Inter',sans-serif;color:var(--muted);margin-bottom:12px}
+.sd-empty{color:var(--muted);font-size:.95rem}
+.sd-inc{border-top:1px solid var(--rule);padding:12px 0}
+.sd-inc:first-of-type{border-top:none;padding-top:4px}
+.sd-when{font:700 13.5px 'Inter',sans-serif;color:var(--ink)}
+.sd-tag{display:inline-block;font:700 10.5px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;background:var(--paper-2);color:var(--accent);border-radius:4px;padding:2px 6px;margin:5px 6px 0 0}
+.sd-scope{font:500 12px 'Inter',sans-serif;color:var(--muted)}
+.sd-inc p{margin:6px 0 0;font-size:.95rem;line-height:1.5}
+.sd-inc a.src{font:600 12px 'Inter',sans-serif}
+.sd-list{margin-top:34px}
+.sd-list h3{margin-bottom:8px}
+.sd-names{display:flex;flex-wrap:wrap;gap:6px}
+.sd-names button{border:1px solid var(--rule);background:#fff;font:500 13px 'Inter',sans-serif;padding:5px 10px;border-radius:6px;cursor:pointer;color:var(--ink)}
+.sd-names button:hover{border-color:var(--accent);color:var(--accent)}
+.sd-names button.dim{opacity:.35}
+.sd-note{font-size:.9rem;color:var(--muted);margin-top:30px}
+@media (max-width:900px){
+  .sd-wrap{grid-template-columns:1fr}
+  .sd-panel{position:static;max-height:none}
+}
+</style>
+</head>
+<body>
+<header class="dd-strip">
+  <div class="dd-in">
+    <a href="home.html" class="dd-brand"><img src="assets/logo.png?v=2" alt="The Digital Divide"><span>The Digital Divide</span></a>
+    <nav class="dd-nav">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="thoughts.html">Thoughts</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav>
+      <a href="globe-rights.html">Digital Rights Projects</a>
+      <a href="shutdowns.html" class="active">Shutdowns Map</a>
+      <a href="newsletter.html">Newsletter</a>
+      <a href="subscribe.html">Subscribe</a>
+      <a href="thoughts.html">Blog</a>
+      <a href="about.html">About</a>
+    </nav>
+  </aside>
+
+  <main class="content" id="main-content" style="max-width:1000px">
+    <p class="sd-kicker">Digital Rights Projects</p>
+    <h2 style="margin-top:0">When Governments Turn Off the Internet</h2>
+    <p class="sd-lede">Every country on this map has had its internet switched off by the people running it, during protests, elections, wars, coups, and even school exams. Tap a country to see when it happened and why.</p>
+
+    <div class="sd-stats">
+      <div><b id="sd-n-countries">0</b><span>Countries</span></div>
+      <div><b id="sd-n-inc">0</b><span>Shutdowns logged</span></div>
+      <div><b>313</b><span>Shutdowns worldwide in 2025*</span></div>
+    </div>
+
+    <div class="sd-filters" id="sd-filters" role="group" aria-label="Filter by reason"></div>
+
+    <div class="sd-wrap">
+      <div>
+        <div class="sd-mapbox" id="sd-mapbox">
+          <div class="sd-loading" id="sd-loading">Loading map…</div>
+          <div class="sd-tip" id="sd-tip"></div>
+          <div class="sd-zoom">
+            <button type="button" id="sd-zin" aria-label="Zoom in">+</button>
+            <button type="button" id="sd-zout" aria-label="Zoom out">−</button>
+          </div>
+        </div>
+        <div class="sd-legend" aria-label="Map legend: most recent shutdown">
+          <span><i style="background:var(--sd-new)"></i>Latest shutdown 2025–2026</span>
+          <span><i style="background:var(--sd-mid)"></i>2020–2024</span>
+          <span><i style="background:var(--sd-old)"></i>Before 2020</span>
+          <span><i style="background:var(--sd-none)"></i>None logged</span>
+        </div>
+      </div>
+      <aside class="sd-panel" id="sd-panel" aria-live="polite">
+        <h3>Pick a country</h3>
+        <p class="sd-empty">Click any shaded country on the map, or use the list below. You'll see each shutdown's date, the reason, how far it reached, and a source.</p>
+      </aside>
+    </div>
+
+    <section class="sd-list">
+      <h3>All countries on the map</h3>
+      <div class="sd-names" id="sd-names"></div>
+    </section>
+
+    <p class="sd-note">*Access Now's #KeepItOn coalition counted at least 313 shutdowns in 52 countries in 2025, a new record. This map logs the major, well-documented network shutdowns (full blackouts, mobile data cuts, regional cuts and heavy throttling) since 2009. Single-app bans, like the U.S. TikTok pause or Nepal's 2025 social media ban, are left out. Sources: <a href="https://www.accessnow.org/campaign/keepiton/" target="_blank" rel="noopener">Access Now #KeepItOn</a>, <a href="https://netblocks.org" target="_blank" rel="noopener">NetBlocks</a>, <a href="https://ioda.inetintel.cc.gatech.edu/" target="_blank" rel="noopener">IODA</a>, <a href="https://pulse.internetsociety.org/en/shutdowns/" target="_blank" rel="noopener">Internet Society Pulse</a>, and the links on each entry. Last updated October 22, 2026. Read the story behind it on <a href="thoughts.html">Rowa's Thoughts</a>.</p>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">© 2026 Rowa Taha. All rights reserved.</div>
+</footer>
+
+<script src="data/shutdowns-data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+(function(){
+  var DATA = window.shutdownData, REASONS = window.shutdownReasons;
+  var reasonLabel = {}; REASONS.forEach(function(r){ reasonLabel[r.id] = r.label; });
+  var codes = Object.keys(DATA);
+  var active = "all", selected = null;
+
+  // newest first within each country
+  codes.forEach(function(c){ DATA[c].incidents.sort(function(a,b){ return b.start.localeCompare(a.start); }); });
+
+  var totalInc = codes.reduce(function(n,c){ return n + DATA[c].incidents.length; }, 0);
+  document.getElementById("sd-n-countries").textContent = codes.length;
+  document.getElementById("sd-n-inc").textContent = totalInc;
+
+  function matches(code){
+    var d = DATA[code]; if (!d) return false;
+    return active === "all" || d.incidents.some(function(i){ return i.reason === active; });
+  }
+  function fillFor(code){
+    if (!matches(code)) return "var(--sd-none)";
+    var y = +DATA[code].incidents[0].start.slice(0,4);
+    return y >= 2025 ? "var(--sd-new)" : y >= 2020 ? "var(--sd-mid)" : "var(--sd-old)";
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(ch){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]; }); }
+
+  // Filter chips
+  var fbox = document.getElementById("sd-filters");
+  [{id:"all",label:"All reasons"}].concat(REASONS).forEach(function(r){
+    var count = r.id === "all" ? codes.length : codes.filter(function(c){ return DATA[c].incidents.some(function(i){ return i.reason === r.id; }); }).length;
+    if (!count) return;
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "sd-chip"; b.dataset.id = r.id;
+    b.setAttribute("aria-pressed", r.id === active ? "true" : "false");
+    b.textContent = r.label + " (" + count + ")";
+    b.onclick = function(){ active = r.id; refresh(); };
+    fbox.appendChild(b);
+  });
+
+  // Country list
+  var nbox = document.getElementById("sd-names");
+  codes.slice().sort(function(a,b){ return DATA[a].name.localeCompare(DATA[b].name); }).forEach(function(c){
+    var b = document.createElement("button");
+    b.type = "button"; b.dataset.code = c; b.textContent = DATA[c].name;
+    b.onclick = function(){ select(c); document.getElementById("sd-panel").scrollIntoView({behavior:"smooth", block:"nearest"}); };
+    nbox.appendChild(b);
+  });
+
+  function showPanel(code){
+    var d = DATA[code], p = document.getElementById("sd-panel");
+    var list = d.incidents.filter(function(i){ return active === "all" || i.reason === active; });
+    var others = d.incidents.length - list.length;
+    var html = "<h3>" + esc(d.name) + "</h3><div class='sd-sub'>" + d.incidents.length + (d.incidents.length === 1 ? " shutdown logged" : " shutdowns logged") +
+      (others ? " · showing " + list.length + " for “" + esc(reasonLabel[active]) + "”" : "") + "</div>";
+    list.forEach(function(i){
+      html += "<div class='sd-inc'><div class='sd-when'>" + esc(i.when) + "</div>" +
+        "<span class='sd-tag'>" + esc(reasonLabel[i.reason]) + "</span><span class='sd-scope'>" + esc(i.scope) + "</span>" +
+        "<p>" + esc(i.text) + "</p>" +
+        (i.src ? "<a class='src' href='" + esc(i.src) + "' target='_blank' rel='noopener'>Source ↗</a>" : "") + "</div>";
+    });
+    p.innerHTML = html;
+  }
+
+  var paths = null;
+  function select(code){
+    selected = code;
+    if (paths) paths.classed("sel", function(f){ return f.id === code; });
+    showPanel(code);
+  }
+  function refresh(){
+    fbox.querySelectorAll(".sd-chip").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.id === active ? "true" : "false"); });
+    nbox.querySelectorAll("button").forEach(function(b){ b.classList.toggle("dim", !matches(b.dataset.code)); });
+    if (paths) paths.attr("fill", function(f){ return fillFor(f.id); }).classed("has", function(f){ return matches(f.id); });
+    if (selected) showPanel(selected);
+  }
+
+  // Map
+  var W = 960, H = 500;
+  var box = document.getElementById("sd-mapbox"), tip = document.getElementById("sd-tip");
+  d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json").then(function(world){
+    document.getElementById("sd-loading").remove();
+    var feats = topojson.feature(world, world.objects.countries).features
+      .filter(function(f){ return f.id !== "010"; }); // drop Antarctica
+    var proj = d3.geoNaturalEarth1().fitExtent([[4,4],[W-4,H-4]], {type:"FeatureCollection", features:feats});
+    var path = d3.geoPath(proj);
+    var svg = d3.select(box).insert("svg", ":first-child").attr("viewBox", "0 0 " + W + " " + H)
+      .attr("role", "img").attr("aria-label", "World map of internet shutdowns");
+    var g = svg.append("g");
+    paths = g.selectAll("path").data(feats).enter().append("path")
+      .attr("class", "sd-country").attr("d", path)
+      .attr("fill", function(f){ return fillFor(f.id); })
+      .classed("has", function(f){ return matches(f.id); })
+      .on("mousemove", function(ev, f){
+        var d = DATA[f.id], r = box.getBoundingClientRect();
+        tip.textContent = d ? d.name + " · " + d.incidents.length + (d.incidents.length === 1 ? " shutdown" : " shutdowns") : (f.properties.name || "");
+        tip.style.left = (ev.clientX - r.left) + "px"; tip.style.top = (ev.clientY - r.top) + "px"; tip.style.opacity = 1;
+      })
+      .on("mouseleave", function(){ tip.style.opacity = 0; })
+      .on("click", function(ev, f){ if (DATA[f.id]) select(f.id); });
+
+    var zoom = d3.zoom().scaleExtent([1, 8]).translateExtent([[0,0],[W,H]])
+      .on("zoom", function(ev){ g.attr("transform", ev.transform); g.selectAll("path").attr("stroke-width", .5 / ev.transform.k); });
+    svg.call(zoom).on("wheel.zoom", null);
+    document.getElementById("sd-zin").onclick = function(){ svg.transition().call(zoom.scaleBy, 1.6); };
+    document.getElementById("sd-zout").onclick = function(){ svg.transition().call(zoom.scaleBy, 1/1.6); };
+    refresh();
+  }).catch(function(){
+    document.getElementById("sd-loading").textContent = "The map couldn't load. Use the country list below.";
+  });
+  refresh();
+})();
+</script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

@@ -68,6 +68,7 @@ const NAV = (activeHref, prefix = "") => `
   <aside class="sidebar">
     <nav>
       <a href="${prefix}globe-rights.html"${activeHref === "globe-rights.html" ? ' class="active"' : ""}>Digital Rights Projects</a>
+      <a href="${prefix}shutdowns.html">Shutdowns Map</a>
       <a href="${prefix}newsletter.html"${activeHref === "newsletter.html" ? ' class="active"' : ""}>Newsletter</a>
       <a href="${prefix}subscribe.html"${activeHref === "subscribe.html" ? ' class="active"' : ""}>Subscribe</a>
       <a href="${prefix}thoughts.html"${activeHref === "thoughts.html" ? ' class="active"' : ""}>Blog</a>
