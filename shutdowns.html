@@ -35,6 +35,7 @@
 .sd-stats b{display:block;font-size:1.9rem;line-height:1.1;color:var(--ink)}
 .sd-stats span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
 .sd-filters{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 14px;font-family:'Inter',sans-serif}
+.sd-periods{margin-top:-4px}
 .sd-chip{border:1px solid var(--rule);background:#fff;color:var(--ink);font:600 13px 'Inter',sans-serif;padding:7px 13px;border-radius:999px;cursor:pointer}
 .sd-chip:hover{border-color:var(--accent)}
 .sd-chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
@@ -104,7 +105,7 @@
   <main class="content" id="main-content" style="max-width:1000px">
     <p class="sd-kicker">Digital Rights Projects</p>
     <h2 style="margin-top:0">When Governments Turn Off the Internet</h2>
-    <p class="sd-lede">Every country on this map has had its internet switched off by the people running it, during protests, elections, wars, coups, and even school exams. Tap a country to see when it happened and why.</p>
+    <p class="sd-lede">Every country on this map has had its internet switched off by the people running it, during protests, elections, wars, coups, and even school exams. The record starts in 2005, when Nepal's king cut the whole country off the day he seized power. Tap a country to see when it happened and why.</p>
 
     <div class="sd-stats">
       <div><b id="sd-n-countries">0</b><span>Countries</span></div>
@@ -113,6 +114,7 @@
     </div>
 
     <div class="sd-filters" id="sd-filters" role="group" aria-label="Filter by reason"></div>
+    <div class="sd-filters sd-periods" id="sd-periods" role="group" aria-label="Filter by time period"></div>
 
     <div class="sd-wrap">
       <div>
@@ -142,7 +144,7 @@
       <div class="sd-names" id="sd-names"></div>
     </section>
 
-    <p class="sd-note">*Access Now's #KeepItOn coalition counted at least 313 shutdowns in 52 countries in 2025, a new record. This map logs the major, well-documented network shutdowns (full blackouts, mobile data cuts, regional cuts and heavy throttling) since 2009. Single-app bans, like the U.S. TikTok pause or Nepal's 2025 social media ban, are left out. Sources: <a href="https://www.accessnow.org/campaign/keepiton/" target="_blank" rel="noopener">Access Now #KeepItOn</a>, <a href="https://netblocks.org" target="_blank" rel="noopener">NetBlocks</a>, <a href="https://ioda.inetintel.cc.gatech.edu/" target="_blank" rel="noopener">IODA</a>, <a href="https://pulse.internetsociety.org/en/shutdowns/" target="_blank" rel="noopener">Internet Society Pulse</a>, and the links on each entry. Last updated October 22, 2026. Read the story behind it on <a href="thoughts.html">Rowa's Thoughts</a>.</p>
+    <p class="sd-note">*Access Now's #KeepItOn coalition counted at least 313 shutdowns in 52 countries in 2025, a new record. This map logs the major, well-documented network shutdowns (full blackouts, mobile data cuts, regional cuts and heavy throttling) from 2005 to today. Nepal's 2005 blackout is the earliest national shutdown that's widely documented. Before that, far fewer people were online, and systematic tracking only began with Access Now in 2016, so older entries rely on press and rights-group reports from the time. Single-app bans, like the U.S. TikTok pause or Nepal's 2025 social media ban, are left out. Sources: <a href="https://www.accessnow.org/campaign/keepiton/" target="_blank" rel="noopener">Access Now #KeepItOn</a>, <a href="https://netblocks.org" target="_blank" rel="noopener">NetBlocks</a>, <a href="https://ioda.inetintel.cc.gatech.edu/" target="_blank" rel="noopener">IODA</a>, <a href="https://pulse.internetsociety.org/en/shutdowns/" target="_blank" rel="noopener">Internet Society Pulse</a>, and the links on each entry. Last updated October 22, 2026. Read the story behind it on <a href="thoughts.html">Rowa's Thoughts</a>.</p>
   </main>
 </div>
 
@@ -158,7 +160,14 @@
   var DATA = window.shutdownData, REASONS = window.shutdownReasons;
   var reasonLabel = {}; REASONS.forEach(function(r){ reasonLabel[r.id] = r.label; });
   var codes = Object.keys(DATA);
-  var active = "all", selected = null;
+  var active = "all", period = "all", selected = null;
+  var PERIODS = [
+    { id: "all",   label: "All years" },
+    { id: "2000s", label: "2005–2009", from: 2000, to: 2009 },
+    { id: "2010s", label: "2010s",     from: 2010, to: 2019 },
+    { id: "2020s", label: "2020s",     from: 2020, to: 2029 }
+  ];
+  var periodById = {}; PERIODS.forEach(function(p){ periodById[p.id] = p; });
 
   // newest first within each country
   codes.forEach(function(c){ DATA[c].incidents.sort(function(a,b){ return b.start.localeCompare(a.start); }); });
@@ -167,29 +176,38 @@
   document.getElementById("sd-n-countries").textContent = codes.length;
   document.getElementById("sd-n-inc").textContent = totalInc;
 
-  function matches(code){
-    var d = DATA[code]; if (!d) return false;
-    return active === "all" || d.incidents.some(function(i){ return i.reason === active; });
+  function incOk(i, reason, per){
+    var p = periodById[per], y = +i.start.slice(0,4);
+    return (reason === "all" || i.reason === reason) && (per === "all" || (y >= p.from && y <= p.to));
   }
+  function shown(code){
+    var d = DATA[code]; if (!d) return [];
+    return d.incidents.filter(function(i){ return incOk(i, active, period); });
+  }
+  function matches(code){ return shown(code).length > 0; }
   function fillFor(code){
-    if (!matches(code)) return "var(--sd-none)";
-    var y = +DATA[code].incidents[0].start.slice(0,4);
+    var list = shown(code);
+    if (!list.length) return "var(--sd-none)";
+    var y = +list[0].start.slice(0,4);
     return y >= 2025 ? "var(--sd-new)" : y >= 2020 ? "var(--sd-mid)" : "var(--sd-old)";
   }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(ch){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]; }); }
+  function countFor(reason, per){
+    return codes.filter(function(c){ return DATA[c].incidents.some(function(i){ return incOk(i, reason, per); }); }).length;
+  }
 
-  // Filter chips
-  var fbox = document.getElementById("sd-filters");
-  [{id:"all",label:"All reasons"}].concat(REASONS).forEach(function(r){
-    var count = r.id === "all" ? codes.length : codes.filter(function(c){ return DATA[c].incidents.some(function(i){ return i.reason === r.id; }); }).length;
-    if (!count) return;
-    var b = document.createElement("button");
-    b.type = "button"; b.className = "sd-chip"; b.dataset.id = r.id;
-    b.setAttribute("aria-pressed", r.id === active ? "true" : "false");
-    b.textContent = r.label + " (" + count + ")";
-    b.onclick = function(){ active = r.id; refresh(); };
-    fbox.appendChild(b);
-  });
+  // Filter chips: one row for reason, one for time period
+  var fbox = document.getElementById("sd-filters"), pbox = document.getElementById("sd-periods");
+  function makeChips(box, list, kind){
+    list.forEach(function(r){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "sd-chip"; b.dataset.id = r.id; b.dataset.label = r.label;
+      b.onclick = function(){ if (kind === "reason") active = r.id; else period = r.id; refresh(); };
+      box.appendChild(b);
+    });
+  }
+  makeChips(fbox, [{id:"all",label:"All reasons"}].concat(REASONS), "reason");
+  makeChips(pbox, PERIODS, "period");
 
   // Country list
   var nbox = document.getElementById("sd-names");
@@ -202,10 +220,11 @@
 
   function showPanel(code){
     var d = DATA[code], p = document.getElementById("sd-panel");
-    var list = d.incidents.filter(function(i){ return active === "all" || i.reason === active; });
-    var others = d.incidents.length - list.length;
+    var list = shown(code);
+    var filtered = list.length !== d.incidents.length;
     var html = "<h3>" + esc(d.name) + "</h3><div class='sd-sub'>" + d.incidents.length + (d.incidents.length === 1 ? " shutdown logged" : " shutdowns logged") +
-      (others ? " · showing " + list.length + " for “" + esc(reasonLabel[active]) + "”" : "") + "</div>";
+      (filtered ? " · " + list.length + " match your filters" : "") + "</div>";
+    if (!list.length) html += "<p class='sd-empty'>None that match these filters. Switch to “All reasons” and “All years” to see every entry.</p>";
     list.forEach(function(i){
       html += "<div class='sd-inc'><div class='sd-when'>" + esc(i.when) + "</div>" +
         "<span class='sd-tag'>" + esc(reasonLabel[i.reason]) + "</span><span class='sd-scope'>" + esc(i.scope) + "</span>" +
@@ -222,7 +241,14 @@
     showPanel(code);
   }
   function refresh(){
-    fbox.querySelectorAll(".sd-chip").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.id === active ? "true" : "false"); });
+    fbox.querySelectorAll(".sd-chip").forEach(function(b){
+      b.setAttribute("aria-pressed", b.dataset.id === active ? "true" : "false");
+      b.textContent = b.dataset.label + " (" + countFor(b.dataset.id, period) + ")";
+    });
+    pbox.querySelectorAll(".sd-chip").forEach(function(b){
+      b.setAttribute("aria-pressed", b.dataset.id === period ? "true" : "false");
+      b.textContent = b.dataset.label + " (" + countFor(active, b.dataset.id) + ")";
+    });
     nbox.querySelectorAll("button").forEach(function(b){ b.classList.toggle("dim", !matches(b.dataset.code)); });
     if (paths) paths.attr("fill", function(f){ return fillFor(f.id); }).classed("has", function(f){ return matches(f.id); });
     if (selected) showPanel(selected);

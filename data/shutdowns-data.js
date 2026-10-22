@@ -48,6 +48,7 @@ window.shutdownData = {
     { when: "March 15–17, 2026", start: "2026-03-15", reason: "election", scope: "Nationwide internet and SMS, ~2 days", text: "Connectivity fell to around 3% of normal on election day as Denis Sassou Nguesso sought a fifth term.", src: "https://pulse.internetsociety.org/en/shutdowns/shutdown-in-congo-along-presidential-elections/" }
   ]},
   "180": { name: "DR Congo", incidents: [
+    { when: "January 20, 2015", start: "2015-01-20", reason: "protest", scope: "Nationwide internet and SMS", text: "Internet and text messages were cut after deadly protests against a law that could have kept Joseph Kabila in power past his term.", src: "https://cpj.org/2015/01/drc-halts-internet-access-and-cellphone-services-a/" },
     { when: "Dec 31, 2018 – Jan 20, 2019", start: "2018-12-31", reason: "election", scope: "Nationwide, ~20 days", text: "Internet and SMS were cut the day after the presidential vote while results were counted." },
     { when: "January 23, 2025", start: "2025-01-23", reason: "conflict", scope: "Goma, North Kivu", text: "Internet went dark during the M23 offensive on Goma, blocking humanitarian work as hundreds were killed.", src: "https://www.accessnow.org/wp-content/uploads/2026/03/KeepItOn-Internet-Shutdowns-2025-Annual-Report.pdf" }
   ]},
@@ -61,12 +62,14 @@ window.shutdownData = {
     { when: "June 29, 2021", start: "2021-06-29", reason: "protest", scope: "Nationwide", text: "Internet was shut down during pro-democracy protests against Africa's last absolute monarchy." }
   ]},
   "231": { name: "Ethiopia", incidents: [
+    { when: "July 2016", start: "2016-07", reason: "exams", scope: "Nationwide", text: "Internet was cut during national exams after the papers leaked online, during a year of mass protests in Oromia and Amhara." },
     { when: "June 2019", start: "2019-06-22", reason: "coup", scope: "Nationwide, ~1 week", text: "Internet was cut after an attempted coup in the Amhara region (it had also been cut earlier that month for national exams)." },
     { when: "Jun 30 – Jul 2020", start: "2020-06-30", reason: "protest", scope: "Nationwide, ~3 weeks", text: "Internet was cut after the killing of Oromo singer Hachalu Hundessa sparked protests." },
     { when: "Nov 4, 2020 – Dec 2022", start: "2020-11-04", reason: "conflict", scope: "Tigray region, ~2 years", text: "Tigray was cut off for about two years during the war, hiding massacres and famine from the world." },
     { when: "August 2023 onward", start: "2023-08", reason: "conflict", scope: "Amhara region", text: "Internet was cut in Amhara as fighting broke out between the army and Fano militias." }
   ]},
   "266": { name: "Gabon", incidents: [
+    { when: "Aug 31 – Sep 2016", start: "2016-08-31", reason: "election", scope: "Nationwide, ~4 days", text: "Internet was cut as protests broke out over Ali Bongo's disputed re-election." },
     { when: "January 7, 2019", start: "2019-01-07", reason: "coup", scope: "Nationwide", text: "Internet was cut during a failed coup attempt." },
     { when: "August 26, 2023", start: "2023-08-26", reason: "election", scope: "Nationwide", text: "Internet was cut on election night. Days later, the military overthrew President Ali Bongo." }
   ]},
@@ -100,6 +103,7 @@ window.shutdownData = {
     { when: "August 10, 2022", start: "2022-08-10", reason: "protest", scope: "Nationwide, ~2 hours", text: "Internet was cut during deadly protests over the cost of living." }
   ]},
   "729": { name: "Sudan", incidents: [
+    { when: "September 25, 2013", start: "2013-09-25", reason: "protest", scope: "Nationwide, ~24 hours", text: "Sudan dropped almost completely off the internet as protests over the end of fuel subsidies spread and dozens were killed.", src: "https://cpj.org/2013/09/sudan-must-restore-internet-access-immediately/" },
     { when: "Jun 3 – Jul 9, 2019", start: "2019-06-03", reason: "protest", scope: "Nationwide, ~36 days", text: "Mobile internet was cut the day of the Khartoum sit-in massacre and stayed off for over a month, until a court ordered it back." },
     { when: "Oct 25 – Nov 18, 2021", start: "2021-10-25", reason: "coup", scope: "Nationwide, ~25 days", text: "Internet was cut as the military seized power from the transitional government." },
     { when: "February 2024", start: "2024-02", reason: "conflict", scope: "Nationwide", text: "All major networks went down during the war between the army and the Rapid Support Forces, cutting off millions in the world's worst humanitarian crisis." },
@@ -125,12 +129,14 @@ window.shutdownData = {
     { when: "Jun 2016 – Mar 2017", start: "2016-06", reason: "protest", scope: "Village of Duraz, nightly", text: "Mobile internet was cut every night for months around a sit-in supporting Shia cleric Isa Qassim." }
   ]},
   "364": { name: "Iran", incidents: [
+    { when: "June 2009", start: "2009-06-13", reason: "election", scope: "Nationwide slowdown, SMS cut", text: "Text messaging was cut and the internet slowed to a crawl after the disputed re-election of Mahmoud Ahmadinejad set off the Green Movement protests." },
     { when: "November 16–23, 2019", start: "2019-11-16", reason: "protest", scope: "Nationwide, ~1 week", text: "Around 96% of networks went offline during fuel price protests. Hundreds were killed under the cover of the blackout." },
     { when: "Sep – Dec 2022", start: "2022-09", reason: "protest", scope: "Mobile 'curfews' and regional cuts", text: "Daily mobile shutdowns during the Woman, Life, Freedom protests after Mahsa Amini died in custody." },
     { when: "June 2025", start: "2025-06-13", reason: "conflict", scope: "Nationwide", text: "Internet was almost fully cut during the twelve-day war with Israel." },
     { when: "Jan 8 – May 26, 2026", start: "2026-01-08", reason: "protest", scope: "Nationwide, record length", text: "The longest nationwide blackout ever recorded, during protests and a deadly crackdown, renewed after the February 28 strikes. Even Starlink was targeted.", src: "https://www.al-monitor.com/originals/2026/05/iran-partially-restores-internet-after-88-day-blackout-what-know" }
   ]},
   "368": { name: "Iraq", incidents: [
+    { when: "June 2014", start: "2014-06", reason: "conflict", scope: "Several provinces", text: "The government cut internet in provinces where ISIS was advancing, including around Mosul." },
     { when: "October 2019", start: "2019-10-02", reason: "protest", scope: "Nationwide", text: "Internet was cut during the Tishreen protests against corruption, as security forces killed hundreds." },
     { when: "Every exam season", start: "2026-08-26", reason: "exams", scope: "Nationwide, mornings", text: "Iraq cuts the internet nationwide on exam mornings, most recently August 26–31, 2026. It had 36 nationwide exam cuts in 2025 alone.", src: "https://www.accessnow.org/wp-content/uploads/2026/03/KeepItOn-Internet-Shutdowns-2025-Annual-Report.pdf" }
   ]},
@@ -138,6 +144,7 @@ window.shutdownData = {
     { when: "Oct 2023 – ongoing", start: "2025-01", reason: "conflict", scope: "Gaza Strip, repeated blackouts", text: "Repeated near-total communications blackouts in Gaza caused by Israeli strikes on infrastructure, fuel cuts and network controls. Access Now counted 7 more in 2025.", src: "https://www.accessnow.org/wp-content/uploads/2026/03/KeepItOn-Internet-Shutdowns-2025-Annual-Report.pdf" }
   ]},
   "760": { name: "Syria", incidents: [
+    { when: "June 3, 2011", start: "2011-06-03", reason: "protest", scope: "Most of the country", text: "Most of Syria's networks went offline on a Friday of big protests early in the uprising." },
     { when: "November 29, 2012", start: "2012-11-29", reason: "conflict", scope: "Nationwide", text: "About 92% of networks went dark during the civil war." },
     { when: "Every exam season since 2016", start: "2025-06", reason: "exams", scope: "Nationwide", text: "Syria cuts internet nationwide during school exams, a habit of the Assad era that continued even after his fall.", src: "https://www.accessnow.org/wp-content/uploads/2026/03/KeepItOn-Internet-Shutdowns-2025-Annual-Report.pdf" }
   ]},
@@ -166,6 +173,8 @@ window.shutdownData = {
     { when: "Jul 2009 – May 2010", start: "2009-07-05", reason: "protest", scope: "Xinjiang, ~10 months", text: "Xinjiang was cut off for about ten months after unrest in Ürümqi." }
   ]},
   "356": { name: "India", incidents: [
+    { when: "August 2015", start: "2015-08-26", reason: "protest", scope: "Gujarat, ~1 week", text: "Mobile internet was cut across Gujarat during the Patidar reservation protests." },
+    { when: "Jul – Nov 2016", start: "2016-07-08", reason: "protest", scope: "Kashmir Valley, ~4 months", text: "Mobile internet was cut after militant commander Burhan Wani was killed and mass protests followed." },
     { when: "Aug 4, 2019 – Feb 5, 2021", start: "2019-08-04", reason: "conflict", scope: "Jammu & Kashmir, 552 days", text: "Internet was cut as the government revoked Kashmir's special status. 4G came back only after 18 months." },
     { when: "December 2019", start: "2019-12", reason: "protest", scope: "Several states", text: "Shutdowns in Assam, Uttar Pradesh, West Bengal and more during protests against the Citizenship Amendment Act." },
     { when: "May 3 – Dec 2023", start: "2023-05-03", reason: "conflict", scope: "Manipur, ~7 months", text: "Internet was cut as ethnic violence broke out in Manipur." },
@@ -176,12 +185,17 @@ window.shutdownData = {
     { when: "Aug – Sep 2019", start: "2019-08-21", reason: "protest", scope: "Papua and West Papua", text: "Internet was cut in Papua during anti-racism protests. A Jakarta court later ruled it unlawful." }
   ]},
   "398": { name: "Kazakhstan", incidents: [
+    { when: "December 2011", start: "2011-12-16", reason: "protest", scope: "Zhanaozen", text: "Phone and internet links to Zhanaozen were cut after police shot striking oil workers." },
     { when: "January 5–10, 2022", start: "2022-01-05", reason: "protest", scope: "Nationwide, ~5 days", text: "Internet was cut during the protests over fuel prices that turned into deadly unrest." }
   ]},
   "104": { name: "Myanmar", incidents: [
+    { when: "Sep 28 – mid-Oct 2007", start: "2007-09-28", reason: "protest", scope: "Nationwide, ~2 weeks", text: "The junta cut the internet during the monk-led Saffron Revolution, after photos of the crackdown leaked out. One of the first shutdowns aimed at stopping protests.", src: "https://opennet.net/node/147" },
     { when: "Jun 2019 – Feb 2021", start: "2019-06-21", reason: "conflict", scope: "Rakhine & Chin states, ~19 months", text: "Mobile internet was cut in conflict areas in one of the world's longest shutdowns." },
     { when: "February 2021", start: "2021-02-01", reason: "coup", scope: "Nationwide, then nightly", text: "Internet was cut on the day of the military coup, then switched off every night for over two months." },
     { when: "2025", start: "2025-12", reason: "conflict", scope: "95 shutdowns", text: "The world's top offender for the second year running, mostly by the military, including during its December 2025 election.", src: "https://www.accessnow.org/wp-content/uploads/2026/03/KeepItOn-Internet-Shutdowns-2025-Annual-Report.pdf" }
+  ]},
+  "524": { name: "Nepal", incidents: [
+    { when: "February 1–8, 2005", start: "2005-02-01", reason: "coup", scope: "Nationwide internet and phones", text: "King Gyanendra seized full power, declared a state of emergency, and cut the internet, phones and mobile service. The earliest widely documented national internet shutdown.", src: "https://rsf.org/en/king-imposes-state-emergency-and-cuts-communications-outside-world" }
   ]},
   "586": { name: "Pakistan", incidents: [
     { when: "May 9–12, 2023", start: "2023-05-09", reason: "protest", scope: "Nationwide mobile data", text: "Mobile internet was cut after former PM Imran Khan was arrested and protests broke out." },
@@ -211,6 +225,9 @@ window.shutdownData = {
   // ---------------- Americas ----------------
   "192": { name: "Cuba", incidents: [
     { when: "July 11–14, 2021", start: "2021-07-11", reason: "protest", scope: "Nationwide disruptions", text: "Internet was cut and social media blocked during the largest anti-government protests in decades." }
+  ]},
+  "862": { name: "Venezuela", incidents: [
+    { when: "February 20–21, 2014", start: "2014-02-20", reason: "protest", scope: "Táchira state, ~36 hours", text: "Internet went dark in Táchira, where the student protest wave began. The state telecom company had already blocked the walkie-talkie app protesters used.", src: "https://advox.globalvoices.org/2014/02/22/blackout-in-venezuela-the-internet-goes-dark-in-tachira-censorship-access/" }
   ]},
   "591": { name: "Panama", incidents: [
     { when: "June 20 – early July 2025", start: "2025-06-20", reason: "protest", scope: "Bocas del Toro province, ~2 weeks", text: "Internet and mobile phones were suspended during protests over pension and social security reforms.", src: "https://www.accessnow.org/wp-content/uploads/2026/03/KeepItOn-Internet-Shutdowns-2025-Annual-Report.pdf" }
