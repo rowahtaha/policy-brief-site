@@ -117,6 +117,7 @@ ${head}</head>
       <a href="${prefix}about.html">About</a>
       <a href="${prefix}thoughts.html">Thoughts</a>
       <a href="${prefix}newsletter.html">Newsletter</a>
+      <a href="${prefix}shutdowns.html">Shutdowns Map</a>
       <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">Contact</a>
     </nav>
   </div>
