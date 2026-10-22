@@ -62,7 +62,8 @@
 .sd-tag{display:inline-block;font:700 10.5px 'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;background:var(--paper-2);color:var(--accent);border-radius:4px;padding:2px 6px;margin:5px 6px 0 0}
 .sd-scope{font:500 12px 'Inter',sans-serif;color:var(--muted)}
 .sd-inc p{margin:6px 0 0;font-size:.95rem;line-height:1.5}
-.sd-inc a.src{font:600 12px 'Inter',sans-serif}
+.sd-cite{font:500 12px 'Inter',sans-serif;color:var(--muted);margin-top:6px}
+.sd-cite a{font-weight:600}
 .sd-list{margin-top:34px}
 .sd-list h3{margin-bottom:8px}
 .sd-names{display:flex;flex-wrap:wrap;gap:6px}
@@ -144,7 +145,7 @@
       <div class="sd-names" id="sd-names"></div>
     </section>
 
-    <p class="sd-note">*Access Now's #KeepItOn coalition counted at least 313 shutdowns in 52 countries in 2025, a new record. This map logs the major, well-documented network shutdowns (full blackouts, mobile data cuts, regional cuts and heavy throttling) from 2005 to today. Nepal's 2005 blackout is the earliest national shutdown that's widely documented. Before that, far fewer people were online, and systematic tracking only began with Access Now in 2016, so older entries rely on press and rights-group reports from the time. Single-app bans, like the U.S. TikTok pause or Nepal's 2025 social media ban, are left out. Sources: <a href="https://www.accessnow.org/campaign/keepiton/" target="_blank" rel="noopener">Access Now #KeepItOn</a>, <a href="https://netblocks.org" target="_blank" rel="noopener">NetBlocks</a>, <a href="https://ioda.inetintel.cc.gatech.edu/" target="_blank" rel="noopener">IODA</a>, <a href="https://pulse.internetsociety.org/en/shutdowns/" target="_blank" rel="noopener">Internet Society Pulse</a>, and the links on each entry. Last updated October 22, 2026. Read the story behind it on <a href="thoughts.html">Rowa's Thoughts</a>.</p>
+    <p class="sd-note">*Access Now's #KeepItOn coalition counted at least 313 shutdowns in 52 countries in 2025, a new record. This map logs the major, well-documented network shutdowns (full blackouts, mobile data cuts, regional cuts and heavy throttling) from 2005 to today. Nepal's 2005 blackout is the earliest national shutdown that's widely documented. Before that, far fewer people were online, and systematic tracking only began with Access Now in 2016, so older entries rely on press and rights-group reports from the time. Single-app bans, like the U.S. TikTok pause or Nepal's 2025 social media ban, are left out. Sources: <a href="https://www.accessnow.org/campaign/keepiton/" target="_blank" rel="noopener">Access Now #KeepItOn</a>, <a href="https://netblocks.org" target="_blank" rel="noopener">NetBlocks</a>, <a href="https://ioda.inetintel.cc.gatech.edu/" target="_blank" rel="noopener">IODA</a>, <a href="https://pulse.internetsociety.org/en/shutdowns/" target="_blank" rel="noopener">Internet Society Pulse</a>, and the source linked on every single entry. Last updated October 22, 2026. Read the story behind it on <a href="thoughts.html">Rowa's Thoughts</a>.</p>
   </main>
 </div>
 
@@ -192,6 +193,21 @@
     return y >= 2025 ? "var(--sd-new)" : y >= 2020 ? "var(--sd-mid)" : "var(--sd-old)";
   }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(ch){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]; }); }
+  var PUBLISHERS = {
+    "accessnow.org": "Access Now", "netblocks.org": "NetBlocks", "pulse.internetsociety.org": "Internet Society Pulse",
+    "en.wikipedia.org": "Wikipedia", "cpj.org": "Committee to Protect Journalists", "rsf.org": "Reporters Without Borders",
+    "hrw.org": "Human Rights Watch", "aljazeera.com": "Al Jazeera", "al-monitor.com": "Al-Monitor", "arabnews.pk": "Arab News",
+    "medianama.com": "MediaNama", "lawchakra.in": "LawChakra", "cbsnews.com": "CBS News", "opennet.net": "OpenNet Initiative",
+    "advox.globalvoices.org": "Global Voices Advox", "internetwithoutborders.org": "Internet Without Borders",
+    "english.ahram.org.eg": "Ahram Online", "voanews.com": "Voice of America", "thenetmonitor.org": "Berkman Klein Internet Monitor",
+    "theregister.com": "The Register", "turkeyblocks.org": "Turkey Blocks", "ibtimes.co.in": "International Business Times",
+    "internetshutdowns.in": "SFLC.in Internet Shutdowns Tracker", "deccanherald.com": "Deccan Herald", "mizzima.com": "Mizzima", "ifj.org": "International Federation of Journalists", "monitor.civicus.org": "CIVICUS Monitor",
+    "ooni.org": "OONI"
+  };
+  function publisher(url){
+    var h = url.replace(/^https?:\/\//, "").split("/")[0].replace(/^www\./, "");
+    return PUBLISHERS[h] || h;
+  }
   function countFor(reason, per){
     return codes.filter(function(c){ return DATA[c].incidents.some(function(i){ return incOk(i, reason, per); }); }).length;
   }
@@ -229,7 +245,7 @@
       html += "<div class='sd-inc'><div class='sd-when'>" + esc(i.when) + "</div>" +
         "<span class='sd-tag'>" + esc(reasonLabel[i.reason]) + "</span><span class='sd-scope'>" + esc(i.scope) + "</span>" +
         "<p>" + esc(i.text) + "</p>" +
-        (i.src ? "<a class='src' href='" + esc(i.src) + "' target='_blank' rel='noopener'>Source ↗</a>" : "") + "</div>";
+        (i.src ? "<div class='sd-cite'>Source: <a href='" + esc(i.src) + "' target='_blank' rel='noopener'>" + esc(publisher(i.src)) + " ↗</a></div>" : "") + "</div>";
     });
     p.innerHTML = html;
   }
