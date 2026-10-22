@@ -35,7 +35,12 @@
 .sd-stats b{display:block;font-size:1.9rem;line-height:1.1;color:var(--ink)}
 .sd-stats span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
 .sd-filters{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 14px;font-family:'Inter',sans-serif}
-.sd-periods{margin-top:-4px}
+.sd-periods{margin-top:-4px;align-items:center}
+.sd-year{border:1px solid var(--rule);background:#fff;color:var(--ink);font:600 13px 'Inter',sans-serif;padding:7px 30px 7px 13px;border-radius:999px;cursor:pointer;-webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%231a2233' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.sd-year:hover{border-color:var(--accent)}
+.sd-year.on{background-color:var(--ink);border-color:var(--ink);color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23ffffff' stroke-width='1.6'/%3E%3C/svg%3E")}
+.sd-year option{color:#1a2233;background:#fff}
 .sd-chip{border:1px solid var(--rule);background:#fff;color:var(--ink);font:600 13px 'Inter',sans-serif;padding:7px 13px;border-radius:999px;cursor:pointer}
 .sd-chip:hover{border-color:var(--accent)}
 .sd-chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
@@ -174,13 +179,30 @@
   // newest first within each country
   codes.forEach(function(c){ DATA[c].incidents.sort(function(a,b){ return b.start.localeCompare(a.start); }); });
 
+  // Year span of each incident: from its start year to the latest year named in its date text
+  // ("ongoing" counts as this year), so multi-year shutdowns show up under every year they ran.
+  var THIS_YEAR = 2026;
+  codes.forEach(function(c){ DATA[c].incidents.forEach(function(i){
+    var ys = (i.when.match(/(19|20)\d\d/g) || []).map(Number).concat([+i.start.slice(0,4)]);
+    if (/ongoing/i.test(i.when)) ys.push(THIS_YEAR);
+    i.y0 = Math.min.apply(null, ys); i.y1 = Math.max.apply(null, ys);
+  }); });
+  var YEARS = []; for (var yr = THIS_YEAR; yr >= 2005; yr--) YEARS.push(yr);
+
   var totalInc = codes.reduce(function(n,c){ return n + DATA[c].incidents.length; }, 0);
   document.getElementById("sd-n-countries").textContent = codes.length;
   document.getElementById("sd-n-inc").textContent = totalInc;
 
+  // per is "all", a decade id from PERIODS, or a single year like "y2019"
+  function range(per){
+    if (per.charAt(0) === "y") { var y = +per.slice(1); return [y, y]; }
+    var p = periodById[per]; return [p.from, p.to];
+  }
   function incOk(i, reason, per){
-    var p = periodById[per], y = +i.start.slice(0,4);
-    return (reason === "all" || i.reason === reason) && (per === "all" || (y >= p.from && y <= p.to));
+    if (reason !== "all" && i.reason !== reason) return false;
+    if (per === "all") return true;
+    var r = range(per);
+    return i.y0 <= r[1] && i.y1 >= r[0];
   }
   function shown(code){
     var d = DATA[code]; if (!d) return [];
@@ -190,7 +212,8 @@
   function fillFor(code){
     var list = shown(code);
     if (!list.length) return "var(--sd-none)";
-    var y = +list[0].start.slice(0,4);
+    var y = Math.max.apply(null, list.map(function(i){ return i.y1; }));
+    if (period !== "all") y = Math.min(y, range(period)[1]);
     return y >= 2025 ? "var(--sd-new)" : y >= 2020 ? "var(--sd-mid)" : "var(--sd-old)";
   }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(ch){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]; }); }
@@ -225,6 +248,12 @@
   }
   makeChips(fbox, [{id:"all",label:"All reasons"}].concat(REASONS), "reason");
   makeChips(pbox, PERIODS, "period");
+
+  // Single-year dropdown, sitting at the end of the time-period row
+  var ysel = document.createElement("select");
+  ysel.className = "sd-year"; ysel.id = "sd-year"; ysel.setAttribute("aria-label", "Pick a single year");
+  ysel.onchange = function(){ period = ysel.value ? "y" + ysel.value : "all"; refresh(); };
+  pbox.appendChild(ysel);
 
   // Country list
   var nbox = document.getElementById("sd-names");
@@ -266,6 +295,14 @@
       b.setAttribute("aria-pressed", b.dataset.id === period ? "true" : "false");
       b.textContent = b.dataset.label + " (" + countFor(active, b.dataset.id) + ")";
     });
+    var opts = "<option value=''>Pick a year…</option>";
+    YEARS.forEach(function(y){
+      var n = countFor(active, "y" + y);
+      if (n) opts += "<option value='" + y + "'>" + y + " (" + n + (n === 1 ? " country" : " countries") + ")</option>";
+    });
+    ysel.innerHTML = opts;
+    ysel.value = period.charAt(0) === "y" ? period.slice(1) : "";
+    ysel.classList.toggle("on", !!ysel.value);
     nbox.querySelectorAll("button").forEach(function(b){ b.classList.toggle("dim", !matches(b.dataset.code)); });
     if (paths) paths.attr("fill", function(f){ return fillFor(f.id); }).classed("has", function(f){ return matches(f.id); });
     if (selected) showPanel(selected);
