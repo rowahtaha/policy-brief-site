@@ -72,6 +72,7 @@ const NAV = (activeHref, prefix = "") => `
       <a href="${prefix}newsletter.html"${activeHref === "newsletter.html" ? ' class="active"' : ""}>Newsletter</a>
       <a href="${prefix}subscribe.html"${activeHref === "subscribe.html" ? ' class="active"' : ""}>Subscribe</a>
       <a href="${prefix}thoughts.html"${activeHref === "thoughts.html" ? ' class="active"' : ""}>Blog</a>
+      <a href="${prefix}writing.html">Writing</a>
       <a href="${prefix}jobs.html"${activeHref === "jobs.html" ? ' class="active"' : ""}>Job Board</a>
       <a href="${prefix}about.html"${activeHref === "about.html" ? ' class="active"' : ""}>About</a>
     </nav>
@@ -116,6 +117,7 @@ ${head}</head>
       <a href="${prefix}home.html">Home</a>
       <a href="${prefix}about.html">About</a>
       <a href="${prefix}thoughts.html">Thoughts</a>
+      <a href="${prefix}writing.html">Writing</a>
       <a href="${prefix}newsletter.html">Newsletter</a>
       <a href="${prefix}shutdowns.html">Shutdowns Map</a>
       <a href="https://www.linkedin.com/in/rowa-taha/" target="_blank" rel="noopener">Contact</a>
