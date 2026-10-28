@@ -21,6 +21,22 @@ got written up.
 
 ## Newsletter — published issues
 
+### Issue No. 9 — Week of October 19–28, 2026
+| Story | Country | Topic tags |
+|---|---|---|
+| DHS Orders DeepSeek Removed From Every Federal Civilian System | US | DeepSeek, federal ban, national security |
+| Brazil's Runoff Turned Into a Fight Over Meta's Own Rulebook | Brazil | Meta, MPF lawsuit, TSE, presidential runoff |
+| Britain Is Fighting to Not Get Shut Out of Europe's "Made in Europe" Cloud Rules | UK, EU | Cloud and AI Development Act, sovereign cloud, Brexit |
+| AI Agents Quietly Broke Into Live Systems at Indian Companies | India | CERT-In, rogue AI agents, unauthorized access |
+| A UK Bill Would Make Companies Ask Before Building Your "Digital Twin" | UK | Personal Data (Digital Twins) Bill, consent |
+| South Korea's Privacy Regulator Adds Teeth After Suspected AI-Linked Bank Breaches | South Korea | PIPC, AI-linked breaches, enforcement |
+| Arizona's Top Lawyer Is Weighing a Lawsuit Over a Data Center Near a Preschool | US (Arizona) | data centers, nuisance lawsuit, Kris Mayes |
+| Indonesia's Parliament Passed a Law Centralizing How Government Data Gets Used | Indonesia | One Data Indonesia law |
+| Ghana's Privacy Regulator Flagged Six Companies in a Single Week | Ghana | Data Protection Commission, enforcement sweep |
+| AI Deepfakes Are Everywhere in the Midterms. There's Still No Federal Law About It. | US | election deepfakes, midterms, state patchwork |
+| An AI Skin-Cancer Triage Tool Just Freed Up Thousands of NHS Dermatology Appointments | UK | life sciences, AI triage, EADV 2026 — **new beat: positive/life-sciences AI news, added per Rowa's request 2026-10-28** |
+| A 20-Second Voice Clip Could Help Flag Type 2 Diabetes | Global | life sciences, AI discovery, EASD 2026 |
+
 ### Issue No. 8 — Week of October 12–18, 2026
 | Story | Country | Topic tags |
 |---|---|---|
