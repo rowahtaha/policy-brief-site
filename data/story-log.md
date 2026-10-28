@@ -22,20 +22,19 @@ got written up.
 ## Newsletter — published issues
 
 ### Issue No. 9 — Week of October 19–28, 2026
+**Note:** this issue was rebuilt once — the first draft picked 10 stories directly rather than letting Rowa choose from the Story Bank pool, which isn't the right process. The table below is the corrected, Rowa-picked final 10 (picked via the Story Bank artifact's SELECTED_IDS: l41, l49, l50, l51, l36, l42, l53, l55, l45, l48). The first draft's 8 stories that did NOT make the cut (DeepSeek ban, Brazil/Meta runoff, UK/EU cloud carve-out, South Korea PIPC, Arizona data center, Ghana DPC sweep, AI deepfakes midterms, voice AI diabetes) are still sitting unused in the Story Bank and are fair game for a future issue.
 | Story | Country | Topic tags |
 |---|---|---|
-| DHS Orders DeepSeek Removed From Every Federal Civilian System | US | DeepSeek, federal ban, national security |
-| Brazil's Runoff Turned Into a Fight Over Meta's Own Rulebook | Brazil | Meta, MPF lawsuit, TSE, presidential runoff |
-| Britain Is Fighting to Not Get Shut Out of Europe's "Made in Europe" Cloud Rules | UK, EU | Cloud and AI Development Act, sovereign cloud, Brexit |
 | AI Agents Quietly Broke Into Live Systems at Indian Companies | India | CERT-In, rogue AI agents, unauthorized access |
+| China Just Nearly Doubled Its Tech Export Blacklist | China | export controls, Announcement No. 48 — **follow-up to Issue 8's 23-technology proposal** |
+| Kenya's Senate Just Sent the AI Bill Back to the Drawing Board | Kenya | AI Bill 2026, Senate ICT committee — **thin sourcing, single outlet (Techweez)** |
+| The Philippines' House Passed a Minors' Social Media Bill. The Senate Wants It Stricter. | Philippines | HB 11566, under-13 vs under-18 gap |
+| Singapore Will Pay Companies to Adopt AI, Up to a Point | Singapore | Enterprise Innovation Scheme, Budget 2026, 400% deduction |
 | A UK Bill Would Make Companies Ask Before Building Your "Digital Twin" | UK | Personal Data (Digital Twins) Bill, consent |
-| South Korea's Privacy Regulator Adds Teeth After Suspected AI-Linked Bank Breaches | South Korea | PIPC, AI-linked breaches, enforcement |
-| Arizona's Top Lawyer Is Weighing a Lawsuit Over a Data Center Near a Preschool | US (Arizona) | data centers, nuisance lawsuit, Kris Mayes |
+| Nigeria Just Told Its Own Government to Follow Its Own Data Law | Nigeria | NDPC, MDA compliance circular, Data Protection Officers |
+| Milei Wants Argentina to Let AI Run Actual Companies | Argentina | non-human corporations, Harari clash, deregulation |
 | Indonesia's Parliament Passed a Law Centralizing How Government Data Gets Used | Indonesia | One Data Indonesia law |
-| Ghana's Privacy Regulator Flagged Six Companies in a Single Week | Ghana | Data Protection Commission, enforcement sweep |
-| AI Deepfakes Are Everywhere in the Midterms. There's Still No Federal Law About It. | US | election deepfakes, midterms, state patchwork |
-| An AI Skin-Cancer Triage Tool Just Freed Up Thousands of NHS Dermatology Appointments | UK | life sciences, AI triage, EADV 2026 — **new beat: positive/life-sciences AI news, added per Rowa's request 2026-10-28** |
-| A 20-Second Voice Clip Could Help Flag Type 2 Diabetes | Global | life sciences, AI discovery, EASD 2026 |
+| An AI Skin-Cancer Triage Tool Just Freed Up Thousands of NHS Dermatology Appointments | UK | life sciences, AI triage, EADV 2026 — **positive/life-sciences beat, added per Rowa's request 2026-10-28** |
 
 ### Issue No. 8 — Week of October 12–18, 2026
 | Story | Country | Topic tags |
