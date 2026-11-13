@@ -21,6 +21,20 @@ got written up.
 
 ## Newsletter — published issues
 
+### Issue No. 10 — Week of November 3–13, 2026
+| Story | Country | Topic tags |
+|---|---|---|
+| Nvidia's CEO Quit After an Affair With a Suspected Chinese Spy | US | Nvidia, Jensen Huang, espionage, market impact |
+| Tech CEOs Got a Seat at the G7 Table | Global (G7) | Altman, Amodei, Hassabis, Évian summit |
+| Brussels Just Gave Big Tech 16 More Months Before the EU AI Act's Real Rules Kick In | EU | AI Act delay, high-risk obligations — **also covered on Rowa's Thoughts, 2026-11-13** |
+| Nigeria and Kenya Are Regulating AI Without Writing a Single AI Law | Nigeria, Kenya | data protection as de facto AI law — **thin sourcing, only two outlets found** |
+| Italy's AI Law Just Got Its Teeth | Italy | enforcement decree, cybersecurity agency |
+| A Michigan Town Voted No on an OpenAI Data Center. The Developer Sued Within Two Days, and Won. | US (Michigan) | Saline Township, Stargate, OpenAI, Oracle, rezoning lawsuit |
+| Two Governments Are Trying to Regulate AI Chatbots Before a Child Gets Hurt by One | UK, EU | chatbot child safety, KIDS Act |
+| Europe's Buy-Now-Pay-Later Rules Apply Continent-Wide Starting This Week | EU | BNPL, second Consumer Credit Directive, Klarna |
+| US Regulators Just Finalized the Rulebook for Stablecoin Issuers | US | OCC, GENIUS Act, stablecoin reserves |
+| Kenya Wants Stablecoin Issuers to Keep Nearly a Third of Their Reserves at Home | Kenya | stablecoin reserves, VASP regulations, draft rule |
+
 ### Issue No. 9 — Week of October 19–28, 2026
 **Note:** this issue was rebuilt once — the first draft picked 10 stories directly rather than letting Rowa choose from the Story Bank pool, which isn't the right process. The table below is the corrected, Rowa-picked final 10 (picked via the Story Bank artifact's SELECTED_IDS: l41, l49, l50, l51, l36, l42, l53, l55, l45, l48). The first draft's 8 stories that did NOT make the cut (DeepSeek ban, Brazil/Meta runoff, UK/EU cloud carve-out, South Korea PIPC, Arizona data center, Ghana DPC sweep, AI deepfakes midterms, voice AI diabetes) are still sitting unused in the Story Bank and are fair game for a future issue.
 | Story | Country | Topic tags |
@@ -187,6 +201,9 @@ Stories that were fully researched (real sources, verified) but didn't make an
 issue's top 10. Fair game to pull from later **as long as you re-verify the
 facts are still current** before reusing — a story sitting unused for weeks
 can go stale.
+
+### From the Issue No. 10 research pass (18-story pool, 2026-11-13), not selected for the top 10:
+Brussels Fined Google $1 Billion, Google Says See You in Court (EU/Google, Digital Markets Act, $1B fine) · China's Public Comment Window on Its Own AI Export Controls Closes This Week (China, 40-technology export rule, closes Nov 15 — **follow-up to Issue 9's export-blacklist story**) · South Korea Picked the Boring Option: Amend Old Laws Before Writing New Ones (South Korea, AI Basic Act, presidential council) · India's Privacy Law Gets a New Gatekeeper Today (India, DPDP Act, consent-manager regime, effective Nov 13) · A Missouri Town Fired Its Entire City Council Over a $6 Billion Data Center (US/Missouri, Festus, CRG/Clayco, recall vote — genuinely new, never published before) · Brazil's Privacy Regulator Is Rewriting How It Calculates Its Own Fines (Brazil, ANPD, sanctions overhaul, ECA Digital enforcement) · The DOJ Wants Harsher Punishment Than the Judge Who Found Google Guilty Gave It (US/Google, search-antitrust remedies appeal, DOJ cross-appeal) · Brussels Just Told Crypto Firms: Wind Down Your Unlicensed Stablecoins, Don't Grow Them (EU, ESMA, MiCA, stablecoin wind-down deadline Jan 8, 2027)
 
 ### From the Issue No. 3 research pass (20-story pool), not selected:
 Newsom signs AI child-safety/audit laws (CA) · Andersen v. Stability AI jury
